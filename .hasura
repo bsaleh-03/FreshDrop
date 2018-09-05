@@ -1,0 +1,10 @@
+clusters:
+- alias: freshdrop
+  config:
+    configmap: controller-conf
+    namespace: hasura
+  data: null
+  kubeContext: spelunking68
+  name: spelunking68
+defaultCluster: ""
+isQuickStart: ""

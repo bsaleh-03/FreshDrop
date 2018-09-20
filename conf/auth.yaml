@@ -18,7 +18,7 @@ defaultProviders:
     enabled: "true"
     defaultRoles: []
   email:
-    enabled: "false"
+    enabled: "true"
     defaultRoles: []
   mobile:
     enabled: "false"
@@ -56,7 +56,7 @@ email:
   # Name of the sender for verification emails
   verifEmailFromName: admin
   # Subject for verification emails
-  verifyEmailSubject: MyAwesomeApp - Verify your account
+  verifyEmailSubject: FreshDrop - Verify your account
   # Template for verification emails. HTML can be used in the template. The
   # template is a Jinja template. Leave the "{{token}}" as it is. It will be
   # used by the auth service to inject the actual token when sending the email.

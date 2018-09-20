@@ -3,12 +3,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Grid from "@material-ui/core/Grid/Grid";
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import {Form} from "../Form/Form";
 
 // Auth API
 const AUTH_ROUTE = "https://auth.spelunking68.hasura-app.io/v1/login";
@@ -23,17 +24,17 @@ export async function authenticate(url, data) {
         }
     };
 
-    var body = {
-        "provider": "username",
+    let body = {
+        "provider": "email",
         "data": {
-            "username": "johnsmith",
-            "password": "js@hasura"
+            "email": data.email,
+            "password": data.password
         }
     };
 
     requestOptions.body = JSON.stringify(body);
 
-    /* await fetch(url, requestOptions)
+    await fetch(url, requestOptions)
         .then(function(response) {
             return response.json();
         })
@@ -42,10 +43,13 @@ export async function authenticate(url, data) {
         })
         .catch(function(error) {
             console.log('Request Failed:' + error);
-        }); */
+        });
 }
 
 const styles = theme => ({
+    gridContainer: {
+        height: '100vh'
+    },
     layout: {
         width: 'auto',
         display: 'flex', // Fix IE11 issue.
@@ -58,7 +62,6 @@ const styles = theme => ({
         },
     },
     paper: {
-        marginTop: theme.spacing.unit * 8,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -79,31 +82,26 @@ const styles = theme => ({
     },
 });
 
-export class Login extends React.Component {
-    constructor(props){
+export class Login extends Form {
+    constructor(props) {
         super(props);
 
         // Component state
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            errors: {}
         };
-
-        // Set change listener
-        this.handleChange = this.handleChange.bind(this);
 
         // Set submit listener
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
     onSubmit() {
-
+        // Try to authenticate the user
+        authenticate(AUTH_ROUTE, this.state).then((response) => {
+            console.log(response);
+        });
     }
 
     render() {
@@ -112,51 +110,68 @@ export class Login extends React.Component {
         return (
             <React.Fragment>
                 <CssBaseline />
-                <main className={classes.layout}>
-                    <Paper className={classes.paper}>
 
-                        <Avatar className={classes.avatar}>
-                            <AllInclusiveIcon />
-                        </Avatar>
+                <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                    className={classes.gridContainer}
+                >
+                    <Grid item xs={12}>
+                        <main className={classes.layout}>
+                            <Paper className={classes.paper}>
 
-                        <Typography variant="headline">FreshDrop</Typography>
+                                <Avatar className={classes.avatar}>
+                                    <AllInclusiveIcon />
+                                </Avatar>
 
-                        <form className={classes.form}>
-                            <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="email">Email Address</InputLabel>
-                                <Input
-                                    id="email"
-                                    name="email"
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
-                                    autoComplete="email"
-                                    autoFocus />
-                            </FormControl>
+                                <Typography variant="headline">FreshDrop</Typography>
 
-                            <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="password">Password</InputLabel>
-                                <Input
-                                    name="password"
-                                    type="password"
-                                    id="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                    autoComplete="current-password"
-                                />
-                            </FormControl>
+                                <ValidatorForm ref="form" className={classes.form} onSubmit={this.onSubmit} onError={errors => console.log(errors)}>
+                                    <FormControl margin="normal" required fullWidth>
+                                        <TextValidator
+                                            autoFocus
+                                            id="email"
+                                            name="email"
+                                            label="Email Address"
+                                            onChange={this.handleChange}
+                                            value={this.state.email}
+                                            autoComplete="email"
+                                            validators={['required', 'isEmail']}
+                                            errorMessages={['This field is required', 'Email is not valid']}
+                                        />
+                                    </FormControl>
 
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="raised"
-                                color="primary"
-                                className={classes.submit}
-                            >
-                                Sign in
-                            </Button>
-                        </form>
-                    </Paper>
-                </main>
+                                    <FormControl margin="normal" required fullWidth>
+                                        <TextValidator
+                                            id="password"
+                                            label="Password"
+                                            onChange={this.handleChange}
+                                            autoComplete="current-password"
+                                            name="password"
+                                            type="password"
+                                            validators={['required']}
+                                            errorMessages={['This field is required']}
+                                            value={this.state.password}
+                                        />
+                                    </FormControl>
+
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="raised"
+                                        color="primary"
+                                        className={classes.submit}
+                                        onClick={this.onSubmit}
+                                    >
+                                        Sign in
+                                    </Button>
+                                </ValidatorForm>
+                            </Paper>
+                        </main>
+                    </Grid>
+                </Grid>
             </React.Fragment>
         );
     }

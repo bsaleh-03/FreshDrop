@@ -8,14 +8,14 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from "@material-ui/core/Grid/Grid";
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import {Form} from "../Form/Form";
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { Form } from "../form/form";
 
 // Auth API
 const AUTH_ROUTE = "https://auth.spelunking68.hasura-app.io/v1/login";
 
 export async function authenticate(url, data) {
-    var requestOptions = {
+    let requestOptions = {
         "method": "POST",
         "headers": {
             "Content-Type": "application/json",
@@ -34,16 +34,14 @@ export async function authenticate(url, data) {
 
     requestOptions.body = JSON.stringify(body);
 
-    await fetch(url, requestOptions)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(result) {
-            console.log(JSON.stringify(result));
-        })
-        .catch(function(error) {
-            console.log('Request Failed:' + error);
-        });
+    try {
+        let response = await fetch(url, requestOptions);
+
+        return response.json();
+    } catch (e) {
+        console.log('Request Failed:' + e);
+    }
+
 }
 
 const styles = theme => ({
@@ -89,8 +87,7 @@ export class Login extends Form {
         // Component state
         this.state = {
             email: "",
-            password: "",
-            errors: {}
+            password: ""
         };
 
         // Set submit listener
@@ -101,6 +98,14 @@ export class Login extends Form {
         // Try to authenticate the user
         authenticate(AUTH_ROUTE, this.state).then((response) => {
             console.log(response);
+
+            console.log(Object.keys(response));
+
+            // Set auth token
+            localStorage.setItem("auth_token", response.auth_token);
+
+            // Redirect
+            window.location = "/home";
         });
     }
 
@@ -163,7 +168,6 @@ export class Login extends Form {
                                         variant="raised"
                                         color="primary"
                                         className={classes.submit}
-                                        onClick={this.onSubmit}
                                     >
                                         Sign in
                                     </Button>

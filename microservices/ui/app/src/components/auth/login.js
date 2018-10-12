@@ -11,7 +11,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
 
-// Auth API
+// auth API
 const AUTH_ROUTE = "https://auth.spelunking68.hasura-app.io/v1/login";
 
 export async function authenticate(url, data) {

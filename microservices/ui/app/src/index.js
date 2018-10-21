@@ -10,6 +10,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import App from './components/auth/login';
 import Home from './components/home/home';
 import Theme from './theme/theme';
+import Register from "./components/auth/register";
 
 const client = new ApolloClient({
     uri: "https://data.spelunking68.hasura-app.io/v1alpha1/graphql",
@@ -36,6 +37,7 @@ ReactDOM.render(
                     <Switch>
                         <Route exact path="/" component={App} />
                         <Route exact path="/home" component={Home} />
+                        <Route exact path="/register" component={Register} />
                     </Switch>
                 </AuthProvider>
             </MuiThemeProvider>

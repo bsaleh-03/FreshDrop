@@ -86,14 +86,16 @@ const styles = theme => ({
     }
 });
 
-export class Login extends Form {
+export class Register extends Form {
     constructor(props) {
         super(props);
 
         // Component state
         this.state = {
+            name: "",
             email: "",
-            password: ""
+            password: "",
+            confirmPassword: ""
         };
 
         // Set submit listener
@@ -115,9 +117,9 @@ export class Login extends Form {
         });
     }
 
-    handleRegister() {
+    handleLogin() {
         // Redirect
-        window.location = "/register";
+        window.location = "/";
     }
 
     render() {
@@ -148,6 +150,19 @@ export class Login extends Form {
                                     <FormControl margin="normal" required fullWidth>
                                         <TextValidator
                                             autoFocus
+                                            id="name"
+                                            name="name"
+                                            label="Your Name"
+                                            onChange={this.handleChange}
+                                            value={this.state.name}
+                                            validators={['required']}
+                                            errorMessages={['This field is required']}
+                                        />
+                                    </FormControl>
+
+                                    <FormControl margin="normal" required fullWidth>
+                                        <TextValidator
+                                            autoFocus
                                             id="email"
                                             name="email"
                                             label="Email Address"
@@ -164,12 +179,24 @@ export class Login extends Form {
                                             id="password"
                                             label="Password"
                                             onChange={this.handleChange}
-                                            autoComplete="current-password"
                                             name="password"
                                             type="password"
                                             validators={['required']}
                                             errorMessages={['This field is required']}
                                             value={this.state.password}
+                                        />
+                                    </FormControl>
+
+                                    <FormControl margin="normal" required fullWidth>
+                                        <TextValidator
+                                            id="confirmPassword"
+                                            label="Confirm Password"
+                                            onChange={this.handleChange}
+                                            name="confirmPassword"
+                                            type="password"
+                                            validators={['required']}
+                                            errorMessages={['This field is required']}
+                                            value={this.state.confirmPassword}
                                         />
                                     </FormControl>
 
@@ -180,11 +207,11 @@ export class Login extends Form {
                                         color="primary"
                                         className={classes.submit}
                                     >
-                                        Sign in
+                                        Register
                                     </Button>
                                 </ValidatorForm>
 
-                                <Button className={classes.button} color="secondary" onClick={() => this.handleRegister()}>Don't have an account? Sign up</Button>
+                                <Button className={classes.button} color="secondary" onClick={() => this.handleLogin()}>Already have an account? Sign in</Button>
                             </Paper>
                         </main>
                     </Grid>
@@ -194,4 +221,4 @@ export class Login extends Form {
     }
 }
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(Register);

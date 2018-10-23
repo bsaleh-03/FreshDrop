@@ -7,7 +7,7 @@
     conf:
       account: {{ cluster.name }}
 
-xmartdelivery.com:
+- xmartdelivery.com:
   ssl:
     conf:
       account: harajli98@gmail.com

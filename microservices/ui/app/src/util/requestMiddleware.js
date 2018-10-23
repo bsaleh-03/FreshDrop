@@ -1,79 +1,79 @@
 import boom from "boom";
 
 function checkResponse(response) {
-    if (response.status == 200){
+    if (response.status === 200){
         return response;
     }
     // 4xx HTTP Client Error Code
-    else if (response.status == 400){
+    else if (response.status === 400){
         console.error("Client error: ", response);
         throw boom.badRequest(response);
     }
-    else if (response.status == 401) {
+    else if (response.status === 401) {
         console.error("Client error: ", response);
         throw boom.unauthorized(response);
     }
-    else if (response.status == 403) {
+    else if (response.status === 403) {
         console.error("Client error: ", response);
         throw boom.forbidden(response);
     }
-    else if (response.status == 404) {
+    else if (response.status === 404) {
         console.error("Client error: ", response);
         throw boom.notFound(response)
     }
-    else if (response.status == 405) {
+    else if (response.status === 405) {
         console.error("Client error: ", response);
         throw boom.methodNotAllowed(response);
     }
-    else if (response.status == 406) {
+    else if (response.status === 406) {
         console.error("Client error: ", response);
         throw boom.notAcceptable(response);
     }
-    else if (response.status == 407) {
+    else if (response.status === 407) {
         console.error("Client error: ", response);
         throw boom.proxyAuthRequired(response);
     }
-    else if (response.status == 408) {
+    else if (response.status === 408) {
         console.error("Client error: ", response);
         throw boom.clientTimeout(response);
     }
-    else if (response.status == 409) {
+    else if (response.status === 409) {
         console.error("Client error: ", response);
         throw boom.conflict(response);
     }
-    else if (response.status == 410) {
+    else if (response.status === 410) {
         console.error("Client error: ", response);
         throw boom.resourceGone(response);
     }
-    else if (response.status == 411) {
+    else if (response.status === 411) {
         console.error("Client error: ", response);
         throw boom.lengthRequired(response);
     }
-    else if (response.status == 412) {
+    else if (response.status === 412) {
         console.error("Client error: ", response);
         throw boom.preconditionFailed(response);
     }
-    else if (response.status == 413) {
+    else if (response.status === 413) {
         console.error("Client error: ", response);
         throw boom.entityTooLarge(response);
     }
-    else if (response.status == 414) {
+    else if (response.status === 414) {
         console.error("Client error: ", response);
         throw boom.uriTooLong(response);
     }
-    else if (response.status == 415) {
+    else if (response.status === 415) {
         console.error("Client error: ", response);
         throw boom.unsupportedMediaType(response);
     }
-    else if (response.status == 416) {
+    else if (response.status === 416) {
         console.error("Client error: ", response);
         throw boom.rangeNotSatisfiable(response);
     }
-    else if (response.status == 417) {
+    else if (response.status === 417) {
         console.error("Client error: ", response);
         throw boom.expectationFailed(response);
     }
-    else if (response.status == 429) {
+    else if (response.status === 429) {
         console.error("Client error: ", response);
         throw boom.tooManyRequests(response)
     }
@@ -85,19 +85,19 @@ function checkResponse(response) {
         console.error("Server error", response);
         throw boom.unauthorized(response);
     }
-    else if (response.status == 501) {
+    else if (response.status === 501) {
         console.error("Server error: ", response);
         throw boom.notImplemented(response);
     }
-    else if (response.status == 502) {
+    else if (response.status === 502) {
         console.error("Server error: ", response);
         throw boom.badGateway(response);
     }
-    else if (response.status == 503) {
+    else if (response.status === 503) {
         console.error("Server error: ", response);
         throw boom.serverUnavailable(response);
     }
-    else if (response.status == 504) {
+    else if (response.status === 504) {
         console.error("Server error: ", response);
         throw boom.gatewayTimeout(response);
     }

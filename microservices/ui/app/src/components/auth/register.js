@@ -104,7 +104,7 @@ export class Register extends Form {
 
     onSubmit() {
         // Try to authenticate the user
-        authenticate(AUTH_ROUTE, this.state).then((response) => {
+        /* authenticate(AUTH_ROUTE, this.state).then((response) => {
             console.log(response);
 
             console.log(Object.keys(response));
@@ -114,7 +114,7 @@ export class Register extends Form {
 
             // Redirect
             window.location = "/home";
-        });
+        }); */
     }
 
     handleLogin() {
@@ -150,6 +150,7 @@ export class Register extends Form {
                                     <FormControl margin="normal" required fullWidth>
                                         <TextValidator
                                             autoFocus
+                                            disabled
                                             id="name"
                                             name="name"
                                             label="Your Name"
@@ -162,7 +163,7 @@ export class Register extends Form {
 
                                     <FormControl margin="normal" required fullWidth>
                                         <TextValidator
-                                            autoFocus
+                                            disabled
                                             id="email"
                                             name="email"
                                             label="Email Address"
@@ -176,6 +177,7 @@ export class Register extends Form {
 
                                     <FormControl margin="normal" required fullWidth>
                                         <TextValidator
+                                            disabled
                                             id="password"
                                             label="Password"
                                             onChange={this.handleChange}
@@ -189,6 +191,7 @@ export class Register extends Form {
 
                                     <FormControl margin="normal" required fullWidth>
                                         <TextValidator
+                                            disabled
                                             id="confirmPassword"
                                             label="Confirm Password"
                                             onChange={this.handleChange}
@@ -201,6 +204,7 @@ export class Register extends Form {
                                     </FormControl>
 
                                     <Button
+                                        disabled
                                         type="submit"
                                         fullWidth
                                         variant="raised"

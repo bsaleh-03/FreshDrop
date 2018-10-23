@@ -13,6 +13,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
 import {BEARER_TOKEN} from "../../constants";
+import { checkResponse } from "../../util/requestMiddleware";
 
 // Auth API
 const AUTH_ROUTE = "https://auth.spelunking68.hasura-app.io/v1/login";
@@ -40,7 +41,7 @@ export async function authenticate(url, data) {
     try {
         let response = await fetch(url, requestOptions);
 
-        return response.json();
+        return response;
     } catch (e) {
         console.log('Request Failed:' + e);
     }
@@ -105,13 +106,22 @@ export class Login extends Form {
         authenticate(AUTH_ROUTE, this.state).then((response) => {
             console.log(response);
 
-            console.log(Object.keys(response));
+           try {
+               if(checkResponse(response)) {
+                   // Get json
+                   let result = response.json();
 
-            // Set auth token
-            localStorage.setItem("auth_token", response.auth_token);
+                   // Set auth token
+                   localStorage.setItem("auth_token", result.auth_token);
 
-            // Redirect
-            window.location = "/home";
+                   // Redirect
+                   window.location = "/home";
+               } else {
+                   // Display an error
+               }
+           } catch (e) {
+               console.error(e);
+           }
         });
     }
 

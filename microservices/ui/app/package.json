@@ -7,6 +7,7 @@
     "@material-ui/icons": "^3.0.1",
     "apollo-boost": "^0.1.16",
     "apollo-cache-inmemory": "^1.2.10",
+    "boom": "^7.2.0",
     "graphql": "^14.0.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",

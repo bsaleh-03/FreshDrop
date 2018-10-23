@@ -144,7 +144,7 @@ export class Register extends Form {
                                     <AllInclusive />
                                 </Avatar>
 
-                                <Typography variant="headline">FreshDrop</Typography>
+                                <Typography variant="h5">FreshDrop</Typography>
 
                                 <ValidatorForm ref="form" className={classes.form} onSubmit={this.onSubmit} onError={errors => console.log(errors)}>
                                     <FormControl margin="normal" required fullWidth>
@@ -207,7 +207,7 @@ export class Register extends Form {
                                         disabled
                                         type="submit"
                                         fullWidth
-                                        variant="raised"
+                                        variant="contained"
                                         color="primary"
                                         className={classes.submit}
                                     >

@@ -33,7 +33,7 @@ export class PrimaryAppNavigator extends React.Component {
 
                 <AppBar position="relative" className={classes.appBar}>
                     <Toolbar>
-                        <Typography variant="title" color="inherit" style={{flexGrow: 1}} noWrap>
+                        <Typography variant="h6" color="inherit" style={{flexGrow: 1}} noWrap>
                             { appName }
                         </Typography>
 

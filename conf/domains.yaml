@@ -10,7 +10,7 @@
 - domain: xmartdelivery.com
   ssl:
     conf:
-      account: harajli98@gmail.com
+      account: {{ cluster.name }}
     type: LetsEncrypt
 
 # Point your own domain to the IP of the cluster and add the domain here

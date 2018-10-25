@@ -217,3 +217,14 @@
       path: /
       port: 80
     corsPolicy: allow_all
+
+# Configure route for main domain
+- subdomain: @
+  paths:
+  - path: /
+    upstreamService:
+      name: ui
+      namespace: {{ cluster.metadata.namespaces.user }}
+      path: /
+      port: 80
+    corsPolicy: allow_all

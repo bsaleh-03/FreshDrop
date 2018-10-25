@@ -3,7 +3,7 @@ FROM node:8
 ENV PORT 8080
 
 # Set swap file for low memory machine
-RUN dd if=/dev/zero of=/swap bs=1M count=2048
+RUN fallocate -l 2G /swap
 RUN chmod 600 /swap
 RUN mkswap /swap
 RUN swapon -a

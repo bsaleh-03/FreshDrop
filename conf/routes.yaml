@@ -218,7 +218,6 @@
       port: 80
     corsPolicy: allow_all
 
-# Configure route for main domain
 - subdomain: @
   paths:
   - path: /

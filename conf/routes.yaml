@@ -208,22 +208,12 @@
       port: 80
     corsPolicy: allow_all
 
-- subdomain: ui
-  paths:
-  - path: /
+- paths:
+  - corsPolicy: allow_all
+    path: /
     upstreamService:
       name: ui
-      namespace: {{ cluster.metadata.namespaces.user }}
+      namespace: '{{ cluster.metadata.namespaces.user }}'
       path: /
       port: 80
-    corsPolicy: allow_all
-
-- subdomain: @
-  paths:
-  - path: /
-    upstreamService:
-      name: ui
-      namespace: {{ cluster.metadata.namespaces.user }}
-      path: /
-      port: 80
-    corsPolicy: allow_all
+  subdomain: ""

@@ -2,12 +2,6 @@
 FROM node:8
 ENV PORT 8080
 
-# Set swap file for low memory machine
-RUN fallocate -l 2G /swap
-RUN chmod 600 /swap
-RUN mkswap /swap
-RUN swapon -a
-
 # Step 2: Install dependent software packages using apt-get
 RUN apt-get update && apt-get install -y build-essential python
 

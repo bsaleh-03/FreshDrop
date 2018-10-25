@@ -1,7 +1,7 @@
 import React from 'react';
+import { Paper } from "@material-ui/core";
 import { PrimaryAppNavigator } from "../layout/appNavigator";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Paper from "@material-ui/core/Paper/Paper";
 
 const styles = theme => ({
     root: {

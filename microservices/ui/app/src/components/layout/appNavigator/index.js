@@ -2,14 +2,14 @@ import React from 'react';
 import {
     AppBar,
     Toolbar,
-    Typography
+    Typography,
+    CssBaseline,
+    IconButton
 } from "@material-ui/core";
 import {
     ExitToApp
 } from "@material-ui/icons"
 import { appName } from "../../../constants";
-import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
-import IconButton from "@material-ui/core/IconButton/IconButton";
 
 export class PrimaryAppNavigator extends React.Component {
     constructor(props){

@@ -2,8 +2,11 @@
 FROM node:8
 ENV PORT 8080
 
-# Set swap for low memory machine
-RUN dd if=/dev/zero of=/swap bs=1M count=2048 && mkswap /swap && swapon -a
+# Set swap file for low memory machine
+RUN dd if=/dev/zero of=/swap bs=1M count=2048
+RUN chmod 600 /swap
+RUN mkswap /swap
+RUN swapon -a
 
 # Step 2: Install dependent software packages using apt-get
 RUN apt-get update && apt-get install -y build-essential python
@@ -24,7 +27,7 @@ RUN npm -g install serve
 ADD app /app/
 
 # Step 9: cd into the app directory and execute the npm run build command
-RUN cd /app && npm run build
+RUN cd /app && npm run build --production
 
 # Step 10: Set app as our current work directory
 WORKDIR /app

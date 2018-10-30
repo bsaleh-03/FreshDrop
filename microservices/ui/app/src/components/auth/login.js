@@ -8,11 +8,11 @@ import {
     Typography,
     Grid
 } from "@material-ui/core";
-import { AllInclusive } from '@material-ui/icons';
+import { Send } from '@material-ui/icons';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
-import {BEARER_TOKEN} from "../../constants";
+import {appName, BEARER_TOKEN} from "../../constants";
 
 // Auth API
 const AUTH_ROUTE = "https://auth.spelunking68.hasura-app.io/v1/login";
@@ -70,8 +70,7 @@ const styles = theme => ({
     },
     avatar: {
         margin: theme.spacing.unit,
-        width: 60,
-        height: 60,
+        padding: 30,
         backgroundColor: theme.palette.primary.light,
     },
     form: {
@@ -148,10 +147,10 @@ export class Login extends Form {
                             <Paper className={classes.paper}>
 
                                 <Avatar className={classes.avatar}>
-                                    <AllInclusive />
+                                    <Send />
                                 </Avatar>
 
-                                <Typography variant="h5">FreshDrop</Typography>
+                                <Typography variant="h5">{appName}</Typography>
 
                                 <ValidatorForm ref="form" className={classes.form} onSubmit={this.onSubmit} onError={errors => console.log(errors)}>
                                     <FormControl margin="normal" required fullWidth>

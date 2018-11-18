@@ -227,3 +227,15 @@
       path: /
       port: 80
   subdomain: "www"
+
+- paths:
+  - corsPolicy: allow_all
+    path: /
+    upstreamService:
+      name: mail
+      namespace: '{{ cluster.metadata.namespaces.user }}'
+      path: /
+      port: 80
+  subdomain: mail
+
+

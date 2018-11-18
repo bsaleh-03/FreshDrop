@@ -41,30 +41,39 @@ items:
   spec:
     ports:
     - port: 25
+      name: 'SMTP'
       protocol: TCP
       targetPort: 25
     - port: 80
+      name: 'HTTP'
       protocol: TCP
       targetPort: 80
     - port: 443
+      name: 'HTTPS'
       protocol: TCP
       targetPort: 443
     - port: 110
+      name: 'POP3'
       protocol: TCP
       targetPort: 110
     - port: 143
+      name: 'IMAP'
       protocol: TCP
       targetPort: 143
     - port: 465
+      name: 'SMTPS'
       protocol: TCP
       targetPort: 465
     - port: 587
+      name: 'MSA'
       protocol: TCP
       targetPort: 587
     - port: 993
+      name: 'IMAPS'
       protocol: TCP
       targetPort: 993
     - port: 995
+      name: 'POP3S'
       protocol: TCP
       targetPort: 995
     selector:

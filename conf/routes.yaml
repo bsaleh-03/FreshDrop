@@ -232,10 +232,10 @@
   - corsPolicy: allow_all
     path: /
     upstreamService:
-      name: mail
+      name: postio
       namespace: '{{ cluster.metadata.namespaces.user }}'
       path: /
       port: 80
-  subdomain: mail
+  subdomain: postio
 
 

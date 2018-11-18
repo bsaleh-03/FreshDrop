@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { PrimaryAppNavigator } from "../layout/appNavigator";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { fade } from "@material-ui/core/es/styles/colorManipulator";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 
 const styles = theme => ({
     root: {

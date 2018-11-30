@@ -17,7 +17,7 @@ import {appName, BEARER_TOKEN} from "../../constants";
 // Auth API
 const AUTH_ROUTE = "https://auth.spelunking68.hasura-app.io/v1/login";
 
-export async function authenticate(url, data) {
+export async function registerUser(url, data) {
     let requestOptions = {
         "method": "POST",
         "headers": {
@@ -30,7 +30,7 @@ export async function authenticate(url, data) {
     let body = {
         "provider": "email",
         "data": {
-            "email": data.email,
+            "email": (data.email).toLowerCase(),
             "password": data.password
         }
     };

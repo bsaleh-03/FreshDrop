@@ -38,9 +38,7 @@ export async function authenticate(url, data) {
     requestOptions.body = JSON.stringify(body);
 
     try {
-        let response = await fetch(url, requestOptions);
-
-        return response;
+        return await fetch(url, requestOptions);
     } catch (e) {
         console.log('Request Failed:' + e);
     }
@@ -77,6 +75,19 @@ const styles = theme => ({
         width: '100%',
         marginTop: theme.spacing.unit,
     },
+    formErrors: {
+        display: 'flex',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: theme.spacing.unit,
+        paddingTop: `${theme.spacing.unit}px`,
+        paddingBottom: `${theme.spacing.unit}px`,
+        background: theme.palette.secondary.main
+    },
+    formError: {
+        color: 'white'
+    },
     submit: {
         marginTop: theme.spacing.unit * 3,
     },
@@ -92,7 +103,8 @@ export class Login extends Form {
         // Component state
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            errors: []
         };
 
         // Set submit listener
@@ -100,6 +112,11 @@ export class Login extends Form {
     }
 
     onSubmit() {
+        // Clear any previous errors
+        this.setState({
+            errors: []
+        });
+
         // Try to authenticate the user
         authenticate(AUTH_ROUTE, this.state).then((response) => {
             console.log(response);
@@ -116,6 +133,9 @@ export class Login extends Form {
                    window.location = "/home";
                } else {
                    // Display an error
+                   this.setState(prevState => ({
+                       errors: [...prevState.errors, "The email or password is incorrect."]
+                   }));
                }
            } catch (e) {
                console.error(e);
@@ -151,6 +171,16 @@ export class Login extends Form {
                                 </Avatar>
 
                                 <Typography variant="h5">{appName}</Typography>
+
+                                { this.state.errors.length > 0 &&
+                                    <div className={classes.formErrors}>
+                                        {
+                                            this.state.errors.map((error, index) => (
+                                                <Typography variant="subtitle1" key={index} className={classes.formError}>{error}</Typography>
+                                            ))
+                                        }
+                                    </div>
+                                }
 
                                 <ValidatorForm ref="form" className={classes.form} onSubmit={this.onSubmit} onError={errors => console.log(errors)}>
                                     <FormControl margin="normal" required fullWidth>

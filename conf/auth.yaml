@@ -52,11 +52,11 @@ session:
 # Configuration related to the email provider
 email:
   # email address of the sender for verification emails
-  verifyEmailFrom: getstarteduser@hasura.io
+  verifyEmailFrom: admin@xmartdelivery.com
   # Name of the sender for verification emails
   verifEmailFromName: admin
   # Subject for verification emails
-  verifyEmailSubject: FreshDrop - Verify your account
+  verifyEmailSubject: XMartDelivery - Verify your account
   # Template for verification emails. HTML can be used in the template. The
   # template is a Jinja template. Leave the "{{token}}" as it is. It will be
   # used by the auth service to inject the actual token when sending the email.
@@ -68,11 +68,11 @@ email:
   verifyTokenExpires: "7"
 
   # email address of the sender for forgot password emails
-  forgotPassEmailFrom: getstarteduser@hasura.io
+  forgotPassEmailFrom: admin@xmartdelivery.com
   # Name of the sender for forgot password emails
   forgotPassEmailFromName: admin
   # Subject for forgot password emails
-  forgotPassEmailSubject: MyAwesomeApp - Reset password request
+  forgotPassEmailSubject: XMartDelivery - Reset password request
   # Template for forgot password emails. HTML can be used in the template. The
   # template is a Jinja template. Leave the "{{token}}" as it is. It will be
   # used by the auth service to inject the actual token when sending the email.

@@ -11,6 +11,7 @@ import App from './components/auth/login';
 import Home from './components/home/home';
 import Theme from './theme/theme';
 import Register from "./components/auth/register";
+import Verify from "./components/auth/verify";
 
 const client = new ApolloClient({
     uri: "https://data.spelunking68.hasura-app.io/v1alpha1/graphql",
@@ -36,8 +37,10 @@ ReactDOM.render(
                 <AuthProvider authUrl={SESSION_URL} reqOptions={reqOptions}>
                     <Switch>
                         <Route exact path="/" component={App} />
-                        <Route exact path="/home" component={Home} />
                         <Route exact path="/register" component={Register} />
+                        <Route exact path="/verify-email" component={Verify} />
+
+                        <Route exact path="/home" component={Home} />
                     </Switch>
                 </AuthProvider>
             </MuiThemeProvider>

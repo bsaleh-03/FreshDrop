@@ -177,7 +177,7 @@ export class Register extends Form {
                 <Typography variant="h5">{appName}</Typography>
 
                 <ValidatorForm ref="form" className={classes.form} onSubmit={this.onSubmit} onError={errors => console.log(errors)}>
-                    <FormControl margin="normal" required fullWidth>
+                    {/* <FormControl margin="normal" required fullWidth>
                         <TextValidator
                             autoFocus
                             disabled
@@ -188,7 +188,7 @@ export class Register extends Form {
                             value={this.state.name}
                             errorMessages={['This field is required']}
                         />
-                    </FormControl>
+                    </FormControl> */}
 
                     <FormControl margin="normal" required fullWidth>
                         <TextValidator

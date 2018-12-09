@@ -5,7 +5,7 @@ export const clusterName = "spelunking68";
 export const GRAPHQL_URL = `https://data.${clusterName}.hasura-app.io/v1alpha1/graphql`;
 export const AUTH_URL = `https://auth.${clusterName}.hasura-app.io/v1`;
 
-export const BEARER_TOKEN = "0e471c0705e77a85ee8c85a080371505b2702e193976c886";
+export const BEARER_TOKEN = "3e4da521ccdcb77f174235cfdaddc463595d4624e3874df6";
 
 export const LOGIN_URL = `${AUTH_URL}/login`;
 export const SIGNUP_URL = `${AUTH_URL}/signup`;

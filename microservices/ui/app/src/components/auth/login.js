@@ -13,6 +13,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
 import {appName, BEARER_TOKEN} from "../../constants";
+import {formatError} from "../../util/stringFormat";
 
 // Auth API
 const AUTH_ROUTE = "https://auth.spelunking68.hasura-app.io/v1/login";
@@ -111,36 +112,38 @@ export class Login extends Form {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onSubmit() {
+    async onSubmit() {
         // Clear any previous errors
         this.setState({
             errors: []
         });
 
         // Try to authenticate the user
-        authenticate(AUTH_ROUTE, this.state).then((response) => {
-            console.log(response);
+        let response = await authenticate(AUTH_ROUTE, this.state);
 
-           try {
-               if(response.ok) {
-                   // Get json
-                   let result = response.json();
+        // Get json
+        let result = await response.json();
 
-                   // Set auth token
-                   localStorage.setItem("auth_token", result.auth_token);
+        console.log(result);
 
-                   // Redirect
-                   window.location = "/home";
-               } else {
-                   // Display an error
-                   this.setState(prevState => ({
-                       errors: [...prevState.errors, "The email or password is incorrect."]
-                   }));
-               }
-           } catch (e) {
-               console.error(e);
-           }
-        });
+        try {
+            if(response.ok) {
+                console.log(result);
+
+                // Set auth token
+                localStorage.setItem("auth_token", result.auth_token);
+
+                // Redirect
+                window.location = "/home";
+            } else {
+                // Display an error
+                this.setState(prevState => ({
+                    errors: [...prevState.errors, formatError(result.message)]
+                }));
+            }
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     handleRegister() {

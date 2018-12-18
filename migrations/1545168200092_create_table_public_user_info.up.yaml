@@ -1,0 +1,9 @@
+- args:
+    sql: CREATE TABLE "public"."user_info"("id" bigserial NOT NULL UNIQUE, "hasura_id"
+      bigint NOT NULL UNIQUE, "name" text NOT NULL, "config" json , PRIMARY KEY ("id")
+      );
+  type: run_sql
+- args:
+    name: user_info
+    schema: public
+  type: add_existing_table_or_view

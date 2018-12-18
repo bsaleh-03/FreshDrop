@@ -87,7 +87,10 @@ export class Verify extends React.Component {
             };
 
             // Build verification url with token
-            let url = VERIFY_URL + "?token=" + token;
+            let url = new URL(VERIFY_URL);
+            url.search = new URLSearchParams({
+                token: token
+            });
 
             let response = await fetch(url, requestOptions);
             let result = await response.json();
@@ -139,7 +142,7 @@ export class Verify extends React.Component {
                 {
                     !this.state.error ? (
                         <React.Fragment>
-                            <Typography variant="subtitle1" align="center">Thank you for activating your { appName } account. You may now close this window or login.</Typography>
+                            <Typography variant="subtitle1" align="center" gutterBottom>Thank you for activating your { appName } account. You may now close this window or login.</Typography>
 
                             <Button color="secondary" onClick={() => this.handleLogin()}>Login</Button>
                         </React.Fragment>

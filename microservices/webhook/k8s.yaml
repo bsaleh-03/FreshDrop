@@ -19,7 +19,7 @@ items:
           app: '{{ microservice.name }}'
       spec:
         containers:
-        - image: hasura/base-git-image:latest
+        - image: hasura/base-git-image:0.7
           imagePullPolicy: IfNotPresent
           name: '{{ microservice.name }}'
           ports:

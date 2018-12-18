@@ -109,7 +109,7 @@ export class Register extends Form {
             password: "",
             confirmPassword: "",
             showForm: true,
-            error: ""
+            error: "",
         };
 
         // Set submit listener
@@ -118,12 +118,12 @@ export class Register extends Form {
     }
 
     async onSubmit() {
-        // Try to authenticate the user
-        let response  = await registerUser(SIGNUP_URL, this.state);
-
-        console.log(response);
-
         try {
+            // Try to authenticate the user
+            let response = await registerUser(SIGNUP_URL, this.state);
+
+            console.log(response);
+
             // Get json
             let result = await response.json();
 
@@ -176,21 +176,20 @@ export class Register extends Form {
 
                 <Typography variant="h5">{appName}</Typography>
 
-                <ValidatorForm ref="form" className={classes.form} onSubmit={this.onSubmit} onError={errors => console.log(errors)}>
-                    {/* <FormControl margin="normal" required fullWidth>
-                        <TextValidator
-                            autoFocus
-                            disabled
-                            id="name"
-                            name="name"
-                            label="Your Name"
-                            onChange={this.handleChange}
-                            value={this.state.name}
-                            errorMessages={['This field is required']}
-                        />
-                    </FormControl> */}
-
+                <ValidatorForm ref="form" className={classes.form} onSubmit={() => this.onSubmit} onError={errors => console.log(errors)}>
                     <FormControl margin="normal" required fullWidth>
+                        <FormControl margin="normal" required fullWidth>
+                            <TextValidator
+                                autoFocus
+                                id="name"
+                                name="name"
+                                label="Your Name"
+                                onChange={this.handleChange}
+                                value={this.state.name}
+                                errorMessages={['This field is required']}
+                            />
+                        </FormControl>
+
                         <TextValidator
                             id="email"
                             name="email"

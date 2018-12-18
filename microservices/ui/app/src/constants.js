@@ -6,6 +6,8 @@ export const GRAPHQL_URL = `https://data.${clusterName}.hasura-app.io/v1alpha1/g
 export const AUTH_URL = `https://auth.${clusterName}.hasura-app.io/v1`;
 export const VERIFY_URL = AUTH_URL + "/providers/email/verify-email";
 
+export const QUERY_URL = `https://data.${clusterName}.hasura-app.io/v1/query`;
+
 export const BEARER_TOKEN = "b4eedace5dadd5a280336e9e863c594ba5c3ae7909a0f1a5";
 
 export const LOGIN_URL = `${AUTH_URL}/login`;

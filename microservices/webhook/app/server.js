@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
     res.send('Webhooks are running');
 });
 
-app.get('/webhooks/signup', (request, response) => {
+app.get('/signup', (request, response) => {
     console.log(request);
 });
 

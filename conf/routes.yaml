@@ -210,7 +210,7 @@
 
 - paths:
   - corsPolicy: allow_all
-    path: /
+    path: /webhooks
     upstreamService:
       name: webhook
       namespace: '{{ cluster.metadata.namespaces.user }}'
@@ -236,5 +236,3 @@
       path: /
       port: 80
   subdomain: "www"
-
-

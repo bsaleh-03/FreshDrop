@@ -208,16 +208,6 @@
       port: 80
     corsPolicy: allow_all
 
-- subdomain: webhook
-  paths:
-  - path: /
-    upstreamService:
-      name: webhook
-      namespace: {{ cluster.metadata.namespaces.hasura }}
-      path: /
-      port: 80
-    corsPolicy: allow_all
-
 - paths:
   - corsPolicy: allow_all
     path: /

@@ -40,8 +40,8 @@ defaultProviders:
     defaultRoles: []
 
 # Auth webhook configuration
-authorizationHooks:
-  preSignupHook: 'http://webhook.default/webhooks/signup'
+# authorizationHooks:
+#  preSignupHook: 'http://webhook.default/webhooks/signup'
 
 # Session related configuration
 session:

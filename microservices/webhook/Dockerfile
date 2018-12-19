@@ -1,6 +1,7 @@
 # Step 1: Pulls a simple ubuntu image with node 8 installed in it
 FROM node:8
 ENV PORT 8080
+EXPOSE 8080
 
 # Step 2: Install dependent software packages using apt-get
 RUN apt-get update && apt-get install -y build-essential python
@@ -22,3 +23,6 @@ RUN cd /app && npm run start
 
 # Step 8: Set app as our current work directory
 WORKDIR /app
+
+# Step 9: Serve the app at port 8080
+CMD ["npm", "start"]

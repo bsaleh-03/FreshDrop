@@ -175,9 +175,9 @@ export class Register extends Form {
                 // Get json
                 let queryResult = await queryResponse.json();
 
-                console.log(result);
+                console.log(queryResult);
 
-                if (queryResult.ok) {
+                if (queryResponse.ok) {
                     // Show messages
                     this.setState({
                         showForm: false
@@ -230,7 +230,7 @@ export class Register extends Form {
 
                 <Typography variant="h5">{appName}</Typography>
 
-                <ValidatorForm ref="form" className={classes.form} onSubmit={() => this.onSubmit} onError={errors => console.log(errors)}>
+                <ValidatorForm ref="form" className={classes.form} onSubmit={this.onSubmit} onError={errors => console.log(errors)}>
                     <FormControl margin="normal" required fullWidth>
                         <TextValidator
                             autoFocus
@@ -239,6 +239,8 @@ export class Register extends Form {
                             label="Your Name"
                             onChange={this.handleChange}
                             value={this.state.name}
+                            autoComplete="name"
+                            validators={['required']}
                             errorMessages={['This field is required']}
                         />
                     </FormControl>
@@ -263,8 +265,8 @@ export class Register extends Form {
                             onChange={this.handleChange}
                             name="password"
                             type="password"
-                            validators={['required', 'minNumber:8']}
-                            errorMessages={['This field is required']}
+                            validators={['required', 'minStringLength:8']}
+                            errorMessages={['This field is required', 'Password must be a minimum of 8 characters']}
                             value={this.state.password}
                         />
                     </FormControl>

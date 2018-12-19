@@ -6,7 +6,7 @@ ENV PORT 8080
 RUN mkdir /app
 
 # Step 3: Copy the package.json file from your local directory and paste it inside the container, inside the app directory
-COPY app/package*.json ./app
+COPY app/package*.json ./app/
 
 # Step4: cd into the app directory and run npm install to install application dependencies
 RUN cd /app && npm install

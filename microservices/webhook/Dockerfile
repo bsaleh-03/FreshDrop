@@ -14,12 +14,9 @@ RUN cd /app && npm install
 # Step 5: Add all source code into the app directory from your local app directory
 ADD app /app/
 
-# Step 6: cd into the app directory and execute the npm run start command
-RUN cd /app && npm run start
-
-# Step 7: Set app as our current work directory
+# Step 6: Set app as our current work directory
 WORKDIR /app
 
-# Step 8: Serve the app at port 8080
+# Step 7: Serve the app at port 8080
 EXPOSE 8080
-CMD ["node", "server.js"]
+CMD ["npm", "start"]

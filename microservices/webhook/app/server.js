@@ -1,7 +1,8 @@
-let express = require('express');
-let app = express();
-let requestClient = require('request');
-let port = process.env.PORT || 8080;
+const express = require('express');
+const app = express();
+const requestClient = require('request');
+const port = process.env.PORT || 8080
+const host = "0.0.0.0";
 
 // Setup webhook enpoints
 app.get('/', (req, res) => {
@@ -13,6 +14,6 @@ app.get('/webhooks/signup', (request, response) => {
 });
 
 // Listen for requests
-let listener = app.listen(port, function () {
-    console.log('Your app is listening on port ' + port);
-});
+app.listen(port, host);
+
+console.log('Your app is listening on port ' + port);

@@ -29,3 +29,12 @@ remotes:
       dockerBuild:
         dockerfilePath: microservices/ui/Dockerfile
         contextPath: microservices/ui
+
+  - containers:
+    - dockerBuild:
+        contextPath: microservices/webhook
+        dockerfilePath: microservices/webhook/Dockerfile
+      name: webhook
+    name: webhook
+    namespace: '{{ cluster.metadata.namespaces.user }}'
+

@@ -14,7 +14,7 @@ import green from '@material-ui/core/colors/green';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
-import {appName, BEARER_TOKEN, SIGNUP_URL} from "../../constants";
+import {appName, BEARER_TOKEN, QUERY_URL, SIGNUP_URL} from "../../constants";
 import {formatError} from "../../util/stringFormat";
 
 // Auth API
@@ -43,7 +43,38 @@ export async function registerUser(url, data) {
     } catch (e) {
         console.log('Request Failed:' + e);
     }
+}
 
+export async function setUserInfo(url, data) {
+    let requestOptions = {
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + BEARER_TOKEN,
+            "X-Hasura-Role": "admin"
+        }
+    };
+
+    let body = {
+        "type": "insert",
+        "args": {
+            "table": "user_info",
+            "objects": [
+                {
+                    "hasura_id": data.hasura_id,
+                    "name": (data.name).toLowerCase()
+                }
+            ]
+        }
+    };
+
+    requestOptions.body = JSON.stringify(body);
+
+    try {
+        return await fetch(url, requestOptions);
+    } catch (e) {
+        console.log('Request Failed:' + e);
+    }
 }
 
 const styles = theme => ({
@@ -129,17 +160,40 @@ export class Register extends Form {
 
             console.log(result);
 
-            if (!response.ok) {
+            if (response.ok) {
+                // Extract user info from response
+                let userInfo = {
+                    hasura_id: result.hasura_id,
+                    name: this.state.name
+                };
+
+                // Attempt to set extra user info
+                let queryResponse = await setUserInfo(QUERY_URL, userInfo);
+
+                console.log(queryResponse);
+
+                // Get json
+                let queryResult = await queryResponse.json();
+
+                console.log(result);
+
+                if (queryResult.ok) {
+                    // Show messages
+                    this.setState({
+                        showForm: false
+                    });
+                } else {
+                    // Set an error
+                    this.setState({
+                        error: result.message
+                    });
+                }
+            } else {
                 // Set an error
                 this.setState({
                     error: result.message
                 });
             }
-
-            // Show messages
-            this.setState({
-                showForm: false
-            });
         } catch (e) {
             console.log(e);
         }
@@ -178,18 +232,18 @@ export class Register extends Form {
 
                 <ValidatorForm ref="form" className={classes.form} onSubmit={() => this.onSubmit} onError={errors => console.log(errors)}>
                     <FormControl margin="normal" required fullWidth>
-                        <FormControl margin="normal" required fullWidth>
-                            <TextValidator
-                                autoFocus
-                                id="name"
-                                name="name"
-                                label="Your Name"
-                                onChange={this.handleChange}
-                                value={this.state.name}
-                                errorMessages={['This field is required']}
-                            />
-                        </FormControl>
+                        <TextValidator
+                            autoFocus
+                            id="name"
+                            name="name"
+                            label="Your Name"
+                            onChange={this.handleChange}
+                            value={this.state.name}
+                            errorMessages={['This field is required']}
+                        />
+                    </FormControl>
 
+                    <FormControl margin="normal" required fullWidth>
                         <TextValidator
                             id="email"
                             name="email"
@@ -209,7 +263,7 @@ export class Register extends Form {
                             onChange={this.handleChange}
                             name="password"
                             type="password"
-                            validators={['required']}
+                            validators={['required', 'minNumber:8']}
                             errorMessages={['This field is required']}
                             value={this.state.password}
                         />

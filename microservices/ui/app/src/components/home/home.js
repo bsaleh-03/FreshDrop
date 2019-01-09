@@ -14,11 +14,10 @@ import {
 import { PrimaryAppNavigator } from "../layout/appNavigator";
 import { Search } from "@material-ui/icons";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import cucumberMP4 from "../../assets/video/cucumber/cucumber.mp4";
-import cucumberOGV from "../../assets/video/cucumber/cucumber.ogv";
-import cucumberWEBM from "../../assets/video/cucumber/cucumber.webm";
-import cucumber from "../../assets/video/cucumber/cucumber.jpg";
+import shakshukaMP4 from "../../assets/video/shakshuka/shakshuka.mp4";
+import shakshukaOGV from "../../assets/video/shakshuka/shakshuka.ogv";
+import shakshukaWEBM from "../../assets/video/shakshuka/shakshuka.webm";
+import shakshuka from "../../assets/video/shakshuka/shakshuka.jpg";
 import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
 
@@ -105,9 +104,9 @@ export class Home extends React.Component {
                             <div className={classes.heroFilter} />
 
                             <video className={classes.heroVideoMedia} autoPlay loop muted>
-                                <source src={cucumberMP4} type='video/mp4' />
-                                <source src={cucumberOGV} type='video/ogv' />
-                                <source src={cucumberWEBM} type='video/webm' />
+                                <source src={shakshukaMP4} type='video/mp4' />
+                                <source src={shakshukaOGV} type='video/ogv' />
+                                <source src={shakshukaWEBM} type='video/webm' />
                             </video>
 
                             <div className={classes.heroContent}>

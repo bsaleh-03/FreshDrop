@@ -57,19 +57,6 @@ export class PrimaryAppNavigator extends React.Component {
                             { appName }
                         </Typography>
 
-                        <div className={classes.search} style={{flexGrow: 1}}>
-                            <div className={classes.searchIcon}>
-                                <Search />
-                            </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                            />
-                        </div>
-
                         <IconButton color="inherit" aria-label="Menu">
                             <ShoppingCart />
                         </IconButton>

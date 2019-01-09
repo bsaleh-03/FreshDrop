@@ -7,8 +7,18 @@ import {
 
 const Theme = createMuiTheme({
     palette: {
-        primary: indigo,
-        secondary: pink,
+        primary: {
+            light: '#718792',
+            main: '#455a64',
+            dark: '#1c313a',
+            contrastText: '#fff',
+        },
+        secondary: {
+            light: '#ff7961',
+            main: '#f44336',
+            dark: '#ba000d',
+            contrastText: '#fff',
+        },
         error: red,
         contrastThreshold: 3,
         tonalOffset: 0.2,

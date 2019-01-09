@@ -12,8 +12,15 @@ import {
     Divider
 } from "@material-ui/core";
 import { PrimaryAppNavigator } from "../layout/appNavigator";
+import { Search } from "@material-ui/icons";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { fade } from "@material-ui/core/styles/colorManipulator";
+import cucumberMP4 from "../../assets/video/cucumber/cucumber.mp4";
+import cucumberOGV from "../../assets/video/cucumber/cucumber.ogv";
+import cucumberWEBM from "../../assets/video/cucumber/cucumber.webm";
+import cucumber from "../../assets/video/cucumber/cucumber.jpg";
+import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
 
 const styles = theme => ({
     root: {
@@ -21,60 +28,65 @@ const styles = theme => ({
         height: '100vh'
     },
     appTitle: {
-        [theme.breakpoints.down('sm')]: {
-            flexGrow: 1
-        },
+        flexGrow: 1
     },
     content: {
-        flexGrow: 1,
-        padding: theme.spacing.unit * 2
+        flexGrow: 1
     },
     media: {
         height: 140,
     },
-    search: {
+    toolbar: theme.mixins.toolbar,
+    heroVideo: {
         position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing.unit * 2,
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing.unit * 3,
-            width: 'auto',
-        },
-        [theme.breakpoints.down('sm')]: {
-            display: 'none'
-        },
+        overflow: 'hidden',
+        bottom: '0%',
+        left: '0%',
+        height: 'auto',
+        minHeight: '400px',
+        width: '100%'
     },
-    searchIcon: {
-        width: theme.spacing.unit * 9,
-        height: '100%',
+    heroFilter: {
+        zIndex: 100,
         position: 'absolute',
-        pointerEvents: 'none',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        width: '100%',
+        height: '100%'
+    },
+    heroVideoMedia: {
+        position: 'absolute',
+        zIndex: 0,
+        bottom: 0
+    },
+    heroContent: {
+        position: 'relative',
+        zIndex: 500,
+        paddingLeft: theme.spacing.unit * 2,
+        paddingRight: theme.spacing.unit * 2,
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    heroTitle: {
+        color: theme.palette.common.white
+    },
+    heroInputRoot: {
+        padding: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-    },
-    inputRoot: {
-        color: 'inherit',
         width: '100%',
+        maxWidth: 400
     },
-    inputInput: {
-        paddingTop: theme.spacing.unit,
-        paddingRight: theme.spacing.unit,
-        paddingBottom: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit * 10,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: 200,
-        },
+    input: {
+        marginLeft: 8,
+        flex: 1,
     },
-    toolbar: theme.mixins.toolbar
+    iconButton: {
+        padding: 10,
+    },
 });
 
 export class Home extends React.Component {
@@ -89,158 +101,25 @@ export class Home extends React.Component {
             <React.Fragment>
                 <PrimaryAppNavigator classes={classes}>
                     <Grid container className={classes.content}>
-                        <Grid item xs={12}>
-                            <Typography variant="h4" gutterBottom>Featured Products</Typography>
-                            <Divider />
-                            <Grid container className={classes.content} spacing={24} style={{paddingLeft: 0, paddingRight: 0}}>
-                                <Grid item xs={'auto'} sm={3}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image="https://via.placeholder.com/350x250"
-                                                title="Product 1"
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="h2">
-                                                    Lizard
-                                                </Typography>
-                                                <Typography component="p">
-                                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                    across all continents except Antarctica
-                                                </Typography>
-                                            </CardContent>
-                                        </CardActionArea>
-                                        <CardActions>
-                                            <Button size="small" color="primary">
-                                                Share
-                                            </Button>
-                                            <Button size="small" color="primary">
-                                                Learn More
-                                            </Button>
-                                        </CardActions>
-                                    </Card>
-                                </Grid>
+                        <Grid item xs={12} className={classes.heroVideo}>
+                            <div className={classes.heroFilter} />
 
-                                <Grid item xs={'auto'} sm={3}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image="https://via.placeholder.com/350x250"
-                                                title="Product 1"
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="h2">
-                                                    Lizard
-                                                </Typography>
-                                                <Typography component="p">
-                                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                    across all continents except Antarctica
-                                                </Typography>
-                                            </CardContent>
-                                        </CardActionArea>
-                                        <CardActions>
-                                            <Button size="small" color="primary">
-                                                Share
-                                            </Button>
-                                            <Button size="small" color="primary">
-                                                Learn More
-                                            </Button>
-                                        </CardActions>
-                                    </Card>
-                                </Grid>
+                            <video className={classes.heroVideoMedia} autoPlay loop muted>
+                                <source src={cucumberMP4} type='video/mp4' />
+                                <source src={cucumberOGV} type='video/ogv' />
+                                <source src={cucumberWEBM} type='video/webm' />
+                            </video>
 
-                                <Grid item xs={'auto'} sm={3}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image="https://via.placeholder.com/350x250"
-                                                title="Product 1"
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="h2">
-                                                    Lizard
-                                                </Typography>
-                                                <Typography component="p">
-                                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                    across all continents except Antarctica
-                                                </Typography>
-                                            </CardContent>
-                                        </CardActionArea>
-                                        <CardActions>
-                                            <Button size="small" color="primary">
-                                                Share
-                                            </Button>
-                                            <Button size="small" color="primary">
-                                                Learn More
-                                            </Button>
-                                        </CardActions>
-                                    </Card>
-                                </Grid>
+                            <div className={classes.heroContent}>
+                                <Typography variant="h2" align="center" className={classes.heroTitle} gutterBottom>Shop Now</Typography>
 
-                                <Grid item xs={'auto'} sm={3}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image="https://via.placeholder.com/350x250"
-                                                title="Product 1"
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="h2">
-                                                    Lizard
-                                                </Typography>
-                                                <Typography component="p">
-                                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                    across all continents except Antarctica
-                                                </Typography>
-                                            </CardContent>
-                                        </CardActionArea>
-                                        <CardActions>
-                                            <Button size="small" color="primary">
-                                                Share
-                                            </Button>
-                                            <Button size="small" color="primary">
-                                                Learn More
-                                            </Button>
-                                        </CardActions>
-                                    </Card>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <Typography variant="h4" gutterBottom>Halal Meats</Typography>
-                            <Divider />
-                            <Grid container className={classes.content} spacing={24}>
-                                <p>Items...</p>
-                            </Grid>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <Typography variant="h4" gutterBottom>Dishes</Typography>
-                            <Divider />
-                            <Grid container className={classes.content} spacing={24}>
-                                <p>Items...</p>
-                            </Grid>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <Typography variant="h4" gutterBottom>Vegetables</Typography>
-                            <Divider />
-                            <Grid container className={classes.content} spacing={24}>
-                                <p>Items...</p>
-                            </Grid>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <Typography variant="h4" gutterBottom>Fruits</Typography>
-                            <Divider />
-                            <Grid container className={classes.content} spacing={24}>
-                                <p>Items...</p>
-                            </Grid>
+                                <Paper className={classes.heroInputRoot} elevation={1}>
+                                    <InputBase className={classes.input} placeholder="Search..." />
+                                    <IconButton className={classes.iconButton} aria-label="Search">
+                                        <Search />
+                                    </IconButton>
+                                </Paper>
+                            </div>
                         </Grid>
                     </Grid>
                 </PrimaryAppNavigator>

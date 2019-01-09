@@ -12,7 +12,7 @@ import {
     Divider
 } from "@material-ui/core";
 import { PrimaryAppNavigator } from "../layout/appNavigator";
-import { Search } from "@material-ui/icons";
+import { Search, Fastfood, Kitchen, Favorite, Book, Help } from "@material-ui/icons";
 import withStyles from "@material-ui/core/styles/withStyles";
 import shakshukaMP4 from "../../assets/video/shakshuka/shakshuka.mp4";
 import shakshukaOGV from "../../assets/video/shakshuka/shakshuka.ogv";
@@ -20,6 +20,8 @@ import shakshukaWEBM from "../../assets/video/shakshuka/shakshuka.webm";
 import shakshuka from "../../assets/video/shakshuka/shakshuka.jpg";
 import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 
 const styles = theme => ({
     root: {
@@ -86,15 +88,40 @@ const styles = theme => ({
     iconButton: {
         padding: 10,
     },
+    navigationBar: {
+        flex: 1,
+        flexGrow: 1,
+        flexDirection: 'row',
+        height: '100px'
+    },
+    navigationItem: {
+        height: '100%'
+    },
+    navigationSelected: {
+        padding: 0
+    }
 });
 
 export class Home extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            value: 0
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event, value) {
+        this.setState({
+           value: value
+        });
     }
 
     render() {
         const { classes } = this.props;
+        const { value } = this.state;
 
         return (
             <React.Fragment>
@@ -120,6 +147,19 @@ export class Home extends React.Component {
                                 </Paper>
                             </div>
                         </Grid>
+
+                        <BottomNavigation
+                            value={value}
+                            onChange={this.handleChange}
+                            showLabels
+                            className={classes.navigationBar}
+                        >
+                            <BottomNavigationAction label="Browse Aisles" icon={<Fastfood />} className={{root: classes.navigationItem, selected: classes.navigationSelected}} />
+                            <BottomNavigationAction label="Recipes" icon={<Kitchen />} className={{root: classes.navigationItem, selected: classes.navigationSelected}} />
+                            <BottomNavigationAction label="Nutritional Consultation" icon={<Favorite />} className={{root: classes.navigationItem, selected: classes.navigationSelected}} />
+                            <BottomNavigationAction label="About Us" icon={<Book />} className={{root: classes.navigationItem, selected: classes.navigationSelected}} />
+                            <BottomNavigationAction label="Help" icon={<Help />} className={{root: classes.navigationItem, selected: classes.navigationSelected}} />
+                        </BottomNavigation>
                     </Grid>
                 </PrimaryAppNavigator>
             </React.Fragment>

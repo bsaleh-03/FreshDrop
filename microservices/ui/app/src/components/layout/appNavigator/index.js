@@ -51,7 +51,7 @@ export class PrimaryAppNavigator extends React.Component {
             <div className={classes.root}>
                 <CssBaseline />
 
-                <AppBar position="relative" className={classes.appBar}>
+                <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar>
                         <Typography variant="h6" color="inherit" noWrap className={classes.appTitle}>
                             { appName }

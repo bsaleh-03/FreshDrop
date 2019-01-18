@@ -10,6 +10,8 @@ import PrimaryHero from "./sections/primaryHero";
 import HomeNavigationBar from "./sections/navigationBar";
 import FeaturedItems from "./sections/featuredItems";
 import DailySpecials from "./sections/dailySpecials";
+import FeedYourOrgans from "./sections/feedYourOrgans";
+import Footer from "../layout/footer";
 
 const styles = theme => ({
     root: {
@@ -41,7 +43,11 @@ export class Home extends React.Component {
                         <FeaturedItems />
 
                         <DailySpecials />
+
+                        <FeedYourOrgans />
                     </Grid>
+
+                    <Footer />
                 </PrimaryAppNavigator>
             </React.Fragment>
         );

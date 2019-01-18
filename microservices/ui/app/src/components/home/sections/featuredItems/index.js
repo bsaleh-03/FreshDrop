@@ -1,14 +1,16 @@
 import React from 'react';
 import withStyles from "@material-ui/core/styles/withStyles";
 import {
+    Button,
     Card,
     CardContent,
     CardMedia,
     Hidden,
     Grid,
-    Typography
+    Typography, Divider
 } from "@material-ui/core";
 import Hero from "../../../layout/hero";
+import HeroHeader from "../../../layout/hero/header";
 
 // Images
 import eggplant from "../../../../assets/images/eggplant.jpg";
@@ -27,10 +29,6 @@ const styles = theme => ({
     heroRoot: {
         padding: theme.spacing.unit * 4,
         paddingBottom: theme.spacing.unit * 8
-    },
-    heroHeader: {
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2
     }
 });
 
@@ -43,12 +41,12 @@ export class FeaturedItems extends Hero {
         const { classes } = this.props;
 
         return (
-            <Grid container xs={12} alignItems="center" justify="center" className={classes.heroRoot}>
-                <Grid item xs={12} className={classes.heroHeader}>
+            <Grid container alignItems="center" justify="center" className={classes.heroRoot}>
+                <HeroHeader>
                     <Typography variant="h4" align="center" marked="center" gutterBottom>Featured Items</Typography>
-                </Grid>
+                </HeroHeader>
 
-                <Grid container xs={12} direction="row" alignItems="center" justify="center" spacing={40}>
+                <Grid container alignItems="center" justify="center" spacing={40}>
                     <Grid item xs={12} md={6}>
                         <Card className={classes.card}>
                             <div className={classes.cardDetails}>
@@ -62,9 +60,12 @@ export class FeaturedItems extends Hero {
                                     <Typography variant="subtitle1" paragraph>
                                         This is a featured item description. More details should be provided here.
                                     </Typography>
-                                    <Typography variant="h4" color="primary">
+                                    <Typography variant="h4" color="primary" gutterBottom>
                                         $2.99
                                     </Typography>
+                                    <Button variant="contained" color="primary">
+                                        Add to cart
+                                    </Button>
                                 </CardContent>
                             </div>
                             <Hidden xsDown>
@@ -90,9 +91,12 @@ export class FeaturedItems extends Hero {
                                     <Typography variant="subtitle1" paragraph>
                                         This is a featured item description. More details should be provided here.
                                     </Typography>
-                                    <Typography variant="h4" color="primary">
+                                    <Typography variant="h4" color="primary" gutterBottom>
                                         $5.99
                                     </Typography>
+                                    <Button variant="contained" color="primary">
+                                        Add to cart
+                                    </Button>
                                 </CardContent>
                             </div>
                             <Hidden xsDown>

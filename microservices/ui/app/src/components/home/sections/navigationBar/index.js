@@ -62,7 +62,6 @@ export class HomeNavigationBar extends React.Component {
                     <BottomNavigationAction label="Recipes" icon={<Kitchen />} classes={{root: classes.navigationItem, label: classes.navigationLabel}} />
                     <BottomNavigationAction label="Nutritional Consultation" icon={<Favorite />} classes={{root: classes.navigationItem, label: classes.navigationLabel}} />
                     <BottomNavigationAction label="About Us" icon={<Book />} classes={{root: classes.navigationItem, label: classes.navigationLabel}} />
-                    <BottomNavigationAction label="Help" icon={<Help />} classes={{root: classes.navigationItem, label: classes.navigationLabel}} />
                 </BottomNavigation>
             </Grid>
         )

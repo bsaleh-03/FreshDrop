@@ -8,15 +8,15 @@ import {
 const Theme = createMuiTheme({
     palette: {
         primary: {
-            light: '#718792',
-            main: '#455a64',
-            dark: '#1c313a',
+            light: '#515b5f',
+            main: '#263238',
+            dark: '#1a2327',
             contrastText: '#fff',
         },
         secondary: {
-            light: '#ff7961',
-            main: '#f44336',
-            dark: '#ba000d',
+            light: '#bff38b',
+            main: '#b0f16f',
+            dark: '#7ba84d',
             contrastText: '#fff',
         },
         error: red,

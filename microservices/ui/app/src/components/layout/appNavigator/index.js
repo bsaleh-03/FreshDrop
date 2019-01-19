@@ -4,26 +4,25 @@ import {
     Toolbar,
     Typography,
     CssBaseline,
-    InputBase,
     Divider,
     Menu,
     MenuItem,
-    IconButton
+    IconButton, Paper, Tabs, Tab, Grid
 } from "@material-ui/core";
 import {
-    ExitToApp,
-    Search,
+    ExitToApp, Fastfood, Favorite, Kitchen,
     MoreVert,
     ShoppingCart
 } from "@material-ui/icons"
 import { appName } from "../../../constants";
+import Container from "../container";
 
 export class PrimaryAppNavigator extends React.Component {
     constructor(props){
         super(props);
 
         this.state = {
-            anchorEl: null,
+            anchorEl: null
         };
     }
 
@@ -35,7 +34,7 @@ export class PrimaryAppNavigator extends React.Component {
         window.location = "/";
     }
 
-    handleMenuClick = event => {
+    handleMenuClick = (event) => {
         this.setState({ anchorEl: event.currentTarget });
     };
 
@@ -51,45 +50,64 @@ export class PrimaryAppNavigator extends React.Component {
             <div className={classes.root}>
                 <CssBaseline />
 
-                <AppBar position="fixed" className={classes.appBar}>
-                    <Toolbar>
-                        <Typography variant="h6" color="inherit" noWrap className={classes.appTitle}>
-                            { appName }
-                        </Typography>
+                <AppBar position="relative" elevation="0" className={classes.appBar}>
+                    <Container>
+                        <Toolbar>
+                            <Typography variant="h6" color="inherit" noWrap className={classes.appTitle}>
+                                { appName }
+                            </Typography>
 
-                        <IconButton color="inherit" aria-label="Menu">
-                            <ShoppingCart />
-                        </IconButton>
+                            <IconButton color="inherit" aria-label="Menu">
+                                <ShoppingCart />
+                            </IconButton>
 
-                        <IconButton color="inherit" aria-label="Menu" onClick={() => this.handleLogout()}>
-                            <ExitToApp />
-                        </IconButton>
+                            <IconButton color="inherit" aria-label="Menu" onClick={() => this.handleLogout()}>
+                                <ExitToApp />
+                            </IconButton>
 
-                        <IconButton color="inherit"
-                                    aria-owns={anchorEl ? 'appBarMenu' : null}
-                                    aria-haspopup="true"
-                                    onClick={this.handleMenuClick}
-                        >
-                            <MoreVert />
-                        </IconButton>
+                            <IconButton color="inherit"
+                                        aria-owns={anchorEl ? 'appBarMenu' : null}
+                                        aria-haspopup="true"
+                                        onClick={this.handleMenuClick}
+                            >
+                                <MoreVert />
+                            </IconButton>
 
-                        <Menu
-                            id="appBarMenu"
-                            anchorEl={anchorEl}
-                            getContentAnchorEl={null}
-                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                            transformOrigin={{ vertical: "top", horizontal: "center" }}
-                            open={Boolean(anchorEl)}
-                            onClose={this.handleMenuClose}
-                        >
-                            <MenuItem onClick={this.handleMenuClose}>Account</MenuItem>
-                            <MenuItem onClick={this.handleMenuClose}>My Orders</MenuItem>
-                            <MenuItem onClick={this.handleMenuClose}>Settings</MenuItem>
-                            <Divider />
-                            <MenuItem onClick={this.handleMenuClose}>Help</MenuItem>
-                            <MenuItem onClick={this.handleMenuClose}>About</MenuItem>
-                        </Menu>
-                    </Toolbar>
+                            <Menu
+                                id="appBarMenu"
+                                anchorEl={anchorEl}
+                                getContentAnchorEl={null}
+                                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                                transformOrigin={{ vertical: "top", horizontal: "center" }}
+                                open={Boolean(anchorEl)}
+                                onClose={this.handleMenuClose}
+                            >
+                                <MenuItem onClick={this.handleMenuClose}>Account</MenuItem>
+                                <MenuItem onClick={this.handleMenuClose}>My Orders</MenuItem>
+                                <MenuItem onClick={this.handleMenuClose}>Settings</MenuItem>
+                                <Divider />
+                                <MenuItem onClick={this.handleMenuClose}>Help</MenuItem>
+                                <MenuItem onClick={this.handleMenuClose}>About</MenuItem>
+                            </Menu>
+                        </Toolbar>
+                    </Container>
+
+                    <Grid item xs={12}>
+                        <Paper square>
+                            <Container>
+                                <Tabs
+                                    value={0}
+                                    indicatorColor="primary"
+                                    textColor="primary"
+                                >
+                                    <Tab label="Browse Isles" icon={<Fastfood />} />
+                                    <Tab label="Recipes" icon={<Kitchen />} />
+                                    <Tab label="Nutritional Consultation" icon={<Favorite />} />
+                                </Tabs>
+                            </Container>
+                        </Paper>
+                    </Grid>
+
                 </AppBar>
 
                 <div className={classes.content}>

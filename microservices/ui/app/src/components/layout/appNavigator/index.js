@@ -50,12 +50,23 @@ export class PrimaryAppNavigator extends React.Component {
             <div className={classes.root}>
                 <CssBaseline />
 
-                <AppBar position="relative" elevation="0" className={classes.appBar}>
+                <AppBar position="fixed" elevation="1" className={classes.appBar}>
                     <Container>
                         <Toolbar>
-                            <Typography variant="h6" color="inherit" noWrap className={classes.appTitle}>
+                            <Typography variant="h6" color="inherit" noWrap>
                                 { appName }
                             </Typography>
+
+                            <Tabs
+                                value={0}
+                                indicatorColor="secondary"
+                                textColor="inherit"
+                                className={classes.appTitle}
+                            >
+                                <Tab label="Browse Isles" icon={<Fastfood />} />
+                                <Tab label="Recipes" icon={<Kitchen />} />
+                                <Tab label="Nutritional Consultation" icon={<Favorite />} />
+                            </Tabs>
 
                             <IconButton color="inherit" aria-label="Menu">
                                 <ShoppingCart />
@@ -91,23 +102,6 @@ export class PrimaryAppNavigator extends React.Component {
                             </Menu>
                         </Toolbar>
                     </Container>
-
-                    <Grid item xs={12}>
-                        <Paper square>
-                            <Container>
-                                <Tabs
-                                    value={0}
-                                    indicatorColor="primary"
-                                    textColor="primary"
-                                >
-                                    <Tab label="Browse Isles" icon={<Fastfood />} />
-                                    <Tab label="Recipes" icon={<Kitchen />} />
-                                    <Tab label="Nutritional Consultation" icon={<Favorite />} />
-                                </Tabs>
-                            </Container>
-                        </Paper>
-                    </Grid>
-
                 </AppBar>
 
                 <div className={classes.content}>

@@ -9,6 +9,8 @@ import InputBase from "@material-ui/core/InputBase";
 import {Search} from "@material-ui/icons";
 import {Hero} from "../../../layout/hero";
 
+import logo from "../../../../assets/images/logo.svg";
+
 const styles = theme => ({
     heroVideo: {
         position: 'relative',
@@ -17,7 +19,8 @@ const styles = theme => ({
         left: '0%',
         height: 'auto',
         minHeight: '400px',
-        width: '100%'
+        width: '100%',
+        paddingTop: theme.spacing.unit * 2
     },
     heroFilter: {
         zIndex: 100,
@@ -82,6 +85,8 @@ export class PrimaryHero extends Hero {
                     </video>
 
                     <div className={classes.heroContent}>
+                        <img src={logo} width="275" height="150" />
+
                         <Typography variant="h2" align="center" className={classes.heroTitle} gutterBottom>Shop Now</Typography>
 
                         <Paper className={classes.heroInputRoot} elevation={1}>

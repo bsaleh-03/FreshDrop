@@ -2,7 +2,7 @@ import React from 'react';
 import withStyles from "@material-ui/core/styles/withStyles";
 import {
     Button,
-    Card, CardContent, CardHeader, CardMedia,
+    Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia,
     Grid, Hidden,
     Typography
 } from "@material-ui/core";
@@ -38,191 +38,129 @@ export class ItemBrowser extends Hero {
             <Grid container alignItems="center" justify="center" className={classes.heroRoot}>
                 <Container>
                     <HeroHeader>
-                        <Typography variant="button" align="left" className={classes.sectionHeadline} gutterBottom>All Products</Typography>
+                        <Grid container justify="space-between" alignItems="center" spacing={24}>
+                            <Grid item>
+                                <Typography variant="button" align="left" className={classes.sectionHeadline}>All Products</Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <Button variant="contained" color="secondary">
+                                    Browse All
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </HeroHeader>
 
                     <Grid container spacing={40}>
                         <Grid item xs={12} md={3}>
                             <Card>
-                                <CardMedia
-                                    component="img"
-                                    className={classes.cardMedia}
-                                    image={grilledSteak}
-                                    title="Image title"
-                                />
+                                <CardActionArea>
+                                    <CardMedia
+                                        component="img"
+                                        className={classes.cardMedia}
+                                        image={grilledSteak}
+                                        title="Image title"
+                                    />
 
-                                <CardContent>
-                                    <Typography variant="h5" align="center" gutterBottom>
-                                        Eggplant
-                                    </Typography>
-                                    <Typography variant="h6" align="center" color="primary" gutterBottom>
-                                        $2.99
-                                    </Typography>
+                                    <CardContent>
+                                        <Typography variant="h5" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                        <Typography variant="h6" align="center" color="primary">
+                                            $2.99
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+
+                                <CardActions style={{padding: '18px'}}>
                                     <Button variant="contained" color="primary" fullWidth>
                                         Add to cart
                                     </Button>
-                                </CardContent>
+                                </CardActions>
                             </Card>
                         </Grid>
 
                         <Grid item xs={12} md={3}>
                             <Card>
-                                <CardMedia
-                                    component="img"
-                                    className={classes.cardMedia}
-                                    image={eggplant}
-                                    title="Image title"
-                                />
+                                <CardActionArea>
+                                    <CardMedia
+                                        component="img"
+                                        className={classes.cardMedia}
+                                        image={grilledSteak}
+                                        title="Image title"
+                                    />
 
-                                <CardContent>
-                                    <Typography variant="h5" align="center" gutterBottom>
-                                        Eggplant
-                                    </Typography>
-                                    <Typography variant="h6" align="center" color="primary" gutterBottom>
-                                        $2.99
-                                    </Typography>
+                                    <CardContent>
+                                        <Typography variant="h5" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                        <Typography variant="h6" align="center" color="primary">
+                                            $2.99
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+
+                                <CardActions style={{padding: '18px'}}>
                                     <Button variant="contained" color="primary" fullWidth>
                                         Add to cart
                                     </Button>
-                                </CardContent>
+                                </CardActions>
                             </Card>
                         </Grid>
 
                         <Grid item xs={12} md={3}>
                             <Card>
-                                <CardMedia
-                                    component="img"
-                                    className={classes.cardMedia}
-                                    image={grilledSteak}
-                                    title="Image title"
-                                />
+                                <CardActionArea>
+                                    <CardMedia
+                                        component="img"
+                                        className={classes.cardMedia}
+                                        image={grilledSteak}
+                                        title="Image title"
+                                    />
 
-                                <CardContent>
-                                    <Typography variant="h5" align="center" gutterBottom>
-                                        Eggplant
-                                    </Typography>
-                                    <Typography variant="h6" align="center" color="primary" gutterBottom>
-                                        $2.99
-                                    </Typography>
+                                    <CardContent>
+                                        <Typography variant="h5" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                        <Typography variant="h6" align="center" color="primary">
+                                            $2.99
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+
+                                <CardActions style={{padding: '18px'}}>
                                     <Button variant="contained" color="primary" fullWidth>
                                         Add to cart
                                     </Button>
-                                </CardContent>
+                                </CardActions>
                             </Card>
                         </Grid>
 
                         <Grid item xs={12} md={3}>
                             <Card>
-                                <CardMedia
-                                    component="img"
-                                    className={classes.cardMedia}
-                                    image={eggplant}
-                                    title="Image title"
-                                />
+                                <CardActionArea>
+                                    <CardMedia
+                                        component="img"
+                                        className={classes.cardMedia}
+                                        image={grilledSteak}
+                                        title="Image title"
+                                    />
 
-                                <CardContent>
-                                    <Typography variant="h5" align="center" gutterBottom>
-                                        Eggplant
-                                    </Typography>
-                                    <Typography variant="h6" align="center" color="primary" gutterBottom>
-                                        $2.99
-                                    </Typography>
+                                    <CardContent>
+                                        <Typography variant="h5" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                        <Typography variant="h6" align="center" color="primary">
+                                            $2.99
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+
+                                <CardActions style={{padding: '18px'}}>
                                     <Button variant="contained" color="primary" fullWidth>
                                         Add to cart
                                     </Button>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-
-                        <Grid item xs={12} md={3}>
-                            <Card>
-                                <CardMedia
-                                    component="img"
-                                    className={classes.cardMedia}
-                                    image={grilledSteak}
-                                    title="Image title"
-                                />
-
-                                <CardContent>
-                                    <Typography variant="h5" align="center" gutterBottom>
-                                        Eggplant
-                                    </Typography>
-                                    <Typography variant="h6" align="center" color="primary" gutterBottom>
-                                        $2.99
-                                    </Typography>
-                                    <Button variant="contained" color="primary" fullWidth>
-                                        Add to cart
-                                    </Button>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-
-                        <Grid item xs={12} md={3}>
-                            <Card>
-                                <CardMedia
-                                    component="img"
-                                    className={classes.cardMedia}
-                                    image={grilledSteak}
-                                    title="Image title"
-                                />
-
-                                <CardContent>
-                                    <Typography variant="h5" align="center" gutterBottom>
-                                        Eggplant
-                                    </Typography>
-                                    <Typography variant="h6" align="center" color="primary" gutterBottom>
-                                        $2.99
-                                    </Typography>
-                                    <Button variant="contained" color="primary" fullWidth>
-                                        Add to cart
-                                    </Button>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-
-                        <Grid item xs={12} md={3}>
-                            <Card>
-                                <CardMedia
-                                    component="img"
-                                    className={classes.cardMedia}
-                                    image={grilledSteak}
-                                    title="Image title"
-                                />
-
-                                <CardContent>
-                                    <Typography variant="h5" align="center" gutterBottom>
-                                        Eggplant
-                                    </Typography>
-                                    <Typography variant="h6" align="center" color="primary" gutterBottom>
-                                        $2.99
-                                    </Typography>
-                                    <Button variant="contained" color="primary" fullWidth>
-                                        Add to cart
-                                    </Button>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-
-                        <Grid item xs={12} md={3}>
-                            <Card>
-                                <CardMedia
-                                    component="img"
-                                    className={classes.cardMedia}
-                                    image={grilledSteak}
-                                    title="Image title"
-                                />
-
-                                <CardContent>
-                                    <Typography variant="h5" align="center" gutterBottom>
-                                        Eggplant
-                                    </Typography>
-                                    <Typography variant="h6" align="center" color="primary" gutterBottom>
-                                        $2.99
-                                    </Typography>
-                                    <Button variant="contained" color="primary" fullWidth>
-                                        Add to cart
-                                    </Button>
-                                </CardContent>
+                                </CardActions>
                             </Card>
                         </Grid>
                     </Grid>

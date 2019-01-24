@@ -12,10 +12,19 @@ import {
 import {
     ExitToApp, Fastfood, Favorite, Kitchen,
     MoreVert,
-    ShoppingCart
+    ShoppingCart,
+    Person,
+    Settings,
+    History,
+    Help,
+    Info
 } from "@material-ui/icons"
 import { appName } from "../../../constants";
 import Container from "../container";
+import logo from "../../../assets/images/logo.svg";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuList from "@material-ui/core/MenuList";
 
 export class PrimaryAppNavigator extends React.Component {
     constructor(props){
@@ -50,12 +59,15 @@ export class PrimaryAppNavigator extends React.Component {
             <div className={classes.root}>
                 <CssBaseline />
 
-                <AppBar position="fixed" elevation="1" className={classes.appBar}>
+                <AppBar position="fixed" elevation={1} className={classes.appBar}>
                     <Container>
                         <Toolbar>
-                            <Typography variant="h6" color="inherit" noWrap>
+
+                            <img src={logo} height="40" />
+
+                            {/*<Typography variant="h6" color="inherit" noWrap>
                                 { appName }
-                            </Typography>
+                            </Typography>*/}
 
                             <Tabs
                                 value={0}
@@ -93,12 +105,40 @@ export class PrimaryAppNavigator extends React.Component {
                                 open={Boolean(anchorEl)}
                                 onClose={this.handleMenuClose}
                             >
-                                <MenuItem onClick={this.handleMenuClose}>Account</MenuItem>
-                                <MenuItem onClick={this.handleMenuClose}>My Orders</MenuItem>
-                                <MenuItem onClick={this.handleMenuClose}>Settings</MenuItem>
+                                <MenuItem onClick={this.handleMenuClose}>
+                                    <ListItemIcon className={classes.icon}>
+                                        <Person />
+                                    </ListItemIcon>
+                                    <ListItemText classes={{ primary: classes.primary }} inset primary="Account" />
+                                </MenuItem>
+
+                                <MenuItem onClick={this.handleMenuClose}>
+                                    <ListItemIcon className={classes.icon}>
+                                        <History />
+                                    </ListItemIcon>
+                                    <ListItemText classes={{ primary: classes.primary }} inset primary="My Orders" />
+                                </MenuItem>
+
+                                <MenuItem onClick={this.handleMenuClose}>
+                                    <ListItemIcon className={classes.icon}>
+                                        <Settings />
+                                    </ListItemIcon>
+                                    <ListItemText classes={{ primary: classes.primary }} inset primary="Settings" />
+                                </MenuItem>
                                 <Divider />
-                                <MenuItem onClick={this.handleMenuClose}>Help</MenuItem>
-                                <MenuItem onClick={this.handleMenuClose}>About</MenuItem>
+                                <MenuItem onClick={this.handleMenuClose}>
+                                    <ListItemIcon className={classes.icon}>
+                                        <Help />
+                                    </ListItemIcon>
+                                    <ListItemText classes={{ primary: classes.primary }} inset primary="Help" />
+                                </MenuItem>
+
+                                <MenuItem onClick={this.handleMenuClose}>
+                                    <ListItemIcon className={classes.icon}>
+                                        <Info />
+                                    </ListItemIcon>
+                                    <ListItemText classes={{ primary: classes.primary }} inset primary="About" />
+                                </MenuItem>
                             </Menu>
                         </Toolbar>
                     </Container>

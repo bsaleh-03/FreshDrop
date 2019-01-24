@@ -11,11 +11,11 @@ import {
 } from "@material-ui/core";
 import Hero from "../../../layout/hero";
 import HeroHeader from "../../../layout/hero/header";
+import Container from "../../../layout/container";
 
 // Images
 import eggplant from "../../../../assets/images/eggplant.jpg";
 import grilledSteak from "../../../../assets/images/grilled-steak.jpg";
-import Container from "../../../layout/container";
 
 const styles = theme => ({
     card: {
@@ -48,7 +48,19 @@ export class FeaturedItems extends Hero {
             <Grid container alignItems="center" justify="center" className={classes.heroRoot}>
                 <Container>
                     <HeroHeader>
-                        <Typography variant="button" align="left" className={classes.sectionHeadline} gutterBottom>Featured Items</Typography>
+                        <Grid container justify="space-between" alignItems="center" spacing={24}>
+                            <Grid item>
+                                <Typography variant="button" align="left" className={classes.sectionHeadline}>
+                                    Trending Items
+                                </Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <Button variant="contained" color="secondary">
+                                    Browse All
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </HeroHeader>
 
                     <Grid container alignItems="center" justify="center" spacing={40}>
@@ -63,7 +75,7 @@ export class FeaturedItems extends Hero {
                                             $2.99
                                         </Typography>
                                         <Button variant="contained" color="primary">
-                                            Add to cart
+                                            Add
                                         </Button>
                                     </CardContent>
                                 </div>
@@ -88,7 +100,7 @@ export class FeaturedItems extends Hero {
                                             $5.99
                                         </Typography>
                                         <Button variant="contained" color="primary">
-                                            Add to cart
+                                            Add
                                         </Button>
                                     </CardContent>
                                 </div>
@@ -113,7 +125,7 @@ export class FeaturedItems extends Hero {
                                             $5.99
                                         </Typography>
                                         <Button variant="contained" color="primary">
-                                            Add to cart
+                                            Add
                                         </Button>
                                     </CardContent>
                                 </div>

@@ -13,6 +13,8 @@ import Theme from './theme/theme';
 import Register from "./components/auth/register";
 import Verify from "./components/auth/verify";
 
+document.title = "XMart Delivery";
+
 const client = new ApolloClient({
     uri: "https://data.spelunking68.hasura-app.io/v1alpha1/graphql",
     cache: new InMemoryCache({

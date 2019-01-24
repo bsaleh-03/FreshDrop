@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    Divider,
     Grid
 } from "@material-ui/core";
 import { PrimaryAppNavigator } from "../layout/appNavigator";
@@ -12,6 +11,7 @@ import FeaturedItems from "./sections/featuredItems";
 import FeedYourOrgans from "./sections/feedYourOrgans";
 import ItemBrowser from "./sections/itemBrowser";
 import Footer from "../layout/footer";
+import MarketingSection from "./sections/marketing";
 
 const styles = theme => ({
     root: {
@@ -38,11 +38,13 @@ export class Home extends React.Component {
                     <Grid container className={classes.content}>
                         <PrimaryHero />
 
+                        <MarketingSection />
+
                         <FeaturedItems />
 
                         <ItemBrowser />
 
-                        <FeedYourOrgans />
+                        {/*<FeedYourOrgans />*/}
                     </Grid>
 
                     <Footer />

@@ -63,10 +63,10 @@ export class ItemBrowser extends Hero {
                                     />
 
                                     <CardContent>
-                                        <Typography variant="h5" align="center" gutterBottom>
+                                        <Typography variant="h6" align="center" gutterBottom>
                                             Eggplant
                                         </Typography>
-                                        <Typography variant="h6" align="center" color="primary">
+                                        <Typography variant="h5" align="center" color="primary">
                                             $2.99
                                         </Typography>
                                     </CardContent>
@@ -74,7 +74,7 @@ export class ItemBrowser extends Hero {
 
                                 <CardActions style={{padding: '18px'}}>
                                     <Button variant="contained" color="primary" fullWidth>
-                                        Add to cart
+                                        Add
                                     </Button>
                                 </CardActions>
                             </Card>
@@ -91,10 +91,10 @@ export class ItemBrowser extends Hero {
                                     />
 
                                     <CardContent>
-                                        <Typography variant="h5" align="center" gutterBottom>
+                                        <Typography variant="h6" align="center" gutterBottom>
                                             Eggplant
                                         </Typography>
-                                        <Typography variant="h6" align="center" color="primary">
+                                        <Typography variant="h5" align="center" color="primary">
                                             $2.99
                                         </Typography>
                                     </CardContent>
@@ -102,7 +102,7 @@ export class ItemBrowser extends Hero {
 
                                 <CardActions style={{padding: '18px'}}>
                                     <Button variant="contained" color="primary" fullWidth>
-                                        Add to cart
+                                        Add
                                     </Button>
                                 </CardActions>
                             </Card>
@@ -119,10 +119,10 @@ export class ItemBrowser extends Hero {
                                     />
 
                                     <CardContent>
-                                        <Typography variant="h5" align="center" gutterBottom>
+                                        <Typography variant="h6" align="center" gutterBottom>
                                             Eggplant
                                         </Typography>
-                                        <Typography variant="h6" align="center" color="primary">
+                                        <Typography variant="h5" align="center" color="primary">
                                             $2.99
                                         </Typography>
                                     </CardContent>
@@ -130,7 +130,7 @@ export class ItemBrowser extends Hero {
 
                                 <CardActions style={{padding: '18px'}}>
                                     <Button variant="contained" color="primary" fullWidth>
-                                        Add to cart
+                                        Add
                                     </Button>
                                 </CardActions>
                             </Card>
@@ -147,10 +147,10 @@ export class ItemBrowser extends Hero {
                                     />
 
                                     <CardContent>
-                                        <Typography variant="h5" align="center" gutterBottom>
+                                        <Typography variant="h6" align="center" gutterBottom>
                                             Eggplant
                                         </Typography>
-                                        <Typography variant="h6" align="center" color="primary">
+                                        <Typography variant="h5" align="center" color="primary">
                                             $2.99
                                         </Typography>
                                     </CardContent>
@@ -158,7 +158,7 @@ export class ItemBrowser extends Hero {
 
                                 <CardActions style={{padding: '18px'}}>
                                     <Button variant="contained" color="primary" fullWidth>
-                                        Add to cart
+                                        Add
                                     </Button>
                                 </CardActions>
                             </Card>

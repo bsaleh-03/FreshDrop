@@ -21,6 +21,9 @@ const styles = theme => ({
     appTitle: {
         flexGrow: 1
     },
+    tabsRoot: {
+        margin: "0 4em"
+    },
     toolbar: theme.mixins.toolbar,
 });
 

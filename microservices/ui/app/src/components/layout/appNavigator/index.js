@@ -25,6 +25,7 @@ import logo from "../../../assets/images/logo.svg";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuList from "@material-ui/core/MenuList";
+import Hidden from "@material-ui/core/es/Hidden/Hidden";
 
 export class PrimaryAppNavigator extends React.Component {
     constructor(props){
@@ -69,16 +70,21 @@ export class PrimaryAppNavigator extends React.Component {
                                 { appName }
                             </Typography>*/}
 
-                            <Tabs
-                                value={0}
-                                indicatorColor="secondary"
-                                textColor="inherit"
-                                className={classes.appTitle}
-                            >
-                                <Tab label="Browse Isles" icon={<Fastfood />} />
-                                <Tab label="Recipes" icon={<Kitchen />} />
-                                <Tab label="Nutritional Consultation" icon={<Favorite />} />
-                            </Tabs>
+                            <Hidden xsDown>
+                                <Tabs
+                                    value={0}
+                                    indicatorColor="secondary"
+                                    textColor="inherit"
+                                    className={classes.appTitle}
+                                    fullWidth={true}
+                                    centered={true}
+                                    classes={{root: classes.tabsRoot}}
+                                >
+                                    <Tab label="Browse Isles" icon={<Fastfood />} />
+                                    <Tab label="Recipes" icon={<Kitchen />} />
+                                    <Tab label="Nutritional Consultation" icon={<Favorite />} />
+                                </Tabs>
+                            </Hidden>
 
                             <IconButton color="inherit" aria-label="Menu">
                                 <ShoppingCart />

@@ -25,7 +25,7 @@ import logo from "../../../assets/images/logo.svg";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuList from "@material-ui/core/MenuList";
-import Hidden from "@material-ui/core/es/Hidden/Hidden";
+import Hidden from "@material-ui/core/Hidden/Hidden";
 
 export class PrimaryAppNavigator extends React.Component {
     constructor(props){

@@ -22,7 +22,10 @@ const styles = theme => ({
         flexGrow: 1
     },
     tabsRoot: {
-        margin: "0 4em"
+        justifyContent: "center"
+    },
+    tabsIndicator: {
+        alignSelf: "flex-start"
     },
     toolbar: theme.mixins.toolbar,
 });

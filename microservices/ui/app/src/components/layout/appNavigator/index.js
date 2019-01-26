@@ -71,19 +71,18 @@ export class PrimaryAppNavigator extends React.Component {
                             </Typography>*/}
 
                             <Hidden xsDown>
-                                <Tabs
-                                    value={0}
-                                    indicatorColor="secondary"
-                                    textColor="inherit"
-                                    className={classes.appTitle}
-                                    fullWidth={true}
-                                    centered={true}
-                                    classes={{root: classes.tabsRoot}}
-                                >
-                                    <Tab label="Browse Isles" icon={<Fastfood />} />
-                                    <Tab label="Recipes" icon={<Kitchen />} />
-                                    <Tab label="Nutritional Consultation" icon={<Favorite />} />
-                                </Tabs>
+                                <div className={classes.appTitle}>
+                                    <Tabs
+                                        value={0}
+                                        indicatorColor="secondary"
+                                        textColor="inherit"
+                                        centered
+                                    >
+                                        <Tab label="Browse Isles" icon={<Fastfood />} />
+                                        <Tab label="Recipes" icon={<Kitchen />} />
+                                        <Tab label="Nutritional Consultation" icon={<Favorite />} />
+                                    </Tabs>
+                                </div>
                             </Hidden>
 
                             <IconButton color="inherit" aria-label="Menu">

@@ -76,11 +76,13 @@ export class PrimaryAppNavigator extends React.Component {
                                         value={0}
                                         indicatorColor="secondary"
                                         textColor="inherit"
+                                        variant="fullWidth"
                                         centered
+                                        classes={{indicator: classes.tabsIndicator}}
                                     >
-                                        <Tab label="Browse Isles" icon={<Fastfood />} />
-                                        <Tab label="Recipes" icon={<Kitchen />} />
-                                        <Tab label="Nutritional Consultation" icon={<Favorite />} />
+                                        <Tab label="Browse Isles" icon={<Fastfood />} classes={{root: classes.tabsContainer, selected: classes.tabSelected}} />
+                                        <Tab label="Recipes" icon={<Kitchen />} classes={{root: classes.tabsContainer}} />
+                                        <Tab label="Nutritional Consultation" icon={<Favorite />} classes={{root: classes.tabsContainer}} />
                                     </Tabs>
                                 </div>
                             </Hidden>

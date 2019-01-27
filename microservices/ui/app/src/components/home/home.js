@@ -21,11 +21,14 @@ const styles = theme => ({
     appTitle: {
         flexGrow: 1
     },
-    tabsRoot: {
-        justifyContent: "center"
+    tabsContainer: {
+        minWidth: "240px"
     },
     tabsIndicator: {
-        alignSelf: "flex-start"
+        display: "none"
+    },
+    tabSelected: {
+        borderBottom: "2px solid #b0f16f"
     },
     toolbar: theme.mixins.toolbar,
 });

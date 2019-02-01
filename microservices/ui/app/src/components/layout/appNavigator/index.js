@@ -17,7 +17,7 @@ import {
     Settings,
     History,
     Help,
-    Info
+    Info, Inbox, Mail
 } from "@material-ui/icons"
 import { appName } from "../../../constants";
 import Container from "../container";
@@ -26,6 +26,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuList from "@material-ui/core/MenuList";
 import Hidden from "@material-ui/core/Hidden/Hidden";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 
 export class PrimaryAppNavigator extends React.Component {
     constructor(props){
@@ -74,6 +77,7 @@ export class PrimaryAppNavigator extends React.Component {
                                 <div className={classes.appTitle}>
                                     <Tabs
                                         value={0}
+                                        action={() => {return 0;}}
                                         indicatorColor="secondary"
                                         textColor="inherit"
                                         centered
@@ -98,7 +102,7 @@ export class PrimaryAppNavigator extends React.Component {
                                         aria-haspopup="true"
                                         onClick={this.handleMenuClick}
                             >
-                                <MoreVert />
+                                <Person />
                             </IconButton>
 
                             <Menu
@@ -148,6 +152,35 @@ export class PrimaryAppNavigator extends React.Component {
                         </Toolbar>
                     </Container>
                 </AppBar>
+
+                <Hidden mdDown>
+                    <Drawer
+                        className={classes.drawer}
+                        variant="permanent"
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                    >
+                        <div className={classes.toolbar} />
+                        <List>
+                            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                                <ListItem button key={text}>
+                                    <ListItemIcon>{index % 2 === 0 ? <Inbox /> : <Mail />}</ListItemIcon>
+                                    <ListItemText primary={text} />
+                                </ListItem>
+                            ))}
+                        </List>
+                        <Divider />
+                        <List>
+                            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                                <ListItem button key={text}>
+                                    <ListItemIcon>{index % 2 === 0 ? <Inbox /> : <Mail />}</ListItemIcon>
+                                    <ListItemText primary={text} />
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Drawer>
+                </Hidden>
 
                 <div className={classes.content}>
                     { children }

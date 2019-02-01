@@ -85,7 +85,7 @@ export class PrimaryHero extends Hero {
                     </video>
 
                     <div className={classes.heroContent}>
-                        <img src={logo} width="275" height="150" />
+                        {/*<img src={logo} width="275" height="150" />*/}
 
                         <Typography variant="h2" align="center" className={classes.heroTitle} gutterBottom>Shop Now</Typography>
 

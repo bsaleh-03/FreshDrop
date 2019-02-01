@@ -13,10 +13,22 @@ import ItemBrowser from "./sections/itemBrowser";
 import Footer from "../layout/footer";
 import MarketingSection from "./sections/marketing";
 
+const drawerWidth = 240;
+
 const styles = theme => ({
     root: {
         flex: 1,
         height: '100vh'
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
     },
     appTitle: {
         flexGrow: 1

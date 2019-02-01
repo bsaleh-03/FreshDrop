@@ -23,7 +23,30 @@ const styles = theme => ({
     cardMedia: {
         height: '150px',
         backgroundSize: 'contain'
-    }
+    },
+    productRoot: {
+        display: "flex",
+        flexDirection: "column"
+    },
+    productName: {
+        marginTop: theme.spacing.unit * 2
+    },
+    productImage: {
+        display: "flex",
+        alignItems: "center",
+        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit * 2,
+        '& img': {
+            margin: "0 auto"
+        }
+    },
+    productDescription: {},
+    productActions: {
+        display: "flex",
+        justifyContent: "center",
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+    },
 });
 
 export class ItemBrowser extends Hero {
@@ -51,117 +74,117 @@ export class ItemBrowser extends Hero {
                         </Grid>
                     </HeroHeader>
 
-                    <Grid container spacing={40}>
-                        <Grid item xs={12} md={3}>
-                            <Card>
+                    <Grid container spacing={40} justify="space-evenly">
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
                                 <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        className={classes.cardMedia}
-                                        image={grilledSteak}
-                                        title="Image title"
-                                    />
-
-                                    <CardContent>
+                                    <div className={classes.productName}>
                                         <Typography variant="h6" align="center" gutterBottom>
                                             Eggplant
                                         </Typography>
-                                        <Typography variant="h5" align="center" color="primary">
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
                                             $2.99
                                         </Typography>
-                                    </CardContent>
+                                    </div>
                                 </CardActionArea>
 
-                                <CardActions style={{padding: '18px'}}>
-                                    <Button variant="contained" color="primary" fullWidth>
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
                                         Add
                                     </Button>
-                                </CardActions>
-                            </Card>
+                                </div>
+                            </div>
                         </Grid>
 
-                        <Grid item xs={12} md={3}>
-                            <Card>
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
                                 <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        className={classes.cardMedia}
-                                        image={grilledSteak}
-                                        title="Image title"
-                                    />
-
-                                    <CardContent>
+                                    <div className={classes.productName}>
                                         <Typography variant="h6" align="center" gutterBottom>
                                             Eggplant
                                         </Typography>
-                                        <Typography variant="h5" align="center" color="primary">
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
                                             $2.99
                                         </Typography>
-                                    </CardContent>
+                                    </div>
                                 </CardActionArea>
 
-                                <CardActions style={{padding: '18px'}}>
-                                    <Button variant="contained" color="primary" fullWidth>
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
                                         Add
                                     </Button>
-                                </CardActions>
-                            </Card>
+                                </div>
+                            </div>
                         </Grid>
 
-                        <Grid item xs={12} md={3}>
-                            <Card>
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
                                 <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        className={classes.cardMedia}
-                                        image={grilledSteak}
-                                        title="Image title"
-                                    />
-
-                                    <CardContent>
+                                    <div className={classes.productName}>
                                         <Typography variant="h6" align="center" gutterBottom>
                                             Eggplant
                                         </Typography>
-                                        <Typography variant="h5" align="center" color="primary">
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
                                             $2.99
                                         </Typography>
-                                    </CardContent>
+                                    </div>
                                 </CardActionArea>
 
-                                <CardActions style={{padding: '18px'}}>
-                                    <Button variant="contained" color="primary" fullWidth>
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
                                         Add
                                     </Button>
-                                </CardActions>
-                            </Card>
+                                </div>
+                            </div>
                         </Grid>
 
-                        <Grid item xs={12} md={3}>
-                            <Card>
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
                                 <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        className={classes.cardMedia}
-                                        image={grilledSteak}
-                                        title="Image title"
-                                    />
-
-                                    <CardContent>
+                                    <div className={classes.productName}>
                                         <Typography variant="h6" align="center" gutterBottom>
                                             Eggplant
                                         </Typography>
-                                        <Typography variant="h5" align="center" color="primary">
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
                                             $2.99
                                         </Typography>
-                                    </CardContent>
+                                    </div>
                                 </CardActionArea>
 
-                                <CardActions style={{padding: '18px'}}>
-                                    <Button variant="contained" color="primary" fullWidth>
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
                                         Add
                                     </Button>
-                                </CardActions>
-                            </Card>
+                                </div>
+                            </div>
                         </Grid>
                     </Grid>
                 </Container>

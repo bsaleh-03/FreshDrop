@@ -165,12 +165,20 @@ export class PrimaryAppNavigator extends React.Component {
                     >
                         <div className={classes.toolbar} />
                         <List>
-                            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>{index % 2 === 0 ? <Inbox /> : <Mail />}</ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
+                            <ListItem button>
+                                <ListItemIcon><Fastfood /></ListItemIcon>
+                                <ListItemText primary="Browse Isles" />
+                            </ListItem>
+
+                            <ListItem button>
+                                <ListItemIcon><Kitchen /></ListItemIcon>
+                                <ListItemText primary="Recipes" />
+                            </ListItem>
+
+                            <ListItem button>
+                                <ListItemIcon><Favorite /></ListItemIcon>
+                                <ListItemText primary="Consultation" />
+                            </ListItem>
                         </List>
                         <Divider />
                         <List>

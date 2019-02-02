@@ -11,7 +11,7 @@ export class Container extends React.Component {
 
         return (
             <Grid container justify="center">
-                <Grid item xs={8}>
+                <Grid item xs={12}>
                     { children }
                 </Grid>
             </Grid>

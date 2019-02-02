@@ -21,7 +21,11 @@ const styles = theme => ({
         height: '100vh'
     },
     appBar: {
-        zIndex: theme.zIndex.drawer + 1,
+        zIndex: theme.zIndex.drawer + 1
+    },
+    content: {
+        flexGrow: 1,
+        marginLeft: drawerWidth
     },
     drawer: {
         width: drawerWidth,
@@ -56,7 +60,7 @@ export class Home extends React.Component {
         return (
             <React.Fragment>
                 <PrimaryAppNavigator classes={classes}>
-                    <Grid container className={classes.content}>
+                    <Grid container>
                         <PrimaryHero />
 
                         <MarketingSection />

@@ -19,6 +19,7 @@ import {
     Help,
     Info, Inbox, Mail
 } from "@material-ui/icons"
+import MenuIcon from "@material-ui/icons/Menu";
 import { appName } from "../../../constants";
 import Container from "../container";
 import logo from "../../../assets/images/logo.svg";
@@ -67,6 +68,14 @@ export class PrimaryAppNavigator extends React.Component {
                     <Grid container>
                         <Grid item xs={12}>
                             <Toolbar>
+
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="Open drawer"
+                                    style={{marginRight: 8, marginLeft: "-10px"}}
+                                >
+                                    <MenuIcon />
+                                </IconButton>
 
                                 <img src={logo} height="40" />
 

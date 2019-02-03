@@ -25,7 +25,7 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
-        marginLeft: drawerWidth
+        /*marginLeft: drawerWidth*/
     },
     drawer: {
         width: drawerWidth,
@@ -37,8 +37,11 @@ const styles = theme => ({
     appTitle: {
         flexGrow: 1
     },
+    tabsFlexContainer: {
+        justifyContent: "space-evenly"
+    },
     tabsContainer: {
-        minWidth: "240px"
+        /*minWidth: "240px"*/
     },
     tabsIndicator: {
         display: "none"

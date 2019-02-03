@@ -64,95 +64,96 @@ export class PrimaryAppNavigator extends React.Component {
                 <CssBaseline />
 
                 <AppBar position="fixed" elevation={1} className={classes.appBar}>
-                    <Container>
-                        <Toolbar>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <Toolbar>
 
-                            <img src={logo} height="40" />
+                                <img src={logo} height="40" />
 
-                            {/*<Typography variant="h6" color="inherit" noWrap>
+                                {/*<Typography variant="h6" color="inherit" noWrap>
                                 { appName }
                             </Typography>*/}
 
-                            <Hidden xsDown>
-                                <div className={classes.appTitle}>
-                                    <Tabs
-                                        value={0}
-                                        action={() => {return 0;}}
-                                        indicatorColor="secondary"
-                                        textColor="inherit"
-                                        variant="fullWidth"
-                                        centered
-                                        classes={{indicator: classes.tabsIndicator}}
-                                    >
-                                        <Tab label="Browse Isles" icon={<Fastfood />} classes={{root: classes.tabsContainer, selected: classes.tabSelected}} />
-                                        <Tab label="Recipes" icon={<Kitchen />} classes={{root: classes.tabsContainer}} />
-                                        <Tab label="Nutritional Consultation" icon={<Favorite />} classes={{root: classes.tabsContainer}} />
-                                    </Tabs>
-                                </div>
-                            </Hidden>
+                                <Hidden xsDown>
+                                    <div className={classes.appTitle}>
+                                        <Tabs
+                                            value={0}
+                                            action={() => {return 0;}}
+                                            indicatorColor="secondary"
+                                            textColor="inherit"
+                                            variant="fullWidth"
+                                            classes={{indicator: classes.tabsIndicator, flexContainer: classes.tabsFlexContainer}}
+                                        >
+                                            <Tab label="Browse Isles" icon={<Fastfood />} classes={{root: classes.tabsContainer, selected: classes.tabSelected}} />
+                                            <Tab label="Recipes" icon={<Kitchen />} classes={{root: classes.tabsContainer}} />
+                                            <Tab label="Nutritional Consultation" icon={<Favorite />} classes={{root: classes.tabsContainer}} />
+                                        </Tabs>
+                                    </div>
+                                </Hidden>
 
-                            <IconButton color="inherit" aria-label="Menu">
-                                <ShoppingCart />
-                            </IconButton>
+                                <IconButton color="inherit" aria-label="Menu">
+                                    <ShoppingCart />
+                                </IconButton>
 
-                            <IconButton color="inherit" aria-label="Menu" onClick={() => this.handleLogout()}>
-                                <ExitToApp />
-                            </IconButton>
+                                <IconButton color="inherit" aria-label="Menu" onClick={() => this.handleLogout()}>
+                                    <ExitToApp />
+                                </IconButton>
 
-                            <IconButton color="inherit"
-                                        aria-owns={anchorEl ? 'appBarMenu' : null}
-                                        aria-haspopup="true"
-                                        onClick={this.handleMenuClick}
-                            >
-                                <Person />
-                            </IconButton>
+                                <IconButton color="inherit"
+                                            aria-owns={anchorEl ? 'appBarMenu' : null}
+                                            aria-haspopup="true"
+                                            onClick={this.handleMenuClick}
+                                >
+                                    <Person />
+                                </IconButton>
 
-                            <Menu
-                                id="appBarMenu"
-                                anchorEl={anchorEl}
-                                getContentAnchorEl={null}
-                                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                                transformOrigin={{ vertical: "top", horizontal: "center" }}
-                                open={Boolean(anchorEl)}
-                                onClose={this.handleMenuClose}
-                            >
-                                <MenuItem onClick={this.handleMenuClose}>
-                                    <ListItemIcon className={classes.icon}>
-                                        <Person />
-                                    </ListItemIcon>
-                                    <ListItemText classes={{ primary: classes.primary }} inset primary="Account" />
-                                </MenuItem>
+                                <Menu
+                                    id="appBarMenu"
+                                    anchorEl={anchorEl}
+                                    getContentAnchorEl={null}
+                                    anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                                    transformOrigin={{ vertical: "top", horizontal: "center" }}
+                                    open={Boolean(anchorEl)}
+                                    onClose={this.handleMenuClose}
+                                >
+                                    <MenuItem onClick={this.handleMenuClose}>
+                                        <ListItemIcon className={classes.icon}>
+                                            <Person />
+                                        </ListItemIcon>
+                                        <ListItemText classes={{ primary: classes.primary }} inset primary="Account" />
+                                    </MenuItem>
 
-                                <MenuItem onClick={this.handleMenuClose}>
-                                    <ListItemIcon className={classes.icon}>
-                                        <History />
-                                    </ListItemIcon>
-                                    <ListItemText classes={{ primary: classes.primary }} inset primary="My Orders" />
-                                </MenuItem>
+                                    <MenuItem onClick={this.handleMenuClose}>
+                                        <ListItemIcon className={classes.icon}>
+                                            <History />
+                                        </ListItemIcon>
+                                        <ListItemText classes={{ primary: classes.primary }} inset primary="My Orders" />
+                                    </MenuItem>
 
-                                <MenuItem onClick={this.handleMenuClose}>
-                                    <ListItemIcon className={classes.icon}>
-                                        <Settings />
-                                    </ListItemIcon>
-                                    <ListItemText classes={{ primary: classes.primary }} inset primary="Settings" />
-                                </MenuItem>
-                                <Divider />
-                                <MenuItem onClick={this.handleMenuClose}>
-                                    <ListItemIcon className={classes.icon}>
-                                        <Help />
-                                    </ListItemIcon>
-                                    <ListItemText classes={{ primary: classes.primary }} inset primary="Help" />
-                                </MenuItem>
+                                    <MenuItem onClick={this.handleMenuClose}>
+                                        <ListItemIcon className={classes.icon}>
+                                            <Settings />
+                                        </ListItemIcon>
+                                        <ListItemText classes={{ primary: classes.primary }} inset primary="Settings" />
+                                    </MenuItem>
+                                    <Divider />
+                                    <MenuItem onClick={this.handleMenuClose}>
+                                        <ListItemIcon className={classes.icon}>
+                                            <Help />
+                                        </ListItemIcon>
+                                        <ListItemText classes={{ primary: classes.primary }} inset primary="Help" />
+                                    </MenuItem>
 
-                                <MenuItem onClick={this.handleMenuClose}>
-                                    <ListItemIcon className={classes.icon}>
-                                        <Info />
-                                    </ListItemIcon>
-                                    <ListItemText classes={{ primary: classes.primary }} inset primary="About" />
-                                </MenuItem>
-                            </Menu>
-                        </Toolbar>
-                    </Container>
+                                    <MenuItem onClick={this.handleMenuClose}>
+                                        <ListItemIcon className={classes.icon}>
+                                            <Info />
+                                        </ListItemIcon>
+                                        <ListItemText classes={{ primary: classes.primary }} inset primary="About" />
+                                    </MenuItem>
+                                </Menu>
+                            </Toolbar>
+                        </Grid>
+                    </Grid>
                 </AppBar>
 
                 <Hidden mdDown>
@@ -165,7 +166,7 @@ export class PrimaryAppNavigator extends React.Component {
                     >
                         <div className={classes.toolbar} />
                         <List>
-                            <ListItem button>
+                            <ListItem button selected>
                                 <ListItemIcon><Fastfood /></ListItemIcon>
                                 <ListItemText primary="Browse Isles" />
                             </ListItem>

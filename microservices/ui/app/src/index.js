@@ -48,6 +48,5 @@ ReactDOM.render(
             </MuiThemeProvider>
         </BrowserRouter>
     </ApolloProvider>
-
     ,document.getElementById('root')
 );

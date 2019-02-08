@@ -188,6 +188,396 @@ export class ItemBrowser extends Hero {
                         </Grid>
                     </Grid>
                 </Container>
+
+                <Container>
+                    <HeroHeader>
+                        <Grid container justify="space-between" alignItems="center" spacing={24}>
+                            <Grid item>
+                                <Typography variant="button" align="left" className={classes.sectionHeadline}>All Products</Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <Button variant="contained" color="secondary">
+                                    Browse All
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </HeroHeader>
+
+                    <Grid container spacing={40} justify="space-evenly">
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Container>
+
+                <Container>
+                    <HeroHeader>
+                        <Grid container justify="space-between" alignItems="center" spacing={24}>
+                            <Grid item>
+                                <Typography variant="button" align="left" className={classes.sectionHeadline}>All Products</Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <Button variant="contained" color="secondary">
+                                    Browse All
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </HeroHeader>
+
+                    <Grid container spacing={40} justify="space-evenly">
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Container>
+
+                <Container>
+                    <HeroHeader>
+                        <Grid container justify="space-between" alignItems="center" spacing={24}>
+                            <Grid item>
+                                <Typography variant="button" align="left" className={classes.sectionHeadline}>All Products</Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <Button variant="contained" color="secondary">
+                                    Browse All
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </HeroHeader>
+
+                    <Grid container spacing={40} justify="space-evenly">
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+
+                        <Grid item xs={12} md>
+                            <div className={classes.productRoot}>
+                                <CardActionArea>
+                                    <div className={classes.productName}>
+                                        <Typography variant="h6" align="center" gutterBottom>
+                                            Eggplant
+                                        </Typography>
+                                    </div>
+
+                                    <div className={classes.productImage}>
+                                        <img src={grilledSteak} title="Image title" width="150" />
+                                    </div>
+
+                                    <div className={classes.productDescription}>
+                                        <Typography variant="h5" align="center" color="primary" gutterBottom>
+                                            $2.99
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+
+                                <div className={classes.productActions}>
+                                    <Button variant="contained" color="primary">
+                                        Add
+                                    </Button>
+                                </div>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Container>
             </Grid>
         )
     }

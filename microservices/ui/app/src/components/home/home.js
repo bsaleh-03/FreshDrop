@@ -23,9 +23,13 @@ const styles = theme => ({
     appBar: {
         zIndex: theme.zIndex.drawer + 1
     },
-    content: {
+    headerNav: {
+        display: "flex",
         flexGrow: 1,
-        /*marginLeft: drawerWidth*/
+        justifyContent: "flex-end"
+    },
+    content: {
+        flexGrow: 1
     },
     drawer: {
         width: drawerWidth,
@@ -34,14 +38,14 @@ const styles = theme => ({
     drawerPaper: {
         width: drawerWidth,
     },
-    appTitle: {
-        flexGrow: 1
+    nestedDrawerItem: {
+        paddingLeft: theme.spacing.unit * 4,
     },
     tabsFlexContainer: {
         justifyContent: "space-evenly"
     },
     tabsContainer: {
-        /*minWidth: "240px"*/
+        flexGrow: 1
     },
     tabsIndicator: {
         display: "none"

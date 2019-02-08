@@ -12,11 +12,11 @@ import { Send } from '@material-ui/icons';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
-import {appName, BEARER_TOKEN} from "../../constants";
+import {appName, BEARER_TOKEN, LOGIN_URL} from "../../constants";
 import {formatError} from "../../util/stringFormat";
 
 // Auth API
-const AUTH_ROUTE = "https://auth.spelunking68.hasura-app.io/v1/login";
+const AUTH_ROUTE = LOGIN_URL;
 
 export async function authenticate(url, data) {
     let requestOptions = {
@@ -118,15 +118,15 @@ export class Login extends Form {
             errors: []
         });
 
-        // Try to authenticate the user
-        let response = await authenticate(AUTH_ROUTE, this.state);
-
-        // Get json
-        let result = await response.json();
-
-        console.log(result);
-
         try {
+            // Try to authenticate the user
+            let response = await authenticate(AUTH_ROUTE, this.state);
+
+            // Get json
+            let result = await response.json();
+
+            console.log(result);
+
             if(response.ok) {
                 console.log(result);
 

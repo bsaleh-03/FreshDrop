@@ -167,110 +167,113 @@ export class PrimaryAppNavigator extends React.Component {
                     </Grid>
                 </AppBar>
 
-                <Hidden mdDown>
-                    <Drawer
-                        className={classes.drawer}
-                        variant="persistent"
-                        open={this.state.drawerOpen}
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                    >
-                        <div className={classes.toolbar} />
-                        <List>
-                            <ListItem button selected onClick={() => this.toggleBrowse(!this.state.browseOpen)}>
-                                <ListItemIcon><Fastfood /></ListItemIcon>
-                                <ListItemText primary="Browse Isles" />
-                                {this.state.browseOpen ? <ExpandLess /> : <ExpandMore />}
-                            </ListItem>
+                <Drawer
+                    className={classes.drawer}
+                    variant="persistent"
+                    open={this.state.drawerOpen}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                >
+                    <div className={classes.toolbar} />
+                    <List>
+                        <ListItem button selected onClick={() => this.toggleBrowse(!this.state.browseOpen)} classes={{selected: classes.listItemSelected}}>
+                            <ListItemIcon><Fastfood /></ListItemIcon>
+                            <ListItemText primary="Browse Isles" />
+                            {this.state.browseOpen ? <ExpandLess /> : <ExpandMore />}
+                        </ListItem>
 
-                            <Collapse in={this.state.browseOpen} timeout="auto" unmountOnExit>
-                                <List component="div" disablePadding>
-                                    <ListItem button className={classes.nestedDrawerItem}>
-                                        <ListItemIcon>
-                                            <AllInbox />
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="All Isles" />
-                                    </ListItem>
+                        <Collapse in={this.state.browseOpen} timeout="auto" unmountOnExit>
+                            <List component="div" disablePadding>
+                                <ListItem button className={classes.nestedDrawerItem}>
+                                    <ListItemIcon>
+                                        <AllInbox />
+                                    </ListItemIcon>
+                                    <ListItemText inset primary="All Isles" />
+                                </ListItem>
 
-                                    <ListItem button className={classes.nestedDrawerItem}>
-                                        <ListItemIcon>
-                                            <Waves />
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="Meat & Poultry" />
-                                    </ListItem>
+                                <ListItem button className={classes.nestedDrawerItem}>
+                                    <ListItemIcon>
+                                        <Waves />
+                                    </ListItemIcon>
+                                    <ListItemText inset primary="Meat & Poultry" />
+                                </ListItem>
 
-                                    <ListItem button className={classes.nestedDrawerItem}>
-                                        <ListItemIcon>
-                                            <RoomService />
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="Ready to Eat" />
-                                    </ListItem>
+                                <ListItem button className={classes.nestedDrawerItem}>
+                                    <ListItemIcon>
+                                        <RoomService />
+                                    </ListItemIcon>
+                                    <ListItemText inset primary="Ready to Eat" />
+                                </ListItem>
 
-                                    <ListItem button className={classes.nestedDrawerItem}>
-                                        <ListItemIcon>
-                                            <Restaurant />
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="Freshly Made" />
-                                    </ListItem>
+                                <ListItem button className={classes.nestedDrawerItem}>
+                                    <ListItemIcon>
+                                        <Restaurant />
+                                    </ListItemIcon>
+                                    <ListItemText inset primary="Freshly Made" />
+                                </ListItem>
 
-                                    <ListItem button className={classes.nestedDrawerItem}>
-                                        <ListItemIcon>
-                                            <LocalBar />
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="Drinks" />
-                                    </ListItem>
-                                </List>
-                            </Collapse>
+                                <ListItem button className={classes.nestedDrawerItem}>
+                                    <ListItemIcon>
+                                        <LocalBar />
+                                    </ListItemIcon>
+                                    <ListItemText inset primary="Drinks" />
+                                </ListItem>
+                            </List>
+                        </Collapse>
 
-                            <ListItem button>
-                                <ListItemIcon><Kitchen /></ListItemIcon>
-                                <ListItemText primary="Recipes" />
-                            </ListItem>
+                        <ListItem button>
+                            <ListItemIcon><Kitchen /></ListItemIcon>
+                            <ListItemText primary="Recipes" />
+                        </ListItem>
 
-                            <ListItem button>
-                                <ListItemIcon><Favorite /></ListItemIcon>
-                                <ListItemText primary="Consultation" />
-                            </ListItem>
-                        </List>
-                        <Divider />
-                        <List>
-                            <ListItem button>
-                                <ListItemIcon><Person /></ListItemIcon>
-                                <ListItemText primary="Account" />
-                            </ListItem>
+                        <ListItem button>
+                            <ListItemIcon><Favorite /></ListItemIcon>
+                            <ListItemText primary="Consultation" />
+                        </ListItem>
+                    </List>
+                    <Divider />
+                    <List>
+                        <ListItem button>
+                            <ListItemIcon><Person /></ListItemIcon>
+                            <ListItemText primary="Account" />
+                        </ListItem>
 
-                            <ListItem button>
-                                <ListItemIcon><History /></ListItemIcon>
-                                <ListItemText primary="My Orders" />
-                            </ListItem>
+                        <ListItem button>
+                            <ListItemIcon><ShoppingCart /></ListItemIcon>
+                            <ListItemText primary="Shopping Cart" />
+                        </ListItem>
 
-                            <ListItem button>
-                                <ListItemIcon><CreditCard /></ListItemIcon>
-                                <ListItemText primary="Billing" />
-                            </ListItem>
-                        </List>
+                        <ListItem button>
+                            <ListItemIcon><History /></ListItemIcon>
+                            <ListItemText primary="My Orders" />
+                        </ListItem>
 
-                        <Divider />
+                        <ListItem button>
+                            <ListItemIcon><CreditCard /></ListItemIcon>
+                            <ListItemText primary="Billing" />
+                        </ListItem>
+                    </List>
 
-                        <List>
-                            <ListItem button>
-                                <ListItemIcon><Settings /></ListItemIcon>
-                                <ListItemText primary="Settings" />
-                            </ListItem>
+                    <Divider />
 
-                            <ListItem button>
-                                <ListItemIcon><Info /></ListItemIcon>
-                                <ListItemText primary="About" />
-                            </ListItem>
+                    <List>
+                        <ListItem button>
+                            <ListItemIcon><Settings /></ListItemIcon>
+                            <ListItemText primary="Settings" />
+                        </ListItem>
 
-                            <ListItem button>
-                                <ListItemIcon><Help /></ListItemIcon>
-                                <ListItemText primary="Help" />
-                            </ListItem>
-                        </List>
-                    </Drawer>
-                </Hidden>
+                        <ListItem button>
+                            <ListItemIcon><Info /></ListItemIcon>
+                            <ListItemText primary="About" />
+                        </ListItem>
+
+                        <ListItem button>
+                            <ListItemIcon><Help /></ListItemIcon>
+                            <ListItemText primary="Help" />
+                        </ListItem>
+                    </List>
+                </Drawer>
 
                 <div className={classes.content}>
                     { children }

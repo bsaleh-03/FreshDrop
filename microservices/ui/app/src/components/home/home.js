@@ -38,6 +38,11 @@ const styles = theme => ({
     drawerPaper: {
         width: drawerWidth,
     },
+    listItemSelected: {
+        '& *': {
+            color: theme.palette.primary.dark
+        }
+    },
     nestedDrawerItem: {
         paddingLeft: theme.spacing.unit * 4,
     },
@@ -72,11 +77,7 @@ export class Home extends React.Component {
 
                         <MarketingSection />
 
-                        <FeaturedItems />
-
                         <ItemBrowser />
-
-                        {/*<FeedYourOrgans />*/}
                     </Grid>
 
                     <Footer />

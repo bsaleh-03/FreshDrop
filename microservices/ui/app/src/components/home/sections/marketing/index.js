@@ -9,6 +9,7 @@ import image from "../../../../assets/images/branding-1.jpg"
 import image2 from "../../../../assets/images/vegetables.jpg"
 
 import Container from "../../../layout/container";
+import Divider from "@material-ui/core/Divider";
 
 const styles = theme => ({
     heroRoot: {
@@ -17,6 +18,10 @@ const styles = theme => ({
     imageContainer: {
         maxWidth: "100%",
         padding: theme.spacing.unit * 2
+    },
+    heroDivider: {
+        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit * 2
     }
 });
 
@@ -44,6 +49,8 @@ export class MarketingSection extends Hero {
                             </Paper>
                         </Grid>
                     </Grid>
+
+                    <Divider className={classes.heroDivider} />
                 </Container>
             </Grid>
         )

@@ -1,10 +1,10 @@
 clusters:
-- alias: freshdrop
+- alias: hasura
   config:
     configmap: controller-conf
     namespace: hasura
   data: null
-  kubeContext: spelunking68
-  name: spelunking68
+  kubeContext: charisma19
+  name: charisma19
 defaultCluster: ""
 isQuickStart: ""

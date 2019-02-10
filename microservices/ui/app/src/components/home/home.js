@@ -18,7 +18,8 @@ const drawerWidth = 240;
 const styles = theme => ({
     root: {
         flex: 1,
-        height: '100vh'
+        height: '100vh',
+        overflowX: "hidden"
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1
@@ -28,12 +29,14 @@ const styles = theme => ({
         flexGrow: 1,
         justifyContent: "flex-end"
     },
-    content: {
-        flexGrow: 1
+    gridContainer: {
+        [theme.breakpoints.down('md')]: {
+            marginLeft: "0 !important",
+        },
     },
     drawer: {
         width: drawerWidth,
-        flexShrink: 0,
+        flexShrink: 0
     },
     drawerPaper: {
         width: drawerWidth,
@@ -45,18 +48,6 @@ const styles = theme => ({
     },
     nestedDrawerItem: {
         paddingLeft: theme.spacing.unit * 4,
-    },
-    tabsFlexContainer: {
-        justifyContent: "space-evenly"
-    },
-    tabsContainer: {
-        flexGrow: 1
-    },
-    tabsIndicator: {
-        display: "none"
-    },
-    tabSelected: {
-        borderBottom: "2px solid #b0f16f"
     },
     toolbar: theme.mixins.toolbar,
 });
@@ -72,13 +63,11 @@ export class Home extends React.Component {
         return (
             <React.Fragment>
                 <PrimaryAppNavigator classes={classes}>
-                    <Grid container>
-                        <PrimaryHero />
+                    <PrimaryHero />
 
-                        <MarketingSection />
+                    <MarketingSection />
 
-                        <ItemBrowser />
-                    </Grid>
+                    <ItemBrowser />
 
                     <Footer />
                 </PrimaryAppNavigator>

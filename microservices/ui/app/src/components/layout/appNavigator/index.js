@@ -80,6 +80,14 @@ export class PrimaryAppNavigator extends React.Component {
         const { anchorEl } = this.state;
         const { classes, children } = this.props;
 
+        const contentStyle = {
+            transition: 'margin-left 450ms cubic-bezier(0.23, 1, 0.32, 1)',
+        };
+
+        if (this.state.drawerOpen) {
+            contentStyle.marginLeft = 120;
+        }
+
         return (
             <div className={classes.root}>
                 <CssBaseline />
@@ -275,8 +283,10 @@ export class PrimaryAppNavigator extends React.Component {
                     </List>
                 </Drawer>
 
-                <div className={classes.content}>
-                    { children }
+                <div>
+                    <Grid container className={classes.gridContainer} style={contentStyle}>
+                        { children }
+                    </Grid>
                 </div>
             </div>
         );

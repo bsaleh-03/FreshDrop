@@ -13,15 +13,15 @@ import Divider from "@material-ui/core/Divider";
 
 const styles = theme => ({
     heroRoot: {
-        padding: theme.spacing.unit * 4
+        padding: theme.spacing.unit * 4,
+        paddingBottom: 0
     },
     imageContainer: {
         maxWidth: "100%",
         padding: theme.spacing.unit * 2
     },
     heroDivider: {
-        marginTop: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit * 2
+        marginTop: theme.spacing.unit * 2
     }
 });
 
@@ -49,8 +49,6 @@ export class MarketingSection extends Hero {
                             </Paper>
                         </Grid>
                     </Grid>
-
-                    <Divider className={classes.heroDivider} />
                 </Container>
             </Grid>
         )

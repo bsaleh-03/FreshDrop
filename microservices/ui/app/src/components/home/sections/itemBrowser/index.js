@@ -3,13 +3,14 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import {
     Button,
     Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Divider,
-    Grid, Hidden,
+    Grid, Hidden, IconButton,
     Typography
 } from "@material-ui/core";
 import Hero from "../../../layout/hero";
 import HeroHeader from "../../../layout/hero/header";
 import Container from "../../../layout/container";
 import entree from "../../../../assets/images/entree.jpg";
+import {ExpandMore, ShoppingCart} from "@material-ui/icons";
 
 const styles = theme => ({
     heroRoot: {
@@ -33,26 +34,56 @@ export class ItemBrowser extends Hero {
     render() {
         const { classes } = this.props;
 
-        const products = [
+        const sections = [
             {
-                "name": "Product",
-                "price": "$2.99",
-                "image": entree
+                "title": "Featured Items",
+                "items": [
+                    {
+                        "name": "Product",
+                        "price": "$2.99",
+                        "image": entree
+                    },
+                    {
+                        "name": "Product",
+                        "price": "$2.99",
+                        "image": entree
+                    },
+                    {
+                        "name": "Product",
+                        "price": "$2.99",
+                        "image": entree
+                    },
+                    {
+                        "name": "Product",
+                        "price": "$2.99",
+                        "image": entree
+                    }
+                ]
             },
             {
-                "name": "Product",
-                "price": "$2.99",
-                "image": entree
-            },
-            {
-                "name": "Product",
-                "price": "$2.99",
-                "image": entree
-            },
-            {
-                "name": "Product",
-                "price": "$2.99",
-                "image": entree
+                "title": "Meat & Poultry",
+                "items": [
+                    {
+                        "name": "Product",
+                        "price": "$2.99",
+                        "image": entree
+                    },
+                    {
+                        "name": "Product",
+                        "price": "$2.99",
+                        "image": entree
+                    },
+                    {
+                        "name": "Product",
+                        "price": "$2.99",
+                        "image": entree
+                    },
+                    {
+                        "name": "Product",
+                        "price": "$2.99",
+                        "image": entree
+                    }
+                ]
             }
         ];
 
@@ -60,129 +91,45 @@ export class ItemBrowser extends Hero {
             <Grid container alignItems="center" justify="center" className={classes.heroRoot}>
                 <Container>
                     <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <Typography variant="h4">Featured Products</Typography>
-                        </Grid>
-
-                        {products.map((product, index) => {
+                        {sections.map((section, index) => {
                             return (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image={product.image}
-                                                title="Paella dish"
-                                            />
-                                            <Divider />
-                                            <div className={classes.productInfo}>
-                                                <Typography variant="headline" gutterBottom>{product.name}</Typography>
-                                                <Typography variant="subtitle1" gutterBottom>{product.price}</Typography>
-                                            </div>
-                                        </CardActionArea>
-                                    </Card>
-                                </Grid>
-                            );
-                        })}
+                                <React.Fragment>
+                                    <Grid item xs={12} key={index}>
+                                        <Grid container justify="space-between">
+                                            <Grid item>
+                                                <Typography variant="h4">{section.title}</Typography>
+                                            </Grid>
 
-                        <Grid item xs={12}>
-                            <Typography variant="h4">Meat & Poultry</Typography>
-                        </Grid>
+                                            <Grid item>
+                                                <IconButton color="inherit">
+                                                    <ExpandMore />
+                                                </IconButton>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
 
-                        {products.map((product, index) => {
-                            return (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image={product.image}
-                                                title="Paella dish"
-                                            />
-                                            <Divider />
-                                            <div className={classes.productInfo}>
-                                                <Typography variant="headline" gutterBottom>{product.name}</Typography>
-                                                <Typography variant="subtitle1" gutterBottom>{product.price}</Typography>
-                                            </div>
-                                        </CardActionArea>
-                                    </Card>
-                                </Grid>
-                            );
-                        })}
-
-                        <Grid item xs={12}>
-                            <Typography variant="h4">Ready to Eat</Typography>
-                        </Grid>
-
-                        {products.map((product, index) => {
-                            return (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image={product.image}
-                                                title="Paella dish"
-                                            />
-                                            <Divider />
-                                            <div className={classes.productInfo}>
-                                                <Typography variant="headline" gutterBottom>{product.name}</Typography>
-                                                <Typography variant="subtitle1" gutterBottom>{product.price}</Typography>
-                                            </div>
-                                        </CardActionArea>
-                                    </Card>
-                                </Grid>
-                            );
-                        })}
-
-                        <Grid item xs={12}>
-                            <Typography variant="h4">Freshly Made</Typography>
-                        </Grid>
-
-                        {products.map((product, index) => {
-                            return (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image={product.image}
-                                                title="Paella dish"
-                                            />
-                                            <Divider />
-                                            <div className={classes.productInfo}>
-                                                <Typography variant="headline" gutterBottom>{product.name}</Typography>
-                                                <Typography variant="subtitle1" gutterBottom>{product.price}</Typography>
-                                            </div>
-                                        </CardActionArea>
-                                    </Card>
-                                </Grid>
-                            );
-                        })}
-
-                        <Grid item xs={12}>
-                            <Typography variant="h4">Drinks</Typography>
-                        </Grid>
-
-                        {products.map((product, index) => {
-                            return (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Card>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image={product.image}
-                                                title="Paella dish"
-                                            />
-                                            <Divider />
-                                            <div className={classes.productInfo}>
-                                                <Typography variant="headline" gutterBottom>{product.name}</Typography>
-                                                <Typography variant="subtitle1" gutterBottom>{product.price}</Typography>
-                                            </div>
-                                        </CardActionArea>
-                                    </Card>
-                                </Grid>
-                            );
+                                    {section.items.map((product, index) => {
+                                        return (
+                                            <Grid item xs={12} sm={6} md={3} key={index}>
+                                                <Card>
+                                                    <CardActionArea>
+                                                        <CardMedia
+                                                            className={classes.media}
+                                                            image={product.image}
+                                                            title="Paella dish"
+                                                        />
+                                                        <Divider />
+                                                        <div className={classes.productInfo}>
+                                                            <Typography variant="headline" gutterBottom>{product.name}</Typography>
+                                                            <Typography variant="subtitle1" gutterBottom>{product.price}</Typography>
+                                                        </div>
+                                                    </CardActionArea>
+                                                </Card>
+                                            </Grid>
+                                        );
+                                    })}
+                                </React.Fragment>
+                            )
                         })}
                     </Grid>
                 </Container>

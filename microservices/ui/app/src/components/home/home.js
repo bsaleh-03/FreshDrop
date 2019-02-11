@@ -1,14 +1,12 @@
 import React from 'react';
 import {
-    Grid
+    withWidth
 } from "@material-ui/core";
 import { PrimaryAppNavigator } from "../layout/appNavigator";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 // Sections
 import PrimaryHero from "./sections/primaryHero";
-import FeaturedItems from "./sections/featuredItems";
-import FeedYourOrgans from "./sections/feedYourOrgans";
 import ItemBrowser from "./sections/itemBrowser";
 import Footer from "../layout/footer";
 import MarketingSection from "./sections/marketing";
@@ -58,11 +56,11 @@ export class Home extends React.Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, width } = this.props;
 
         return (
             <React.Fragment>
-                <PrimaryAppNavigator classes={classes}>
+                <PrimaryAppNavigator classes={classes} width={width}>
                     <PrimaryHero />
 
                     <MarketingSection />
@@ -76,4 +74,4 @@ export class Home extends React.Component {
     }
 };
 
-export default withStyles(styles)(Home);
+export default withWidth()(withStyles(styles)(Home));

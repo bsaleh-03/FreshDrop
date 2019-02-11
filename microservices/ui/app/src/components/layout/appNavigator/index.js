@@ -2,12 +2,12 @@ import React from 'react';
 import {
     AppBar,
     Toolbar,
-    Typography,
     CssBaseline,
     Divider,
     Menu,
     MenuItem,
-    IconButton, Paper, Tabs, Tab, Grid
+    IconButton,
+    Grid
 } from "@material-ui/core";
 import {
     AllInbox,
@@ -15,36 +15,38 @@ import {
     LocalBar,
     Restaurant,
     RoomService,
-    ExitToApp, Fastfood, Favorite, Kitchen,
+    ExitToApp,
+    Fastfood,
+    Kitchen,
     CreditCard,
-    MoreVert,
     ShoppingCart,
     Person,
     Settings,
     History,
     Help,
-    Info, Inbox, Mail, ExpandLess, ExpandMore, StarBorder
+    Info,
+    ExpandLess,
+    ExpandMore
 } from "@material-ui/icons"
 import MenuIcon from "@material-ui/icons/Menu";
-import { appName } from "../../../constants";
-import Container from "../container";
 import logo from "../../../assets/images/logo.svg";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import MenuList from "@material-ui/core/MenuList";
-import Hidden from "@material-ui/core/Hidden/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Collapse from "@material-ui/core/Collapse";
+import {isWidthDown} from "@material-ui/core/withWidth";
 
 export class PrimaryAppNavigator extends React.Component {
     constructor(props){
         super(props);
 
+        const isSmallScreen = isWidthDown('md', props.width);
+
         this.state = {
             anchorEl: null,
-            drawerOpen: true,
+            drawerOpen: !isSmallScreen,
             browseOpen: true
         };
 
@@ -77,14 +79,14 @@ export class PrimaryAppNavigator extends React.Component {
     };
 
     render() {
-        const { anchorEl } = this.state;
+        const { anchorEl, drawerOpen } = this.state;
         const { classes, children } = this.props;
 
         const contentStyle = {
             transition: 'margin-left 450ms cubic-bezier(0.23, 1, 0.32, 1)',
         };
 
-        if (this.state.drawerOpen) {
+        if (drawerOpen) {
             contentStyle.marginLeft = 120;
         }
 
@@ -100,7 +102,7 @@ export class PrimaryAppNavigator extends React.Component {
                                 <IconButton
                                     color="inherit"
                                     aria-label="Open drawer"
-                                    onClick={() => this.toggleDrawer(!this.state.drawerOpen)}
+                                    onClick={() => this.toggleDrawer(!drawerOpen)}
                                     style={{marginRight: 8, marginLeft: "-10px"}}
                                 >
                                     <MenuIcon />
@@ -178,7 +180,7 @@ export class PrimaryAppNavigator extends React.Component {
                 <Drawer
                     className={classes.drawer}
                     variant="persistent"
-                    open={this.state.drawerOpen}
+                    open={drawerOpen}
                     classes={{
                         paper: classes.drawerPaper,
                     }}
@@ -233,11 +235,6 @@ export class PrimaryAppNavigator extends React.Component {
                         <ListItem button>
                             <ListItemIcon><Kitchen /></ListItemIcon>
                             <ListItemText primary="Recipes" />
-                        </ListItem>
-
-                        <ListItem button>
-                            <ListItemIcon><Favorite /></ListItemIcon>
-                            <ListItemText primary="Consultation" />
                         </ListItem>
                     </List>
                     <Divider />

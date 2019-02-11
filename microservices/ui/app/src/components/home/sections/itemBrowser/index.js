@@ -4,8 +4,9 @@ import {
     Button,
     Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Divider,
     Grid, Hidden, IconButton,
-    Typography
+    Typography,
 } from "@material-ui/core";
+import { AddShoppingCart } from "@material-ui/icons";
 import Hero from "../../../layout/hero";
 import HeroHeader from "../../../layout/hero/header";
 import Container from "../../../layout/container";
@@ -23,6 +24,11 @@ const styles = theme => ({
     },
     productInfo: {
         padding: theme.spacing.unit * 2
+    },
+    productFab: {
+        position: "absolute",
+        top: "50%",
+        right: theme.spacing.unit * 2
     }
 });
 
@@ -118,10 +124,15 @@ export class ItemBrowser extends Hero {
                                                             image={product.image}
                                                             title="Paella dish"
                                                         />
+                                                        <Hidden mdDown>
+                                                            <Button variant="fab" color="primary" aria-label="Add" className={classes.productFab}>
+                                                                <AddShoppingCart />
+                                                            </Button>
+                                                        </Hidden>
                                                         <Divider />
                                                         <div className={classes.productInfo}>
-                                                            <Typography variant="headline" gutterBottom>{product.name}</Typography>
-                                                            <Typography variant="subtitle1" gutterBottom>{product.price}</Typography>
+                                                            <Typography variant="h5" gutterBottom>{product.name}</Typography>
+                                                            <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>{product.price}</Typography>
                                                         </div>
                                                     </CardActionArea>
                                                 </Card>

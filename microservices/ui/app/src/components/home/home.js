@@ -10,6 +10,7 @@ import PrimaryHero from "./sections/primaryHero";
 import ItemBrowser from "./sections/itemBrowser";
 import Footer from "../layout/footer";
 import MarketingSection from "./sections/marketing";
+import Client from "shopify-buy";
 
 const drawerWidth = 240;
 

@@ -12,6 +12,7 @@ import HeroHeader from "../../../layout/hero/header";
 import Container from "../../../layout/container";
 import entree from "../../../../assets/images/entree.jpg";
 import {ExpandMore, ShoppingCart} from "@material-ui/icons";
+import Client from 'shopify-buy';
 
 const styles = theme => ({
     heroRoot: {
@@ -32,13 +33,33 @@ const styles = theme => ({
     }
 });
 
+const client = Client.buildClient ({
+    domain: 'xmartdelivery.myshopify.com',
+    storefrontAccessToken: '46c755b162eb3627af1027e177da6e07'
+});
+
 export class ItemBrowser extends Hero {
     constructor(props) {
         super(props);
+
+        this.state = {
+            products: []
+        };
+    }
+
+    componentWillMount() {
+        client.product.fetchAll().then(products => {
+            console.log(products);
+
+            this.setState({
+                products: products
+            });
+        });
     }
 
     render() {
         const { classes } = this.props;
+        const { products } = this.state;
 
         const sections = [
             {
@@ -141,6 +162,32 @@ export class ItemBrowser extends Hero {
                                     })}
                                 </React.Fragment>
                             )
+                        })}
+
+                        {products.map((product, index) => {
+                            return (
+                                <Grid item xs={12} sm={6} md={3} key={index}>
+                                    <Card>
+                                        <CardActionArea>
+                                            <CardMedia
+                                                className={classes.media}
+                                                image={(product.attrs.images[0].attrs.src).toString()}
+                                                title="Paella dish"
+                                            />
+                                            <Hidden mdDown>
+                                                <Button variant="fab" color="primary" aria-label="Add" className={classes.productFab}>
+                                                    <AddShoppingCart />
+                                                </Button>
+                                            </Hidden>
+                                            <Divider />
+                                            <div className={classes.productInfo}>
+                                                <Typography variant="h5" gutterBottom>{product.title}</Typography>
+                                                <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>${product.variants[0].price}</Typography>
+                                            </div>
+                                        </CardActionArea>
+                                    </Card>
+                                </Grid>
+                            );
                         })}
                     </Grid>
                 </Container>

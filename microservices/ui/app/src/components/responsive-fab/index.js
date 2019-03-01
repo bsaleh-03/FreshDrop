@@ -5,7 +5,7 @@ import {isWidthDown} from "@material-ui/core/withWidth";
 
 export function ResponsiveFab({ width, className }) {
     // This is equivalent to theme.breakpoints.down("sm")
-    const isSmallScreen = isWidthDown('md', width);
+    const isSmallScreen = isWidthDown('lg', width);
     console.log(isSmallScreen);
     const buttonProps = {
         size: isSmallScreen ? "medium" : "large"

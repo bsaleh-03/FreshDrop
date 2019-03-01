@@ -4,14 +4,14 @@ import {
     Button,
     Card, CardActionArea, CardMedia, Divider,
     Grid, Hidden, IconButton,
-    Typography,
+    Typography, withWidth,
 } from "@material-ui/core";
-import { AddShoppingCart } from "@material-ui/icons";
 import Hero from "../../../layout/hero";
 import Container from "../../../layout/container";
 import {ExpandMore} from "@material-ui/icons";
 import Client from 'shopify-buy';
 import Async from "react-async";
+import {ResponsiveFab} from "../../../responsive-fab";
 
 const styles = theme => ({
     heroRoot: {
@@ -57,7 +57,7 @@ export class ItemBrowser extends Hero {
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, width } = this.props;
 
         return (
             <Grid container alignItems="center" justify="center" className={classes.heroRoot}>
@@ -99,9 +99,7 @@ export class ItemBrowser extends Hero {
                                                             <Typography variant="h5" noWrap gutterBottom className={classes.productTitle}>{product.title}</Typography>
                                                             <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>${product.variants[0].price}</Typography>
 
-                                                            <Button variant="fab" color="primary" aria-label="Add" className={classes.productFab}>
-                                                                <AddShoppingCart />
-                                                            </Button>
+                                                            <ResponsiveFab variant="fab" color="primary" aria-label="Add" width={width} className={classes.productFab} />
                                                         </div>
                                                     </CardActionArea>
                                                 </Card>
@@ -122,4 +120,4 @@ export class ItemBrowser extends Hero {
     }
 }
 
-export default withStyles(styles)(ItemBrowser);
+export default withWidth()(withStyles(styles)(ItemBrowser));

@@ -14,6 +14,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
 import {appName, BEARER_TOKEN, LOGIN_URL} from "../../constants";
 import {formatError} from "../../util/stringFormat";
+import logo from "../../assets/images/logo.svg";
 
 // Auth API
 const AUTH_ROUTE = LOGIN_URL;
@@ -60,6 +61,10 @@ const styles = theme => ({
             marginLeft: 'auto',
             marginRight: 'auto',
         },
+    },
+    logo: {
+        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit * 2
     },
     paper: {
         display: 'flex',
@@ -169,11 +174,7 @@ export class Login extends Form {
                         <main className={classes.layout}>
                             <Paper className={classes.paper}>
 
-                                <Avatar className={classes.avatar}>
-                                    <Send />
-                                </Avatar>
-
-                                <Typography variant="h5">{appName}</Typography>
+                                <img src={logo} height="60" className={classes.logo} />
 
                                 { this.state.errors.length > 0 &&
                                     <div className={classes.formErrors}>

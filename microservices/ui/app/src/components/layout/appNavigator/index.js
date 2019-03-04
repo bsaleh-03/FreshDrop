@@ -12,8 +12,8 @@ import {
 import {
     AllInbox,
     Waves,
-    LocalBar,
-    Restaurant,
+    Phone,
+    LocalDining,
     RoomService,
     ExitToApp,
     Fastfood,
@@ -204,30 +204,23 @@ export class PrimaryAppNavigator extends React.Component {
 
                                 <ListItem button className={classes.nestedDrawerItem}>
                                     <ListItemIcon>
-                                        <Waves />
+                                        <LocalDining />
                                     </ListItemIcon>
-                                    <ListItemText inset primary="Meat & Poultry" />
+                                    <ListItemText inset primary="Meat" />
                                 </ListItem>
 
                                 <ListItem button className={classes.nestedDrawerItem}>
                                     <ListItemIcon>
                                         <RoomService />
                                     </ListItemIcon>
-                                    <ListItemText inset primary="Ready to Eat" />
+                                    <ListItemText inset primary="Poultry" />
                                 </ListItem>
 
                                 <ListItem button className={classes.nestedDrawerItem}>
                                     <ListItemIcon>
-                                        <Restaurant />
+                                        <Waves />
                                     </ListItemIcon>
-                                    <ListItemText inset primary="Freshly Made" />
-                                </ListItem>
-
-                                <ListItem button className={classes.nestedDrawerItem}>
-                                    <ListItemIcon>
-                                        <LocalBar />
-                                    </ListItemIcon>
-                                    <ListItemText inset primary="Drinks" />
+                                    <ListItemText inset primary="Seafood" />
                                 </ListItem>
                             </List>
                         </Collapse>
@@ -251,7 +244,7 @@ export class PrimaryAppNavigator extends React.Component {
 
                         <ListItem button>
                             <ListItemIcon><History /></ListItemIcon>
-                            <ListItemText primary="My Orders" />
+                            <ListItemText primary="Order History" />
                         </ListItem>
 
                         <ListItem button>
@@ -270,7 +263,12 @@ export class PrimaryAppNavigator extends React.Component {
 
                         <ListItem button>
                             <ListItemIcon><Info /></ListItemIcon>
-                            <ListItemText primary="About" />
+                            <ListItemText primary="Our Story" />
+                        </ListItem>
+
+                        <ListItem button>
+                            <ListItemIcon><Phone /></ListItemIcon>
+                            <ListItemText primary="Contact Us" />
                         </ListItem>
 
                         <ListItem button>

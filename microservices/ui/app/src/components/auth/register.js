@@ -16,6 +16,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
 import {appName, BEARER_TOKEN, QUERY_URL, SIGNUP_URL} from "../../constants";
 import {formatError} from "../../util/stringFormat";
+import logo from "../../assets/images/logo.svg";
 
 // Auth API
 export async function registerUser(url, data) {
@@ -91,6 +92,10 @@ const styles = theme => ({
             marginLeft: 'auto',
             marginRight: 'auto',
         },
+    },
+    logo: {
+        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit * 2
     },
     paper: {
         display: 'flex',
@@ -224,11 +229,7 @@ export class Register extends Form {
 
         const registerForm = (
             <React.Fragment>
-                <Avatar className={classes.avatar}>
-                    <Send />
-                </Avatar>
-
-                <Typography variant="h5">{appName}</Typography>
+                <img src={logo} height="60" className={classes.logo} />
 
                 <ValidatorForm ref="form" className={classes.form} onSubmit={this.onSubmit} onError={errors => console.log(errors)}>
                     <FormControl margin="normal" required fullWidth>

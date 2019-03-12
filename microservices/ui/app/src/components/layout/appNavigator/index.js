@@ -7,7 +7,7 @@ import {
     Menu,
     MenuItem,
     IconButton,
-    Grid
+    Grid, Button
 } from "@material-ui/core";
 import {
     AllInbox,
@@ -26,7 +26,7 @@ import {
     Help,
     Info,
     ExpandLess,
-    ExpandMore
+    ExpandMore, Payment
 } from "@material-ui/icons"
 import MenuIcon from "@material-ui/icons/Menu";
 import logo from "../../../assets/images/logo.svg";
@@ -37,6 +37,25 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Collapse from "@material-ui/core/Collapse";
 import {isWidthDown} from "@material-ui/core/withWidth";
+import Typography from "@material-ui/core/es/Typography/Typography";
+import Entree from "../../../assets/images/entree.jpg";
+
+const cartItems = [
+    {
+        title: "Cart Item",
+        image: Entree,
+        description: "This is a simple description for a shopping cart item.",
+        price: "$7.99",
+        quantity: 1
+    },
+    {
+        title: "Cart Item",
+        image: Entree,
+        description: "This is a simple description for a shopping cart item.",
+        price: "$7.99",
+        quantity: 1
+    }
+];
 
 export class PrimaryAppNavigator extends React.Component {
     constructor(props){
@@ -46,6 +65,7 @@ export class PrimaryAppNavigator extends React.Component {
 
         this.state = {
             anchorEl: null,
+            shoppingCartAnchor: null,
             drawerOpen: !isSmallScreen,
             browseOpen: true
         };
@@ -78,8 +98,16 @@ export class PrimaryAppNavigator extends React.Component {
         this.setState({ anchorEl: null });
     };
 
+    handleShoppingCartClick = (event) => {
+        this.setState({ shoppingCartAnchor: event.currentTarget });
+    };
+
+    handleShoppingCartClose = () => {
+        this.setState({ shoppingCartAnchor: null });
+    };
+
     render() {
-        const { anchorEl, drawerOpen } = this.state;
+        const { anchorEl, shoppingCartAnchor, drawerOpen } = this.state;
         const { classes, children } = this.props;
 
         const contentStyle = {
@@ -111,7 +139,12 @@ export class PrimaryAppNavigator extends React.Component {
                                 <img src={logo} height="40" />
 
                                 <div className={classes.headerNav}>
-                                    <IconButton color="inherit" aria-label="Menu">
+                                    <IconButton
+                                        color="inherit"
+                                        aria-owns={shoppingCartAnchor ? 'shoppingCartMenu' : null}
+                                        aria-haspopup="true"
+                                        aria-label="Menu"
+                                        onClick={this.handleShoppingCartClick}>
                                         <ShoppingCart />
                                     </IconButton>
 
@@ -119,13 +152,66 @@ export class PrimaryAppNavigator extends React.Component {
                                         <ExitToApp />
                                     </IconButton>
 
-                                    <IconButton color="inherit"
-                                                aria-owns={anchorEl ? 'appBarMenu' : null}
-                                                aria-haspopup="true"
-                                                onClick={this.handleMenuClick}
-                                    >
+                                    <IconButton
+                                        color="inherit"
+                                        aria-owns={anchorEl ? 'appBarMenu' : null}
+                                        aria-haspopup="true"
+                                        onClick={this.handleMenuClick}>
                                         <Person />
                                     </IconButton>
+
+                                    <Menu
+                                        id="shoppingCartMenu"
+                                        classes={{paper: classes.shoppingCartMenu}}
+                                        anchorEl={shoppingCartAnchor}
+                                        getContentAnchorEl={null}
+                                        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                                        transformOrigin={{ vertical: "top", horizontal: "center" }}
+                                        open={Boolean(shoppingCartAnchor)}
+                                        onClose={this.handleShoppingCartClose}
+                                    >
+                                        <div className={classes.shoppingCartMenuContent}>
+                                            <Typography variant="h5" align="center" gutterBottom>Shopping Cart</Typography>
+
+                                            <Divider className={classes.cartItemDivider} />
+
+                                            {cartItems.map((cartItem, index) => {
+                                                return (
+                                                    <React.Fragment>
+                                                        <div className={classes.cartItemContainer}>
+                                                            <div className={classes.itemImage} style={{backgroundImage: `url(${cartItem.image})`}} />
+
+                                                            <div className={classes.cartItemInfo}>
+                                                                <Typography variant="h6" gutterBottom>{cartItem.title}</Typography>
+                                                                <Typography variant="subtitle1" gutterBottom>{cartItem.description}</Typography>
+                                                                <div className={classes.cartItemFooter}>
+                                                                    <Typography variant="subtitle1" style={{fontWeight: "bold", alignSelf: "center", flexGrow: 1}}>{cartItem.price}</Typography>
+                                                                    <Button variant="text" color="secondary">Remove</Button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <Divider className={classes.cartItemDivider} />
+                                                    </React.Fragment>
+                                                )
+                                            })}
+
+                                            <div className={classes.cartPricing}>
+                                                <Typography variant="subtitle1" gutterBottom style={{flexGrow: 1}}>Subtotal:</Typography>
+                                                <Typography variant="subtitle1" gutterBottom>69.99</Typography>
+                                            </div>
+
+                                            <div className={classes.cartPricing}>
+                                                <Typography variant="subtitle1" gutterBottom style={{flexGrow: 1}}>Total:</Typography>
+                                                <Typography variant="subtitle1" gutterBottom>70.00</Typography>
+                                            </div>
+
+                                            <div className={classes.cartActions}>
+                                                <Button variant="contained" color="secondary" size="medium"><ShoppingCart className={classes.buttonIcon} /> View Cart</Button>
+                                                <Button variant="contained" color="primary" size="medium"><Payment className={classes.buttonIcon} /> Checkout</Button>
+                                            </div>
+                                        </div>
+                                    </Menu>
 
                                     <Menu
                                         id="appBarMenu"

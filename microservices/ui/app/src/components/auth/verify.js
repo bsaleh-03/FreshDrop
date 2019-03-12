@@ -117,44 +117,6 @@ export class Verify extends React.Component {
     render() {
         const { classes } = this.props;
 
-        const messageLayout = (
-            <React.Fragment>
-                {
-                    !this.state.error ? (
-                        <Avatar className={classes.avatar} style={{backgroundColor: green["600"]}}>
-                            <Check />
-                        </Avatar>
-                    ) : (
-                        <Avatar className={classes.avatar} style={{backgroundColor: red["600"]}}>
-                            <Error />
-                        </Avatar>
-                    )
-                }
-
-                {
-                    !this.state.error ? (
-                        <Typography variant="h5" gutterBottom>Account Activated</Typography>
-                    ) : (
-                        <Typography variant="h5" gutterBottom>Error</Typography>
-                    )
-                }
-
-                {
-                    !this.state.error ? (
-                        <React.Fragment>
-                            <Typography variant="subtitle1" align="center" gutterBottom>Thank you for activating your { appName } account. You may now close this window or login.</Typography>
-
-                            <Button color="secondary" onClick={() => this.handleLogin()}>Login</Button>
-                        </React.Fragment>
-                    ) : (
-                        <React.Fragment>
-                            <Typography variant="subtitle1" align="center" gutterBottom>{formatError(this.state.error)}</Typography>
-                        </React.Fragment>
-                    )
-                }
-            </React.Fragment>
-        );
-
         return (
             <React.Fragment>
                 <CssBaseline />
@@ -170,7 +132,41 @@ export class Verify extends React.Component {
                         <main className={classes.layout}>
                             <Paper className={classes.paper}>
 
-                                { messageLayout }
+                                <React.Fragment>
+                                    {
+                                        !this.state.error ? (
+                                            <Avatar className={classes.avatar} style={{backgroundColor: green["600"]}}>
+                                                <Check />
+                                            </Avatar>
+                                        ) : (
+                                            <Avatar className={classes.avatar} style={{backgroundColor: red["600"]}}>
+                                                <Error />
+                                            </Avatar>
+                                        )
+                                    }
+
+                                    {
+                                        !this.state.error ? (
+                                            <Typography variant="h5" gutterBottom>Account Activated</Typography>
+                                        ) : (
+                                            <Typography variant="h5" gutterBottom>Error</Typography>
+                                        )
+                                    }
+
+                                    {
+                                        !this.state.error ? (
+                                            <React.Fragment>
+                                                <Typography variant="subtitle1" align="center" gutterBottom>Thank you for activating your { appName } account. You may now close this window or login.</Typography>
+
+                                                <Button color="secondary" onClick={() => this.handleLogin()}>Login</Button>
+                                            </React.Fragment>
+                                        ) : (
+                                            <React.Fragment>
+                                                <Typography variant="subtitle1" align="center" gutterBottom>{formatError(this.state.error)}</Typography>
+                                            </React.Fragment>
+                                        )
+                                    }
+                                </React.Fragment>
 
                             </Paper>
                         </main>

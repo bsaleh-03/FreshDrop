@@ -13,6 +13,8 @@ export const BEARER_TOKEN = "624756238ea07eba1d63ad343c1e2e2983d8925ce9d62c03";
 export const LOGIN_URL = `${AUTH_URL}/login`;
 export const SIGNUP_URL = `${AUTH_URL}/signup`;
 export const USER_URL = `${AUTH_URL}/user`;
+export const FORGOT_PASSWORD_URL = `${AUTH_URL}/providers/email/forgot-password`;
+export const RESET_PASSWORD_URL = `${AUTH_URL}/providers/email/reset-password`;
 
 export const CHANGE_URL = `${USER_URL}/change-password`;
 export const FORGOT_URL = `${USER_URL}/forgot-password`;

@@ -227,6 +227,8 @@ export class Login extends Form {
                                 </ValidatorForm>
 
                                 <Button className={classes.button} color="secondary" onClick={() => this.handleRegister()}>Don't have an account? Sign up</Button>
+
+                                <Button className={classes.button} color="secondary">Reset Password</Button>
                             </Paper>
                         </main>
                     </Grid>

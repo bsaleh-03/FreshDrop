@@ -11,6 +11,8 @@ import App from './components/auth/login';
 import Home from './components/home/home';
 import Theme from './theme/theme';
 import Register from "./components/auth/register";
+import Reset from "./components/auth/reset";
+import VerifyReset from "./components/auth/verifyReset";
 import Verify from "./components/auth/verify";
 
 document.title = "XMart Delivery";
@@ -40,6 +42,8 @@ ReactDOM.render(
                     <Switch>
                         <Route exact path="/" component={App} />
                         <Route exact path="/register" component={Register} />
+                        <Route exact path="/reset" component={Reset} />
+                        <Route exact path="/reset-password" component={VerifyReset} />
                         <Route exact path="/verify-email" component={Verify} />
 
                         <Route exact path="/home" component={Home} />

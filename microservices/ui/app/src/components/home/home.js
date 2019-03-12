@@ -10,7 +10,6 @@ import PrimaryHero from "./sections/primaryHero";
 import ItemBrowser from "./sections/itemBrowser";
 import Footer from "../layout/footer";
 import MarketingSection from "./sections/marketing";
-import Client from "shopify-buy";
 
 const drawerWidth = 240;
 
@@ -49,6 +48,50 @@ const styles = theme => ({
         paddingLeft: theme.spacing.unit * 4,
     },
     toolbar: theme.mixins.toolbar,
+    shoppingCartMenu: {
+
+    },
+    shoppingCartMenuContent: {
+        outline: "none",
+        paddingLeft: theme.spacing.unit * 4,
+        paddingRight: theme.spacing.unit * 4,
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+    },
+    cartItemContainer: {
+        display: "flex",
+    },
+    cartItemDivider: {
+        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit * 2,
+    },
+    cartActions: {
+        display: "flex",
+        marginTop: 16,
+        '& > button': {
+            flexGrow: 1
+        },
+        '& :not(:last-child)': {
+            marginRight: theme.spacing.unit * 2
+        }
+    },
+    cartItemFooter: {
+        display: 'flex'
+    },
+    cartPricing: {
+        display: "flex",
+    },
+    itemImage: {
+        width: 64,
+        height: 64,
+        marginRight: theme.spacing.unit * 2,
+        background: 'no-repeat center center',
+        backgroundSize: 'contain',
+        backgroundColor: '#f7f7f7'
+    },
+    buttonIcon: {
+        marginRight: theme.spacing.unit
+    }
 });
 
 export class Home extends React.Component {

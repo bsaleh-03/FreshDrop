@@ -146,6 +146,8 @@ export class PrimaryAppNavigator extends React.Component {
                                         aria-label="Menu"
                                         onClick={this.handleShoppingCartClick}>
                                         <ShoppingCart />
+
+                                        {/*<div className={classes.cartCounter}>0</div>*/}
                                     </IconButton>
 
                                     <IconButton color="inherit" aria-label="Menu" onClick={() => this.handleLogout()}>

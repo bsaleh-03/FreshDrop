@@ -48,6 +48,17 @@ const styles = theme => ({
         paddingLeft: theme.spacing.unit * 4,
     },
     toolbar: theme.mixins.toolbar,
+    cartCounter: {
+        position: "absolute",
+        right: "25%",
+        bottom: "25%",
+        fontSize: "0.5rem",
+        color: "white",
+        width: 16,
+        height: 16,
+        borderRadius: "50%",
+        backgroundColor: theme.palette.secondary.main
+    },
     shoppingCartMenu: {
 
     },

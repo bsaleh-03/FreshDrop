@@ -18,6 +18,7 @@ const styles = theme => ({
     },
     imageContainer: {
         maxWidth: "100%",
+        height: "100%",
         padding: theme.spacing.unit * 2
     },
     heroDivider: {
@@ -38,13 +39,13 @@ export class MarketingSection extends Hero {
                 <Container>
                     <Grid container spacing={40}>
                         <Grid item xs={12} sm={6}>
-                            <Paper>
+                            <Paper style={{height: "100%"}}>
                                 <img src={image} alt="Marketing 1" className={classes.imageContainer} />
                             </Paper>
                         </Grid>
 
                         <Grid item xs={12} sm={6}>
-                            <Paper>
+                            <Paper style={{height: "100%"}}>
                                 <img src={image2} alt="Marketing 2" className={classes.imageContainer} />
                             </Paper>
                         </Grid>

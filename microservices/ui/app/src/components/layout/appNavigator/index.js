@@ -141,10 +141,6 @@ export class PrimaryAppNavigator extends React.Component {
                                 <img src={logo} height="40" />
 
                                 <div className={classes.headerNav}>
-                                    <div className={classes.cartCounter}>
-                                        <Typography variant="caption" align="center" style={{fontWeight: "bold", color: Theme.palette.primary.dark}}>2</Typography>
-                                    </div>
-
                                     <IconButton
                                         color="inherit"
                                         aria-owns={shoppingCartAnchor ? 'shoppingCartMenu' : null}
@@ -152,6 +148,10 @@ export class PrimaryAppNavigator extends React.Component {
                                         aria-label="Menu"
                                         onClick={this.handleShoppingCartClick}>
                                         <ShoppingCart />
+
+                                        <div className={classes.cartCounter}>
+                                            <Typography variant="caption" align="center" style={{fontWeight: "bold", color: Theme.palette.primary.dark}}>2</Typography>
+                                        </div>
                                     </IconButton>
 
                                     <IconButton color="inherit" aria-label="Menu" onClick={() => this.handleLogout()}>

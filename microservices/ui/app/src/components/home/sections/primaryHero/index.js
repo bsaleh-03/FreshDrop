@@ -18,7 +18,7 @@ const styles = theme => ({
         bottom: '0%',
         left: '0%',
         height: 'auto',
-        minHeight: '400px',
+        minHeight: '325px',
         width: '100%',
         paddingTop: theme.spacing.unit * 2
     },
@@ -85,8 +85,6 @@ export class PrimaryHero extends Hero {
                     </video>
 
                     <div className={classes.heroContent}>
-                        {/*<img src={logo} width="275" height="150" />*/}
-
                         <Typography variant="h2" align="center" className={classes.heroTitle} gutterBottom>Shop Now</Typography>
 
                         <Paper className={classes.heroInputRoot} elevation={1}>

@@ -52,6 +52,9 @@ const styles = theme => ({
         display: "flex",
         justifyContent: "center",
         alignSelf: "center",
+        position: "absolute",
+        right: "-11px",
+        bottom: "5%",
         marginRight: theme.spacing.unit,
         fontSize: "0.5rem",
         color: "white",
@@ -60,7 +63,8 @@ const styles = theme => ({
         borderRadius: "50%",
         backgroundColor: theme.palette.secondary.main,
         '& *': {
-            alignSelf: "center"
+            alignSelf: "center",
+            paddingTop: 2
         }
     },
     shoppingCartMenu: {

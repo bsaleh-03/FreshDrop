@@ -156,6 +156,11 @@ export class Login extends Form {
         window.location = "/register";
     }
 
+    handleReset() {
+        // Redirect
+        window.location = "/reset";
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -228,7 +233,7 @@ export class Login extends Form {
 
                                 <Button className={classes.button} color="secondary" onClick={() => this.handleRegister()}>Don't have an account? Sign up</Button>
 
-                                <Button className={classes.button} color="secondary">Reset Password</Button>
+                                <Button className={classes.button} color="secondary" onClick={() => this.handleReset()}>Reset Password</Button>
                             </Paper>
                         </main>
                     </Grid>

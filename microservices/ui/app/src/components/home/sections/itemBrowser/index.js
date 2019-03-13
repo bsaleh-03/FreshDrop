@@ -96,7 +96,7 @@ export class ItemBrowser extends Hero {
                                                         />
                                                         <Divider />
                                                         <div className={classes.productInfo}>
-                                                            <Typography variant="h5" noWrap gutterBottom className={classes.productTitle}>{product.title}</Typography>
+                                                            <Typography variant="h6" noWrap gutterBottom className={classes.productTitle}>{product.title}</Typography>
                                                             <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>${product.variants[0].price}</Typography>
 
                                                             <ResponsiveFab variant="fab" color="primary" aria-label="Add" width={width} className={classes.productFab} />

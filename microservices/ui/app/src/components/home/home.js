@@ -63,7 +63,8 @@ const styles = theme => ({
         borderRadius: "50%",
         backgroundColor: theme.palette.secondary.main,
         '& *': {
-            alignSelf: "center"
+            alignSelf: "center",
+            lineHeight: "normal"
         }
     },
     shoppingCartMenu: {

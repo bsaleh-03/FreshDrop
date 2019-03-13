@@ -49,15 +49,19 @@ const styles = theme => ({
     },
     toolbar: theme.mixins.toolbar,
     cartCounter: {
-        position: "absolute",
-        right: "25%",
-        bottom: "25%",
+        display: "flex",
+        justifyContent: "center",
+        alignSelf: "center",
+        marginRight: theme.spacing.unit,
         fontSize: "0.5rem",
         color: "white",
-        width: 16,
-        height: 16,
+        width: 22,
+        height: 22,
         borderRadius: "50%",
-        backgroundColor: theme.palette.secondary.main
+        backgroundColor: theme.palette.secondary.main,
+        '& *': {
+            alignSelf: "center"
+        }
     },
     shoppingCartMenu: {
 

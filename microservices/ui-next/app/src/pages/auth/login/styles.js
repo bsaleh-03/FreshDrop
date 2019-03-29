@@ -5,6 +5,8 @@ export const Styles = theme => ({
     layout: {
         width: 'auto',
         display: 'flex',
+        flexDirection: 'column',
+        alignItems: "center",
         marginLeft: theme.spacing.unit * 3,
         marginRight: theme.spacing.unit * 3,
         [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
@@ -49,7 +51,7 @@ export const Styles = theme => ({
         marginTop: theme.spacing.unit * 3,
     },
     button: {
-        marginTop: theme.spacing.unit * 3,
+        marginTop: theme.spacing.unit * 3
     }
 });
 

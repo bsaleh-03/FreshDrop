@@ -172,10 +172,10 @@ class Login extends Form {
                                     </Button>
                                 </ValidatorForm>
 
-                                <Button className={classes.button} color="secondary" onClick={() => this.handleRegister()}>Don't have an account? Sign up</Button>
-
                                 <Button className={classes.button} color="secondary" onClick={() => this.handleReset()}>Reset Password</Button>
                             </Paper>
+
+                            <Button className={classes.button} color="secondary" onClick={() => this.handleRegister()}>Don't have an account? Sign up</Button>
                         </main>
                     </Grid>
                 </Grid>

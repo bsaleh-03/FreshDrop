@@ -8,7 +8,7 @@ export const VERIFY_URL = AUTH_URL + `/providers/email/verify-email`;
 
 export const QUERY_URL = `https://data.${clusterName}.hasura-app.io/v1/query`;
 
-export const BEARER_TOKEN = "624756238ea07eba1d63ad343c1e2e2983d8925ce9d62c03";
+export const BEARER_TOKEN = "0e09ec617d8cf75ecb20236c8e0fd3e75f79f97acca0eb2f";
 
 export const LOGIN_URL = `${AUTH_URL}/login`;
 export const SIGNUP_URL = `${AUTH_URL}/signup`;

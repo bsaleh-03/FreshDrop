@@ -55,13 +55,14 @@ class Login extends Form {
 
         // Set submit listener
         this.onSubmit = this.onSubmit.bind(this);
+
+        // Bind clear errors function
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     async onSubmit() {
         // Clear any previous errors
-        this.setState({
-            errors: []
-        });
+        this.clearErrors();
 
         try {
             // Try to authenticate the user
@@ -70,11 +71,7 @@ class Login extends Form {
             // Get json
             let result = await response.json();
 
-            console.log(result);
-
             if(response.ok) {
-                console.log(result);
-
                 // Set auth token
                 localStorage.setItem("auth_token", result.auth_token);
 
@@ -89,6 +86,12 @@ class Login extends Form {
         } catch (e) {
             console.error(e);
         }
+    }
+
+    clearErrors() {
+        this.setState({
+            errors: []
+        });
     }
 
     handleRegister() {

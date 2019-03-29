@@ -2,18 +2,22 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
     Grid,
-    withStyles
+    withStyles,
+    withWidth
 } from "@material-ui/core";
 import Styles from './styles';
 import AppBar from "../../components/nav/appbar/appbar";
 import Drawer from "../../components/nav/drawer/drawer";
+import {isWidthDown} from "@material-ui/core/withWidth";
 
 class AppNavigator extends Component {
     constructor(props) {
         super(props);
 
+        const isSmallScreen = isWidthDown('md', props.width);
+
         this.state = {
-            drawerOpen: true,
+            drawerOpen: !isSmallScreen,
         };
 
         this.toggleDrawer = this.toggleDrawer.bind(this);
@@ -41,7 +45,7 @@ class AppNavigator extends Component {
 
                 <Drawer open={drawerOpen} />
 
-                <Grid item xs={12} className={classes.gridContainer} style={contentStyle}>
+                <Grid container className={classes.gridContainer} style={contentStyle}>
                     <div className={classes.toolbar} />
 
                     { children }
@@ -53,6 +57,7 @@ class AppNavigator extends Component {
 
 AppNavigator.propTypes = {
     classes: PropTypes.object.isRequired,
+    children: PropTypes.array
 };
 
-export default withStyles(Styles)(AppNavigator);
+export default withWidth()(withStyles(Styles)(AppNavigator));

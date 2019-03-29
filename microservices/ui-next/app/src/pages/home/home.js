@@ -1,15 +1,17 @@
 import React from 'react';
-import {
-    Grid
-} from "@material-ui/core";
 import AppNavigator from "../../layout/appNavigator/appNavigator";
+import PrimaryHero from "./sections/heroVideo/heroVideo";
+import Browse from "./sections/browse/browse";
+import Footer from "../../components/footer/footer";
 
 const Home = props => {
     return (
         <AppNavigator>
-            <Grid container justify="center">
-                <p>Hello World</p>
-            </Grid>
+            <PrimaryHero />
+
+            <Browse />
+
+            <Footer />
         </AppNavigator>
     );
 };

@@ -8645,7 +8645,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@>=15.5.7, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8827,6 +8827,13 @@ react-app-polyfill@^0.2.2:
     promise "8.0.2"
     raf "3.4.1"
     whatwg-fetch "3.0.0"
+
+react-async@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/react-async/-/react-async-6.0.1.tgz#bf61e5200e0125253f78950a1e6c88d0ce311e85"
+  integrity sha512-0jI+m3Z3qNbXt9Cx8UVvafrFFO8Slby3Cz1Ouu1+f6F/IXE0cxyb6WWhmBnAED4soNH0Cf/9pV90SN5ToPFZDw==
+  optionalDependencies:
+    prop-types ">=15.5.7"
 
 react-check-auth@^0.2.0-alpha.2:
   version "0.2.0-alpha.2"
@@ -9707,6 +9714,11 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
+
+shopify-buy@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/shopify-buy/-/shopify-buy-2.2.0.tgz#00e46aa4765f9279b924165c01928c290ea5cbdf"
+  integrity sha512-UK7EqmFs+tNglI9Dw1UR4rl/ZKXb8E0XPXQDXXKHMNMGfRShvqZ3wiTV7icnVhjjeig14SYRcc60R/ifkfU8LQ==
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"

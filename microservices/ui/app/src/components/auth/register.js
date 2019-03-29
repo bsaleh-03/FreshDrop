@@ -138,7 +138,6 @@ export class Register extends Form {
     constructor(props) {
         super(props);
 
-        // Component state
         this.state = {
             name: "",
             email: "",

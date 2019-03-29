@@ -9,22 +9,37 @@ import AppBar from "../../components/nav/appbar/appbar";
 import Drawer from "../../components/nav/drawer/drawer";
 
 class AppNavigator extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            drawerOpen: true,
+        };
+
+        this.toggleDrawer = this.toggleDrawer.bind(this);
+    }
+
+    toggleDrawer(state) {
+        this.setState({ drawerOpen: state });
+    }
+
     render() {
+        const { drawerOpen } = this.state;
         const { classes, children } = this.props;
 
         const contentStyle = {
             transition: 'margin-left 450ms cubic-bezier(0.23, 1, 0.32, 1)',
         };
 
-        if (true) {
+        if (drawerOpen) {
             contentStyle.marginLeft = 120;
         }
 
         return (
             <div className={classes.root}>
-                <AppBar />
+                <AppBar toggleDrawer={() => this.toggleDrawer(!drawerOpen)} />
 
-                <Drawer />
+                <Drawer open={drawerOpen} />
 
                 <Grid item xs={12} className={classes.gridContainer} style={contentStyle}>
                     <div className={classes.toolbar} />

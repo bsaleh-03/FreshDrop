@@ -5,13 +5,13 @@ import {
     FormControl,
     Paper,
     Typography,
-    Grid, Avatar
+    Grid,
+    Avatar
 } from "@material-ui/core";
 import withStyles from '@material-ui/core/styles/withStyles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../form/form";
 import logo from "../../assets/images/logo.svg";
-import Divider from "@material-ui/core/Divider";
 import {formatError} from "../../util/stringFormat";
 import {BEARER_TOKEN, FORGOT_PASSWORD_URL} from "../../constants";
 import green from "@material-ui/core/colors/green";

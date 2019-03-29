@@ -35,7 +35,6 @@ class PrimaryDrawer extends Component {
         super(props);
 
         this.state = {
-            drawerOpen: true,
             browseOpen: true,
         };
     }
@@ -45,14 +44,13 @@ class PrimaryDrawer extends Component {
     }
 
     render() {
-        const { drawerOpen } = this.state;
-        const { classes } = this.props;
+        const { classes, open } = this.props;
 
         return (
             <Drawer
                 className={classes.drawer}
                 variant="persistent"
-                open={drawerOpen}
+                open={open}
                 classes={{
                     paper: classes.drawerPaper,
                 }}
@@ -156,6 +154,7 @@ class PrimaryDrawer extends Component {
 
 PrimaryDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
+    open: PropTypes.bool.isRequired
 };
 
 export default withStyles(Styles)(PrimaryDrawer);

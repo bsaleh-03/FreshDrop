@@ -14,7 +14,7 @@ import Logo from "../../../logo.svg";
 
 class PrimaryAppBar extends Component {
     render() {
-        const { classes } = this.props;
+        const { classes, toggleDrawer } = this.props;
 
         return (
             <AppBar position="fixed" elevation={1} className={classes.appBar}>
@@ -22,6 +22,7 @@ class PrimaryAppBar extends Component {
                     <IconButton
                         color="inherit"
                         aria-label="Open drawer"
+                        onClick={toggleDrawer}
                         style={{marginRight: 8, marginLeft: "-10px"}}
                     >
                         <Menu />
@@ -36,6 +37,7 @@ class PrimaryAppBar extends Component {
 
 PrimaryAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
+    toggleDrawer: PropTypes.func.isRequired
 };
 
 export default withStyles(Styles)(PrimaryAppBar);

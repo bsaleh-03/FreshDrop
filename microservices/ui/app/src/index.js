@@ -1,28 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import ApolloClient from "apollo-boost";
-import { AuthProvider } from 'react-check-auth';
-import { ApolloProvider } from "react-apollo";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { GRAPHQL_URL, SESSION_URL } from "./constants";
+import { CssBaseline } from "@material-ui/core";
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import App from './components/auth/login';
-import Home from './components/home/home';
-import Theme from './theme/theme';
-import Register from "./components/auth/register";
-import Reset from "./components/auth/reset";
-import VerifyReset from "./components/auth/verifyReset";
-import Verify from "./components/auth/verify";
+import { AuthProvider } from 'react-check-auth';
+import { SESSION_URL } from "./constants";
+import Theme from "./theme/theme";
 
-document.title = "XMart Delivery";
+// Routes
+import Login from "./pages/auth/login/login";
+import Register from "./pages/auth/register/register";
+import Reset from "./pages/auth/reset/reset";
+import Verify from "./pages/auth/verify/verify";
+import VerifyReset from "./pages/auth/verifyReset/verifyReset";
 
-const client = new ApolloClient({
-    uri: GRAPHQL_URL,
-    cache: new InMemoryCache({
-        addTypename: false
-    })
-});
+import Home from "./pages/home/home";
 
 function reqOptions() {
     return {
@@ -35,22 +28,27 @@ function reqOptions() {
 }
 
 ReactDOM.render(
-    <ApolloProvider client={client}>
-        <BrowserRouter>
-            <MuiThemeProvider theme={Theme}>
-                <AuthProvider authUrl={SESSION_URL} reqOptions={reqOptions}>
-                    <Switch>
-                        <Route exact path="/" component={App} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/reset" component={Reset} />
-                        <Route exact path="/reset-password" component={VerifyReset} />
-                        <Route exact path="/verify-email" component={Verify} />
+    <BrowserRouter>
+        <MuiThemeProvider theme={Theme}>
+            <AuthProvider authUrl={SESSION_URL} reqOptions={reqOptions}>
+                <CssBaseline />
 
-                        <Route exact path="/home" component={Home} />
-                    </Switch>
-                </AuthProvider>
-            </MuiThemeProvider>
-        </BrowserRouter>
-    </ApolloProvider>
+                <Switch>
+                    <Route exact path="/" component={Login} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/reset" component={Reset} />
+                    <Route exact path="/reset-password" component={VerifyReset} />
+                    <Route exact path="/verify-email" component={Verify} />
+
+                    <Route exact path="/home" component={Home} />
+                </Switch>
+            </AuthProvider>
+        </MuiThemeProvider>
+    </BrowserRouter>
     ,document.getElementById('root')
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

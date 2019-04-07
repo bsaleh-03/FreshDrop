@@ -1,7 +1,7 @@
 const DEVMODE = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 const PROTOCOL = DEVMODE ? "https://" : "";
 
-const INTERNAL_DOMAIN = "hasura";
+const INTERNAL_DOMAIN = "hasura:80";
 const EXTERNAL_DOMAIN = "xmartdelivery.com";
 
 const getUrl = function (msName) {

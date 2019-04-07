@@ -9,7 +9,7 @@ import {
     withStyles
 } from "@material-ui/core";
 import { formatError } from "../../../util/stringFormat";
-import { BEARER_TOKEN, LOGIN_URL } from "../../../constants";
+import HasuraAPI from "../../../hasuraAPI";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../../../components/form/form";
 import Styles from './styles';
@@ -18,11 +18,7 @@ import Logo from "../../../logo.svg";
 async function authenticate(url, data) {
     let requestOptions = {
         "method": "POST",
-        "headers": {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + BEARER_TOKEN,
-            "X-Hasura-Role": "admin"
-        }
+        "headers": HasuraAPI.Util.buildHeaders()
     };
 
     let body = {
@@ -66,7 +62,7 @@ class Login extends Form {
 
         try {
             // Try to authenticate the user
-            let response = await authenticate(LOGIN_URL, this.state);
+            let response = await authenticate(HasuraAPI.Client.LOGIN_URL, this.state);
 
             // Get json
             let result = await response.json();

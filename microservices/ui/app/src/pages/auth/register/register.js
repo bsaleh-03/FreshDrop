@@ -13,7 +13,7 @@ import { Check, Error } from '@material-ui/icons';
 import { red, green } from "@material-ui/core/colors";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../../../components/form/form";
-import { BEARER_TOKEN, QUERY_URL, SIGNUP_URL } from "../../../constants";
+import HasuraAPI from "../../../hasuraAPI";
 import { formatError } from "../../../util/stringFormat";
 import Styles from './styles';
 import Logo from "../../../logo.svg";
@@ -22,11 +22,7 @@ import Logo from "../../../logo.svg";
 async function registerUser(url, data) {
     let requestOptions = {
         "method": "POST",
-        "headers": {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + BEARER_TOKEN,
-            "X-Hasura-Role": "admin"
-        }
+        "headers": HasuraAPI.Util.buildHeaders()
     };
 
     let body = {
@@ -49,11 +45,7 @@ async function registerUser(url, data) {
 async function setUserInfo(url, data) {
     let requestOptions = {
         "method": "POST",
-        "headers": {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + BEARER_TOKEN,
-            "X-Hasura-Role": "admin"
-        }
+        "headers": HasuraAPI.Util.buildHeaders()
     };
 
     let body = {
@@ -99,7 +91,7 @@ class Register extends Form {
     async onSubmit() {
         try {
             // Try to authenticate the user
-            let response = await registerUser(SIGNUP_URL, this.state);
+            let response = await registerUser(HasuraAPI.Client.REGISTER_URL, this.state);
 
             console.log(response);
 
@@ -116,7 +108,7 @@ class Register extends Form {
                 };
 
                 // Attempt to set extra user info
-                let queryResponse = await setUserInfo(QUERY_URL, userInfo);
+                let queryResponse = await setUserInfo(HasuraAPI.Query, userInfo);
 
                 console.log(queryResponse);
 

@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { CssBaseline } from "@material-ui/core";
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { AuthProvider } from 'react-check-auth';
-import { SESSION_URL } from "./constants";
+import HasuraAPI from './hasuraAPI';
 import Theme from "./theme/theme";
 
 // Routes
@@ -30,7 +30,7 @@ function reqOptions() {
 ReactDOM.render(
     <BrowserRouter>
         <MuiThemeProvider theme={Theme}>
-            <AuthProvider authUrl={SESSION_URL} reqOptions={reqOptions}>
+            <AuthProvider authUrl={HasuraAPI.Client.SESSION_INFO_URL} reqOptions={reqOptions}>
                 <CssBaseline />
 
                 <Switch>

@@ -14,7 +14,7 @@ import { green } from "@material-ui/core/colors";
 import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 import { Form } from "../../../components/form/form";
 import { formatError } from "../../../util/stringFormat";
-import { BEARER_TOKEN, RESET_PASSWORD_URL } from "../../../constants";
+import HasuraAPI from "../../../hasuraAPI";
 import Styles from './styles';
 import Logo from "../../../logo.svg";
 
@@ -60,11 +60,7 @@ class VerifyReset extends Form {
             // Build params for GET request
             let requestOptions = {
                 "method": "POST",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + BEARER_TOKEN,
-                    "X-Hasura-Role": "admin"
-                }
+                "headers": HasuraAPI.Util.buildHeaders()
             };
 
             requestOptions.body = JSON.stringify({
@@ -72,7 +68,7 @@ class VerifyReset extends Form {
                 password: password
             });
 
-            let response = await fetch(RESET_PASSWORD_URL, requestOptions);
+            let response = await fetch(HasuraAPI.Client.RESET_PASSWORD_URL, requestOptions);
             let result = await response.json();
 
             console.log(response);

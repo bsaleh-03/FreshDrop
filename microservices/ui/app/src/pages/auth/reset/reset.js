@@ -13,7 +13,7 @@ import { green } from "@material-ui/core/colors";
 import { Check } from "@material-ui/icons";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Form } from "../../../components/form/form";
-import { BEARER_TOKEN, FORGOT_PASSWORD_URL } from "../../../constants";
+import HasuraAPI from "../../../hasuraAPI";
 import { formatError } from "../../../util/stringFormat";
 import Styles from './styles';
 import Logo from "../../../logo.svg";
@@ -21,11 +21,7 @@ import Logo from "../../../logo.svg";
 async function resetPassword(url, data) {
     let requestOptions = {
         "method": "POST",
-        "headers": {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + BEARER_TOKEN,
-            "X-Hasura-Role": "admin"
-        }
+        "headers": HasuraAPI.Util.buildHeaders()
     };
 
     requestOptions.body = JSON.stringify({
@@ -63,7 +59,7 @@ class Reset extends Form {
 
         try {
             // Try to authenticate the user
-            let response = await resetPassword(FORGOT_PASSWORD_URL, this.state);
+            let response = await resetPassword(HasuraAPI.Client.FORGOT_PASSWORD_URL, this.state);
 
             // Get json
             let result = await response.json();

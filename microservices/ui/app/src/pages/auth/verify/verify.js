@@ -10,7 +10,8 @@ import {
 } from "@material-ui/core";
 import { Check, Error } from '@material-ui/icons';
 import { red, green } from "@material-ui/core/colors";
-import { appName, BEARER_TOKEN, VERIFY_URL } from "../../../constants";
+import { appName } from "../../../constants";
+import HasuraAPI from "../../../hasuraAPI";
 import { formatError } from "../../../util/stringFormat";
 import Styles from './styles';
 
@@ -42,15 +43,11 @@ class Verify extends Component {
             // Build params for GET request
             let requestOptions = {
                 "method": "GET",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + BEARER_TOKEN,
-                    "X-Hasura-Role": "admin"
-                }
+                "headers": HasuraAPI.Util.buildHeaders()
             };
 
             // Build verification url with token
-            let url = new URL(VERIFY_URL);
+            let url = new URL(HasuraAPI.Client.VERIFY_EMAIL_URL);
             url.search = new URLSearchParams({
                 token: token
             });

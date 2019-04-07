@@ -1,6 +1,7 @@
 export const appName = "XMart Delivery";
 
 export const clusterName = "charisma19";
+export const CLUSTER_NAME = "charisma19";
 
 export const GRAPHQL_URL = `https://data.${clusterName}.hasura-app.io/v1alpha1/graphql`;
 export const AUTH_URL = `https://auth.${clusterName}.hasura-app.io/v1`;

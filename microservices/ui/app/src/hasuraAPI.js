@@ -1,5 +1,5 @@
 const DEVMODE = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-const PROTOCOL = DEVMODE ? "https://" : "http://";
+const PROTOCOL = DEVMODE ? "https://" : "";
 
 const INTERNAL_DOMAIN = "hasura";
 const EXTERNAL_DOMAIN = "xmartdelivery.com";

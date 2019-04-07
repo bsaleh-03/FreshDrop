@@ -1,12 +1,7 @@
-const DEVMODE = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-const PROTOCOL = DEVMODE ? "https://" : "";
-
-const INTERNAL_DOMAIN = "hasura:80";
-const EXTERNAL_DOMAIN = "xmartdelivery.com";
+const DOMAIN = "xmartdelivery.com";
+const PROTOCOL = "https://";
 
 const getUrl = function (msName) {
-    let DOMAIN = DEVMODE ? EXTERNAL_DOMAIN : INTERNAL_DOMAIN;
-
     if (msName != null) {
         return PROTOCOL + `${msName}.` + DOMAIN;
     } else {
@@ -29,14 +24,11 @@ const BEARER_TOKEN = "0e09ec617d8cf75ecb20236c8e0fd3e75f79f97acca0eb2f";
 
 // Request Header Builder
 const buildHeaders = function () {
-    let headers = {
+    return {
         "Content-Type": "application/json",
-        "X-Hasura-Role": "admin"
+        "X-Hasura-Role": "admin",
+        "Authorization": `Bearer ${BEARER_TOKEN}`
     };
-
-    if (DEVMODE) {
-        headers["Authorization"] = `Bearer ${BEARER_TOKEN}`;
-    }
 };
 
 export default {

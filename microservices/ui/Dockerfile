@@ -1,6 +1,7 @@
 # Step 1: Pulls a simple ubuntu image with node 8 installed in it
 FROM node:8
 ENV PORT 8080
+ENV NODE_ENV production
 
 # Step 2: Install dependent software packages using apt-get
 RUN apt-get update && apt-get install -y build-essential python

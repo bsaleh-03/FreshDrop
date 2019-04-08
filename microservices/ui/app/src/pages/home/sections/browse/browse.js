@@ -15,6 +15,7 @@ import Client from "shopify-buy";
 import Async from "react-async";
 import Section from "../../../../layout/section/section";
 import ProductCard from "../../../../components/productCard/productCard";
+import { connect } from "react-redux";
 
 // Shopify Client
 const client = Client.buildClient ({
@@ -41,7 +42,9 @@ const getProducts = async () => {
 };
 
 const Browse = props => {
-    const { classes, width } = props;
+    const { classes, width, products } = props;
+
+    console.log(products);
 
     return (
         <Section>
@@ -142,8 +145,14 @@ const Browse = props => {
     );
 };
 
+function mapStateToProps(state) {
+    return {
+        products: state.products
+    };
+}
+
 Browse.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withWidth()(withStyles(Styles)(Browse));
+export default connect(mapStateToProps)(withWidth()(withStyles(Styles)(Browse)));

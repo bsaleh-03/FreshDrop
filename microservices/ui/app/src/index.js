@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { CssBaseline } from "@material-ui/core";
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { AuthProvider } from 'react-check-auth';
 import HasuraAPI from './hasuraAPI';
 import Theme from "./theme/theme";
+import Store from "./redux/store";
 
 // Routes
 import Login from "./pages/auth/login/login";
@@ -20,10 +22,7 @@ import Home from "./pages/home/home";
 function reqOptions() {
     return {
         method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("auth_token")}`
-        }
+        headers: HasuraAPI.Util.buildHeaders()
     };
 }
 
@@ -31,17 +30,19 @@ ReactDOM.render(
     <BrowserRouter>
         <MuiThemeProvider theme={Theme}>
             <AuthProvider authUrl={HasuraAPI.Client.SESSION_INFO_URL} reqOptions={reqOptions}>
-                <CssBaseline />
+                <Provider store={Store}>
+                    <CssBaseline />
 
-                <Switch>
-                    <Route exact path="/" component={Login} />
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/reset" component={Reset} />
-                    <Route exact path="/reset-password" component={VerifyReset} />
-                    <Route exact path="/verify-email" component={Verify} />
+                    <Switch>
+                        <Route exact path="/" component={Login} />
+                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/reset" component={Reset} />
+                        <Route exact path="/reset-password" component={VerifyReset} />
+                        <Route exact path="/verify-email" component={Verify} />
 
-                    <Route exact path="/home" component={Home} />
-                </Switch>
+                        <Route exact path="/home" component={Home} />
+                    </Switch>
+                </Provider>
             </AuthProvider>
         </MuiThemeProvider>
     </BrowserRouter>

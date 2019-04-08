@@ -29,6 +29,8 @@ import {
     ExpandMore
 } from "@material-ui/icons";
 import Styles from "./styles";
+import { connect } from "react-redux";
+import { fetchCollections } from "../../../redux/actions";
 
 class PrimaryDrawer extends Component {
     constructor(props) {
@@ -39,12 +41,24 @@ class PrimaryDrawer extends Component {
         };
     }
 
+    componentDidMount() {
+        this.props.dispatch(fetchCollections());
+    }
+
     toggleBrowse(state) {
         this.setState({ browseOpen: state });
     }
 
     render() {
-        const { classes, open } = this.props;
+        const { classes, open, collections } = this.props;
+
+        const collectionIcons = [
+            <LocalDining />,
+            <RoomService />,
+            <Waves />,
+            <Kitchen />,
+            <Fastfood />
+        ];
 
         return (
             <Drawer
@@ -60,7 +74,7 @@ class PrimaryDrawer extends Component {
                 <List>
                     <ListItem button selected onClick={() => this.toggleBrowse(!this.state.browseOpen)} classes={{selected: classes.listItemSelected}}>
                         <ListItemIcon><Fastfood /></ListItemIcon>
-                        <ListItemText primary="Browse Isles" />
+                        <ListItemText primary="Browse Aisles" />
                         {this.state.browseOpen ? <ExpandLess /> : <ExpandMore />}
                     </ListItem>
 
@@ -70,29 +84,21 @@ class PrimaryDrawer extends Component {
                                 <ListItemIcon>
                                     <AllInbox />
                                 </ListItemIcon>
-                                <ListItemText inset primary="All Isles" />
+                                <ListItemText inset primary="All Aisles" />
                             </ListItem>
 
-                            <ListItem button className={classes.nestedDrawerItem}>
-                                <ListItemIcon>
-                                    <LocalDining />
-                                </ListItemIcon>
-                                <ListItemText inset primary="Meat" />
-                            </ListItem>
-
-                            <ListItem button className={classes.nestedDrawerItem}>
-                                <ListItemIcon>
-                                    <RoomService />
-                                </ListItemIcon>
-                                <ListItemText inset primary="Poultry" />
-                            </ListItem>
-
-                            <ListItem button className={classes.nestedDrawerItem}>
-                                <ListItemIcon>
-                                    <Waves />
-                                </ListItemIcon>
-                                <ListItemText inset primary="Seafood" />
-                            </ListItem>
+                            {collections.loading === false && collections.items != null &&
+                                collections.items.map((collection, index) => {
+                                    return (
+                                        <ListItem button className={classes.nestedDrawerItem} key={index}>
+                                            <ListItemIcon>
+                                                {collectionIcons[index]}
+                                            </ListItemIcon>
+                                            <ListItemText inset primary={collection.title} />
+                                        </ListItem>
+                                    )
+                                })
+                            }
                         </List>
                     </Collapse>
 
@@ -152,9 +158,19 @@ class PrimaryDrawer extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        collections: {
+            items: state.collections.items,
+            loading: state.collections.loading,
+            error: state.collections.error
+        }
+    };
+};
+
 PrimaryDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired
 };
 
-export default withStyles(Styles)(PrimaryDrawer);
+export default connect(mapStateToProps)(withStyles(Styles)(PrimaryDrawer));

@@ -11,145 +11,136 @@ import {
     ExpandMore
 } from "@material-ui/icons";
 import Styles from "./styles";
-import Client from "shopify-buy";
-import Async from "react-async";
 import Section from "../../../../layout/section/section";
 import ProductCard from "../../../../components/productCard/productCard";
 import { connect } from "react-redux";
+import { fetchCollections, fetchProducts } from "../../../../redux/actions";
 
-// Shopify Client
-const client = Client.buildClient ({
-    domain: 'xmartdelivery.myshopify.com',
-    storefrontAccessToken: '46c755b162eb3627af1027e177da6e07'
-});
+class Browse extends React.Component {
 
-// Load Collections
-const getCollections = async () => {
-  try {
-      return await client.collection.fetchAllWithProducts();
-  } catch (e) {
-      console.log(e);
-  }
-};
-
-// Load Products
-const getProducts = async () => {
-    try {
-        return await client.product.fetchAll();
-    } catch (e) {
-        console.log(e);
+    componentDidMount() {
+        // Fetch products
+        this.props.dispatch(fetchCollections());
+        this.props.dispatch(fetchProducts());
     }
-};
 
-const Browse = props => {
-    const { classes, width, products } = props;
+    render() {
+        const {
+            classes,
+            width,
+            collections,
+            products
+        } = this.props;
 
-    console.log(products);
+        return (
+            <Section>
+                {products.loading &&
+                <p>Loading...</p>
+                }
 
-    return (
-        <Section>
-            <Async promiseFn={getProducts}>
-                <Async.Loading>
-                    <p>Loading...</p>
-                </Async.Loading>
-
-                <Async.Resolved>
-                    {data => (
-                        <Grid container spacing={24} className={classes.collectionWrapper}>
-                            <Grid item xs={12}>
-                                <Grid container justify="space-between">
-                                    <Grid item>
-                                        <Typography variant="h4">All Products</Typography>
-                                    </Grid>
-
-                                    <Grid item>
-                                        <IconButton color="inherit">
-                                            <ExpandMore />
-                                        </IconButton>
-                                    </Grid>
-                                </Grid>
+                {products.loading === false && products.items != null &&
+                <Grid container spacing={24} className={classes.collectionWrapper}>
+                    <Grid item xs={12}>
+                        <Grid container justify="space-between">
+                            <Grid item>
+                                <Typography variant="h4">All Products</Typography>
                             </Grid>
 
-                            {data.map((product, index) => {
-                                const productImage = product.images[0].src;
-                                const productTitle = product.title;
-                                const productPrice = product.variants[0].price;
-
-                                return (
-                                    <ProductCard
-                                        image={productImage}
-                                        title={productTitle}
-                                        price={productPrice}
-                                        width={width}
-                                        key={index}
-                                    />
-                                );
-                            })}
-                        </Grid>
-                    )}
-                </Async.Resolved>
-
-                <Async.Rejected>
-                    {error => `Something went wrong ${error}`}
-                </Async.Rejected>
-            </Async>
-
-            <Async promiseFn={getCollections}>
-                <Async.Loading>
-                    <p>Loading...</p>
-                </Async.Loading>
-
-                <Async.Resolved>
-                    {data => data.map((collection, index) => (
-                        <Grid container spacing={24} className={classes.collectionWrapper} key={index}>
-                            <Grid item xs={12}>
-                                <Grid container justify="space-between">
-                                    <Grid item>
-                                        <Typography variant="h4">{collection.title}</Typography>
-                                    </Grid>
-
-                                    {collection.products.length > 4 &&
-                                        <Grid item>
-                                            <IconButton color="inherit">
-                                                <ExpandMore />
-                                            </IconButton>
-                                        </Grid>
-                                    }
-                                </Grid>
+                            <Grid item>
+                                <IconButton color="inherit">
+                                    <ExpandMore />
+                                </IconButton>
                             </Grid>
-
-                            {collection.products.map((product, index) => {
-                                const productImage = product.images[0].src;
-                                const productTitle = product.title;
-                                const productPrice = product.variants[0].price;
-
-                                return (
-                                    <ProductCard
-                                        image={productImage}
-                                        title={productTitle}
-                                        price={productPrice}
-                                        width={width}
-                                        key={index}
-                                    />
-                                );
-                            })}
                         </Grid>
-                    ))}
-                </Async.Resolved>
+                    </Grid>
 
-                <Async.Rejected>
-                    {error => `Something went wrong ${error}`}
-                </Async.Rejected>
-            </Async>
-        </Section>
-    );
-};
+                    {products.items.map((product, index) => {
+                        const productImage = product.images[0].src;
+                        const productTitle = product.title;
+                        const productPrice = product.variants[0].price;
 
-function mapStateToProps(state) {
-    return {
-        products: state.products
-    };
+                        return (
+                            <ProductCard
+                                image={productImage}
+                                title={productTitle}
+                                price={productPrice}
+                                width={width}
+                                key={index}
+                            />
+                        );
+                    })}
+                </Grid>
+                }
+
+                {products.loading === false && products.error != null &&
+                <p>There was an error retrieving the products.</p>
+                }
+
+                {collections.loading &&
+                <p>Loading...</p>
+                }
+
+                {collections.loading === false && collections.items != null &&
+                collections.items.map((collection, index) => (
+                    <Grid container spacing={24} className={classes.collectionWrapper} key={index}>
+                        <Grid item xs={12}>
+                            <Grid container justify="space-between">
+                                <Grid item>
+                                    <Typography variant="h4">{collection.title}</Typography>
+                                </Grid>
+
+                                {collection.products.length > 4 &&
+                                <Grid item>
+                                    <IconButton color="inherit">
+                                        <ExpandMore />
+                                    </IconButton>
+                                </Grid>
+                                }
+                            </Grid>
+                        </Grid>
+
+                        {collection.products.map((product, index) => {
+                            const productImage = product.images[0].src;
+                            const productTitle = product.title;
+                            const productPrice = product.variants[0].price;
+
+                            return (
+                                <ProductCard
+                                    image={productImage}
+                                    title={productTitle}
+                                    price={productPrice}
+                                    width={width}
+                                    key={index}
+                                />
+                            );
+                        })}
+
+                    </Grid>
+                ))
+                }
+
+                {collections.loading === false && collections.error != null &&
+                <p>There was an error retrieving the collections.</p>
+                }
+            </Section>
+        );
+    }
 }
+
+const mapStateToProps = state => {
+    return {
+        collections: {
+            items: state.collections.items,
+            loading: state.collections.loading,
+            error: state.collections.error
+        },
+        products: {
+            items: state.products.items,
+            loading: state.products.loading,
+            error: state.products.error
+        },
+    };
+};
 
 Browse.propTypes = {
     classes: PropTypes.object.isRequired

@@ -7,7 +7,9 @@ import {
     FETCH_COLLECTIONS_BEGIN,
     FETCH_COLLECTIONS_SUCCESS,
     FETCH_COLLECTIONS_FAILURE,
-    COLLECTION_SELECTED
+    COLLECTION_SELECTED,
+
+    ADD_PRODUCT_TO_CART
 } from "../actions";
 
 // Collections Reducer
@@ -91,7 +93,27 @@ const productsReducer = function (state = initialProductsState, action) {
     }
 };
 
+// Shopping Cart Reducers
+const initialShoppingCartState = {
+    items: []
+};
+
+const shoppingCartReducer = function (state = initialShoppingCartState, action) {
+    switch (action.type) {
+        case ADD_PRODUCT_TO_CART: {
+            return {
+                ...state,
+                items: [...state.items, action.payload.product]
+            }
+        }
+        default: {
+            return initialShoppingCartState;
+        }
+    }
+};
+
 export default combineReducers({
     collections: collectionsReducer,
-    products: productsReducer
+    products: productsReducer,
+    shoppingCart: shoppingCartReducer
 });

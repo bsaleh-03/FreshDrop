@@ -59,6 +59,7 @@ class Browse extends React.Component {
                         const productImage = product.images[0].src;
                         const productTitle = product.title;
                         const productPrice = product.variants[0].price;
+                        const productVariantId = product.variants[0].id;
 
                         return (
                             <ProductCard
@@ -67,6 +68,7 @@ class Browse extends React.Component {
                                 price={productPrice}
                                 width={width}
                                 key={index}
+                                variant={productVariantId}
                             />
                         );
                     })}
@@ -108,6 +110,7 @@ class Browse extends React.Component {
                             const productImage = product.images[0].src;
                             const productTitle = product.title;
                             const productPrice = product.variants[0].price;
+                            const productVariantId = product.variants[0].id;
 
                             return (
                                 <ProductCard
@@ -116,6 +119,7 @@ class Browse extends React.Component {
                                     price={productPrice}
                                     width={width}
                                     key={index}
+                                    variant={productVariantId}
                                 />
                             );
                         })}

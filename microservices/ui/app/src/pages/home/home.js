@@ -2,7 +2,6 @@ import React from 'react';
 import AppNavigator from "../../layout/appNavigator/appNavigator";
 import PrimaryHero from "./sections/heroVideo/heroVideo";
 import Browse from "./sections/browse/browse";
-import Footer from "../../components/footer/footer";
 
 const Home = props => {
     return (
@@ -10,8 +9,6 @@ const Home = props => {
             <PrimaryHero />
 
             <Browse />
-
-            <Footer />
         </AppNavigator>
     );
 };

@@ -8,6 +8,7 @@ import {
 import Styles from './styles';
 import AppBar from "../../components/nav/appbar/appbar";
 import Drawer from "../../components/nav/drawer/drawer";
+import Footer from "../../components/footer/footer";
 import {isWidthDown} from "@material-ui/core/withWidth";
 
 class AppNavigator extends Component {
@@ -45,10 +46,14 @@ class AppNavigator extends Component {
 
                 <Drawer open={drawerOpen} />
 
-                <Grid container className={classes.gridContainer} style={contentStyle}>
+                <Grid container className={classes.mainSection} style={contentStyle}>
                     <div className={classes.toolbar} />
 
                     { children }
+                </Grid>
+
+                <Grid container className={classes.gridContainer} style={contentStyle}>
+                    <Footer />
                 </Grid>
             </div>
         );

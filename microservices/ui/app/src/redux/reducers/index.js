@@ -6,14 +6,16 @@ import {
 
     FETCH_COLLECTIONS_BEGIN,
     FETCH_COLLECTIONS_SUCCESS,
-    FETCH_COLLECTIONS_FAILURE
+    FETCH_COLLECTIONS_FAILURE,
+    COLLECTION_SELECTED
 } from "../actions";
 
 // Collections Reducer
 const initialCollectionsState = {
     loading: false,
     items: [],
-    error: null
+    error: null,
+    selectedCollection: null
 };
 
 const collectionsReducer = function (state = initialCollectionsState, action) {
@@ -38,6 +40,12 @@ const collectionsReducer = function (state = initialCollectionsState, action) {
                 loading: false,
                 items: [],
                 error: action.payload.error
+            }
+        }
+        case COLLECTION_SELECTED: {
+            return {
+                ...state,
+                selectedCollection: action.payload
             }
         }
         default: {

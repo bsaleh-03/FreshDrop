@@ -24,16 +24,17 @@ class Browse extends React.Component {
         this.props.dispatch(fetchProducts());
     }
 
-    render() {
+    showCollection(collectionId) {
         const {
             classes,
             width,
             collections,
-            products
+            products,
+            selectedCollection
         } = this.props;
 
-        return (
-            <Section>
+        const allProducts = (
+            <React.Fragment>
                 {products.loading &&
                 <p>Loading...</p>
                 }
@@ -41,9 +42,9 @@ class Browse extends React.Component {
                 {products.loading === false && products.items != null &&
                 <Grid container spacing={24} className={classes.collectionWrapper}>
                     <Grid item xs={12}>
-                        <Grid container justify="space-between">
+                        <Grid container justify="space-between" alignItems="center">
                             <Grid item>
-                                <Typography variant="h4">All Products</Typography>
+                                <Typography variant="h5">All Products</Typography>
                             </Grid>
 
                             <Grid item>
@@ -75,18 +76,22 @@ class Browse extends React.Component {
                 {products.loading === false && products.error != null &&
                 <p>There was an error retrieving the products.</p>
                 }
+            </React.Fragment>
+        );
 
+        const collection = (
+            <React.Fragment>
                 {collections.loading &&
                 <p>Loading...</p>
                 }
 
                 {collections.loading === false && collections.items != null &&
-                collections.items.map((collection, index) => (
+                collections.items.filter(collection => collection.id === selectedCollection).map((collection, index) => (
                     <Grid container spacing={24} className={classes.collectionWrapper} key={index}>
                         <Grid item xs={12}>
-                            <Grid container justify="space-between">
+                            <Grid container justify="space-between" alignItems="center">
                                 <Grid item>
-                                    <Typography variant="h4">{collection.title}</Typography>
+                                    <Typography variant="h5">{collection.title}</Typography>
                                 </Grid>
 
                                 {collection.products.length > 4 &&
@@ -122,6 +127,22 @@ class Browse extends React.Component {
                 {collections.loading === false && collections.error != null &&
                 <p>There was an error retrieving the collections.</p>
                 }
+            </React.Fragment>
+        );
+
+        if (selectedCollection == null) {
+            return allProducts;
+        } else {
+            return collection;
+        }
+    }
+
+    render() {
+        const { selectedCollection } = this.props;
+
+        return (
+            <Section>
+                { this.showCollection(selectedCollection) }
             </Section>
         );
     }
@@ -134,6 +155,7 @@ const mapStateToProps = state => {
             loading: state.collections.loading,
             error: state.collections.error
         },
+        selectedCollection: state.collections.selectedCollection,
         products: {
             items: state.products.items,
             loading: state.products.loading,

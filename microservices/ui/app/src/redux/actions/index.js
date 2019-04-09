@@ -51,6 +51,8 @@ export const FETCH_COLLECTIONS_BEGIN   = 'FETCH_COLLECTIONS_BEGIN';
 export const FETCH_COLLECTIONS_SUCCESS = 'FETCH_COLLECTIONS_SUCCESS';
 export const FETCH_COLLECTIONS_FAILURE = 'FETCH_COLLECTIONS_FAILURE';
 
+export const COLLECTION_SELECTED = 'COLLECTION_SELECTED';
+
 export const fetchCollectionsBegin = () => ({
     type: FETCH_COLLECTIONS_BEGIN
 });
@@ -63,6 +65,11 @@ export const fetchCollectionsSuccess = (collections) => ({
 export const fetchCollectionsFailure = (error) => ({
     type: FETCH_COLLECTIONS_FAILURE,
     payload: { error }
+});
+
+export const selectCollection = (collectionId) => ({
+   type: COLLECTION_SELECTED,
+   payload: collectionId
 });
 
 export const fetchCollections = () => {

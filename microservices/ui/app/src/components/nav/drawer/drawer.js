@@ -30,7 +30,8 @@ import {
 } from "@material-ui/icons";
 import Styles from "./styles";
 import { connect } from "react-redux";
-import { fetchCollections } from "../../../redux/actions";
+import { bindActionCreators } from "redux";
+import {fetchCollections, selectCollection} from "../../../redux/actions";
 
 class PrimaryDrawer extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class PrimaryDrawer extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchCollections());
+        this.props.fetchCollections();
     }
 
     toggleBrowse(state) {
@@ -80,7 +81,7 @@ class PrimaryDrawer extends Component {
 
                     <Collapse in={this.state.browseOpen} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <ListItem button className={classes.nestedDrawerItem}>
+                            <ListItem button className={classes.nestedDrawerItem} onClick={() => this.props.selectCollection(null)}>
                                 <ListItemIcon>
                                     <AllInbox />
                                 </ListItemIcon>
@@ -90,7 +91,7 @@ class PrimaryDrawer extends Component {
                             {collections.loading === false && collections.items != null &&
                                 collections.items.map((collection, index) => {
                                     return (
-                                        <ListItem button className={classes.nestedDrawerItem} key={index}>
+                                        <ListItem button className={classes.nestedDrawerItem} key={index} onClick={() => this.props.selectCollection(collection.id)}>
                                             <ListItemIcon>
                                                 {collectionIcons[index]}
                                             </ListItemIcon>
@@ -168,9 +169,16 @@ const mapStateToProps = state => {
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({
+        selectCollection: selectCollection,
+        fetchCollections: fetchCollections
+    }, dispatch);
+};
+
 PrimaryDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired
 };
 
-export default connect(mapStateToProps)(withStyles(Styles)(PrimaryDrawer));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(Styles)(PrimaryDrawer));

@@ -24,7 +24,7 @@ class Browse extends React.Component {
         this.props.dispatch(fetchProducts());
     }
 
-    showCollection(collectionId) {
+    showCollection() {
         const {
             classes,
             width,
@@ -138,11 +138,9 @@ class Browse extends React.Component {
     }
 
     render() {
-        const { selectedCollection } = this.props;
-
         return (
             <Section>
-                { this.showCollection(selectedCollection) }
+                { this.showCollection() }
             </Section>
         );
     }

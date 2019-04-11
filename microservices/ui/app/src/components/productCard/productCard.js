@@ -10,27 +10,29 @@ import {
 } from "@material-ui/core";
 import Styles from "./styles";
 import ResponsiveFab from "../buttons/responsiveFab/responsiveFab";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { addProductToCart } from "../../redux/actions";
+import {bindActionCreators} from "redux";
+import {addProductToCart} from "../../redux/actions";
+import {connect} from "react-redux";
 
 const ProductCard = props => {
-    const { image, title, price, variant, width, classes, products } = props;
+    const { width, classes, product } = props;
 
-    const product = products.filter(item => item.variants[0].id === variant)[0].id;
+    const productImage = product.images[0].src;
+    const productTitle = product.title;
+    const productPrice = product.variants[0].price;
 
     return (
         <Grid item xs={12} sm={6} md={4} lg={3}>
             <Card classes={{root: classes.cardRoot}}>
                 <CardMedia
                     className={classes.media}
-                    image={image.toString()}
-                    title={title}
+                    image={productImage.toString()}
+                    title={productTitle}
                 />
                 <Divider />
                 <div className={classes.productInfo}>
-                    <Typography variant="h6" noWrap gutterBottom className={classes.productTitle}>{title}</Typography>
-                    <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>${price}</Typography>
+                    <Typography variant="h6" noWrap gutterBottom className={classes.productTitle}>{productTitle}</Typography>
+                    <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>${productPrice}</Typography>
 
                     <ResponsiveFab
                         variant="fab"
@@ -46,12 +48,6 @@ const ProductCard = props => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        products: state.products.items
-    }
-};
-
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({
         addProductToCart: addProductToCart
@@ -63,4 +59,4 @@ ProductCard.propTypes = {
     width: PropTypes.string.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(Styles)(ProductCard));
+export default connect(null, mapDispatchToProps)(withStyles(Styles)(ProductCard));

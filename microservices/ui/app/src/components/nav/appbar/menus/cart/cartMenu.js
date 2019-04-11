@@ -10,7 +10,7 @@ import {
 import {Payment, ShoppingCart} from "@material-ui/icons";
 import Theme from "../../../../../theme/theme";
 import Styles from "./styles";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 class CartMenu extends Component {
     constructor(props) {
@@ -38,23 +38,21 @@ class CartMenu extends Component {
         return formatter.format(total);
     };
 
-    render() {
-        const { classes, cart, products } = this.props;
-        const { shoppingCartAnchor } = this.state;
-
+    calculateTotal = (shoppingCart) => {
         let total = 0.00;
 
-        if (products !== [] && cart !== []) {
-            cart.items.forEach(productId => {
-                let item = products.filter(product => product.id === productId)[0];
+        shoppingCart.items.forEach(cartItem => {
+            let price = cartItem.variants[0].price;
 
-                let price = item.variants[0].price;
+            total += parseInt(price);
+        });
 
-                total += parseInt(price);
-            });
+        return this.formatTotal(total);
+    };
 
-            console.log(cart.items);
-        }
+    render() {
+        const { classes, shoppingCart } = this.props;
+        const { shoppingCartAnchor } = this.state;
 
         return (
             <React.Fragment>
@@ -68,7 +66,7 @@ class CartMenu extends Component {
 
                     <div className={classes.cartCounter}>
                         <Typography variant="caption" align="center" style={{fontWeight: "bold", color: Theme.palette.primary.dark}}>
-                            { cart.items.length }
+                            { shoppingCart.items.length }
                         </Typography>
                     </div>
                 </IconButton>
@@ -88,19 +86,19 @@ class CartMenu extends Component {
 
                         <Divider className={classes.cartItemDivider} />
 
-                        {cart.items.map((cartItem, index) => {
-                            const product = products.filter(product => product.id === cartItem)[0];
-
+                        {shoppingCart.items.map((cartItem, index) => {
                             return (
                                 <React.Fragment key={index}>
                                     <div className={classes.cartItemContainer}>
-                                        <div className={classes.itemImage} style={{backgroundImage: `url(${product.images[0].src})`}} />
+                                        <div className={classes.itemImageContainer}>
+                                            <div className={classes.itemImage} style={{backgroundImage: `url(${cartItem.images[0].src})`}} />
+                                        </div>
 
                                         <div className={classes.cartItemInfo}>
-                                            <Typography variant="h6" gutterBottom>{product.title}</Typography>
-                                            <Typography variant="subtitle1" gutterBottom>{product.description}</Typography>
+                                            <Typography variant="h6" gutterBottom>{cartItem.title}</Typography>
+                                            <Typography variant="subtitle1" gutterBottom>{cartItem.description}</Typography>
                                             <div className={classes.cartItemFooter}>
-                                                <Typography variant="subtitle1" style={{fontWeight: "bold", alignSelf: "center", flexGrow: 1, flexDirection: "row"}}>{product.variants[0].price}</Typography>
+                                                <Typography variant="subtitle1" style={{fontWeight: "bold", alignSelf: "center", flexGrow: 1, flexDirection: "row"}}>{cartItem.variants[0].price}</Typography>
                                                 <Button variant="text" color="secondary">Remove</Button>
                                             </div>
                                         </div>
@@ -111,16 +109,16 @@ class CartMenu extends Component {
                             )
                         })}
 
-                        {cart.items.length !== 0 &&
+                        {shoppingCart.items.length !== 0 &&
                             <React.Fragment>
                                 <div className={classes.cartPricing}>
                                     <Typography variant="subtitle1" gutterBottom style={{flexGrow: 1}}>Subtotal:</Typography>
-                                    <Typography variant="subtitle1" gutterBottom>{ this.formatTotal(total) }</Typography>
+                                    <Typography variant="subtitle1" gutterBottom>{ this.calculateTotal(shoppingCart) }</Typography>
                                 </div>
 
                                 <div className={classes.cartPricing}>
                                     <Typography variant="subtitle1" gutterBottom style={{flexGrow: 1}}>Total:</Typography>
-                                    <Typography variant="subtitle1" gutterBottom>{ this.formatTotal(total) }</Typography>
+                                    <Typography variant="subtitle1" gutterBottom>{ this.calculateTotal(shoppingCart) }</Typography>
                                 </div>
 
                                 <div className={classes.cartActions}>
@@ -130,11 +128,11 @@ class CartMenu extends Component {
                             </React.Fragment>
                         }
 
-                        {cart.count === 0 &&
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                                <ShoppingCart color="action" fontSize="large" style={{marginBottom: 10}} />
-                                <Typography variant="subtitle2">No Items</Typography>
-                            </div>
+                        {shoppingCart.items.length === 0 &&
+                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                            <ShoppingCart color="action" fontSize="large" style={{marginBottom: 10}} />
+                            <Typography variant="subtitle2">No Items</Typography>
+                        </div>
                         }
                     </div>
                 </Menu>
@@ -143,14 +141,9 @@ class CartMenu extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        products: state.products.items,
-        cart: {
-            items: state.shoppingCart.items
-        }
-    }
-};
+const mapStateToProps = state => ({
+    shoppingCart: state.shoppingCart
+});
 
 CartMenu.propTypes = {};
 

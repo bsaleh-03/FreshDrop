@@ -26,11 +26,14 @@ function reqOptions() {
     };
 }
 
+let store = Store;
+window.store = store;
+
 ReactDOM.render(
     <BrowserRouter>
         <MuiThemeProvider theme={Theme}>
             <AuthProvider authUrl={HasuraAPI.Client.SESSION_INFO_URL} reqOptions={reqOptions}>
-                <Provider store={Store}>
+                <Provider store={store}>
                     <CssBaseline />
 
                     <Switch>

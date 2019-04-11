@@ -2,8 +2,7 @@ export const Styles = theme => ({
     heroVideo: {
         position: 'relative',
         overflow: 'hidden',
-        height: 'auto',
-        minHeight: '325px',
+        height: '325px',
         width: '100%'
     },
     heroFilter: {

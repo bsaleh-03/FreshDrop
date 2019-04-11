@@ -7,54 +7,10 @@ import {
     FETCH_COLLECTIONS_BEGIN,
     FETCH_COLLECTIONS_SUCCESS,
     FETCH_COLLECTIONS_FAILURE,
-    COLLECTION_SELECTED,
+    SELECT_COLLECTION,
 
     ADD_PRODUCT_TO_CART
 } from "../actions";
-
-// Collections Reducer
-const initialCollectionsState = {
-    loading: false,
-    items: [],
-    error: null,
-    selected: null
-};
-
-const collectionsReducer = function (state = initialCollectionsState, action) {
-    switch (action.type) {
-        case FETCH_COLLECTIONS_BEGIN: {
-            return {
-                ...state,
-                loading: true,
-                error: null
-            };
-        }
-        case FETCH_COLLECTIONS_SUCCESS: {
-            return {
-                ...state,
-                loading: false,
-                items: action.payload.collections
-            }
-        }
-        case FETCH_COLLECTIONS_FAILURE: {
-            return {
-                ...state,
-                loading: false,
-                items: [],
-                error: action.payload.error
-            }
-        }
-        case COLLECTION_SELECTED: {
-            return {
-                ...state,
-                selected: action.payload.collectionId
-            }
-        }
-        default: {
-            return state;
-        }
-    }
-};
 
 // Products Reducer
 const initialProductsState = {
@@ -93,6 +49,50 @@ const productsReducer = function (state = initialProductsState, action) {
     }
 };
 
+// Collections Reducer
+const initialCollectionsState = {
+    loading: false,
+    items: [],
+    error: null,
+    selected: null
+};
+
+const collectionsReducer = function (state = initialCollectionsState, action) {
+    switch (action.type) {
+        case FETCH_COLLECTIONS_BEGIN: {
+            return {
+                ...state,
+                loading: true,
+                error: null
+            };
+        }
+        case FETCH_COLLECTIONS_SUCCESS: {
+            return {
+                ...state,
+                loading: false,
+                items: action.payload.collections
+            }
+        }
+        case FETCH_COLLECTIONS_FAILURE: {
+            return {
+                ...state,
+                loading: false,
+                items: [],
+                error: action.payload.error
+            }
+        }
+        case SELECT_COLLECTION: {
+            return {
+                ...state,
+                selected: action.payload.collection
+            }
+        }
+        default: {
+            return state;
+        }
+    }
+};
+
 // Shopping Cart Reducers
 const initialShoppingCartState = {
     items: []
@@ -103,17 +103,17 @@ const shoppingCartReducer = function (state = initialShoppingCartState, action) 
         case ADD_PRODUCT_TO_CART: {
             return {
                 ...state,
-                items: [...state.items, action.payload.productId]
+                items: [...state.items, action.payload.product]
             }
         }
         default: {
-            return initialShoppingCartState;
+            return state;
         }
     }
 };
 
 export default combineReducers({
-    collections: collectionsReducer,
     products: productsReducer,
+    collections: collectionsReducer,
     shoppingCart: shoppingCartReducer
 });

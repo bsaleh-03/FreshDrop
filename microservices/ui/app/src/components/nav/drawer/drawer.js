@@ -29,9 +29,9 @@ import {
     ExpandMore
 } from "@material-ui/icons";
 import Styles from "./styles";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import {connect} from "react-redux";
 import {selectCollection} from "../../../redux/actions";
+import {bindActionCreators} from "redux";
 
 class PrimaryDrawer extends Component {
     constructor(props) {
@@ -85,16 +85,16 @@ class PrimaryDrawer extends Component {
                             </ListItem>
 
                             {collections.loading === false && collections.items != null &&
-                                collections.items.map((collection, index) => {
-                                    return (
-                                        <ListItem button className={classes.nestedDrawerItem} key={index} onClick={() => this.props.selectCollection(collection.id)}>
-                                            <ListItemIcon>
-                                                {collectionIcons[index]}
-                                            </ListItemIcon>
-                                            <ListItemText inset primary={collection.title} />
-                                        </ListItem>
-                                    )
-                                })
+                            collections.items.map((collection, index) => {
+                                return (
+                                    <ListItem button className={classes.nestedDrawerItem} key={index} onClick={() => this.props.selectCollection(collection)}>
+                                        <ListItemIcon>
+                                            {collectionIcons[index]}
+                                        </ListItemIcon>
+                                        <ListItemText inset primary={collection.title} />
+                                    </ListItem>
+                                )
+                            })
                             }
                         </List>
                     </Collapse>
@@ -155,20 +155,14 @@ class PrimaryDrawer extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        collections: {
-            items: state.collections.items,
-            loading: state.collections.loading,
-            error: state.collections.error
-        }
-    };
-};
+const mapStateToProps = state => ({
+    collections: state.collections
+});
 
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({
         selectCollection: selectCollection
-    }, dispatch);
+    }, dispatch)
 };
 
 PrimaryDrawer.propTypes = {

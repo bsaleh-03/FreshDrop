@@ -30,6 +30,11 @@ export const Styles = theme => ({
     },
     cartItemContainer: {
         display: "flex",
+        flexDirection: "row"
+    },
+    cartItemInfo: {
+        display: "flex",
+        flexDirection: "column"
     },
     cartItemDivider: {
         marginTop: theme.spacing.unit * 2,
@@ -51,11 +56,15 @@ export const Styles = theme => ({
     cartPricing: {
         display: "flex",
     },
-    itemImage: {
+    itemImageContainer: {
         width: 64,
         height: 64,
         marginRight: theme.spacing.unit * 2,
-        background: 'no-repeat center center',
+    },
+    itemImage: {
+        width: 64,
+        height: 64,
+        background: 'no-repeat center',
         backgroundSize: 'contain',
         backgroundColor: '#f7f7f7'
     },

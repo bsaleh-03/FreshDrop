@@ -51,7 +51,7 @@ export const FETCH_COLLECTIONS_BEGIN   = 'FETCH_COLLECTIONS_BEGIN';
 export const FETCH_COLLECTIONS_SUCCESS = 'FETCH_COLLECTIONS_SUCCESS';
 export const FETCH_COLLECTIONS_FAILURE = 'FETCH_COLLECTIONS_FAILURE';
 
-export const COLLECTION_SELECTED = 'COLLECTION_SELECTED';
+export const SELECT_COLLECTION = 'SELECT_COLLECTION';
 
 export const fetchCollectionsBegin = () => ({
     type: FETCH_COLLECTIONS_BEGIN
@@ -67,9 +67,9 @@ export const fetchCollectionsFailure = (error) => ({
     payload: { error }
 });
 
-export const selectCollection = (collectionId) => ({
-   type: COLLECTION_SELECTED,
-   payload: { collectionId }
+export const selectCollection = (collection) => ({
+   type: SELECT_COLLECTION,
+   payload: { collection }
 });
 
 export const fetchCollections = () => {
@@ -96,7 +96,7 @@ export const fetchCollections = () => {
 // Shopping Cart Actions
 export const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
 
-export const addProductToCart = (productId) => ({
+export const addProductToCart = (product) => ({
     type: ADD_PRODUCT_TO_CART,
-    payload: { productId }
+    payload: { product }
 });

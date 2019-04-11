@@ -31,7 +31,7 @@ import {
 import Styles from "./styles";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {fetchCollections, selectCollection} from "../../../redux/actions";
+import {selectCollection} from "../../../redux/actions";
 
 class PrimaryDrawer extends Component {
     constructor(props) {
@@ -40,10 +40,6 @@ class PrimaryDrawer extends Component {
         this.state = {
             browseOpen: true,
         };
-    }
-
-    componentDidMount() {
-        this.props.fetchCollections();
     }
 
     toggleBrowse(state) {
@@ -171,8 +167,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({
-        selectCollection: selectCollection,
-        fetchCollections: fetchCollections
+        selectCollection: selectCollection
     }, dispatch);
 };
 

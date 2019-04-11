@@ -17,7 +17,7 @@ import { addProductToCart } from "../../redux/actions";
 const ProductCard = props => {
     const { image, title, price, variant, width, classes, products } = props;
 
-    const product = products.filter(item => item.variants[0].id === variant)[0];
+    const product = products.filter(item => item.variants[0].id === variant)[0].id;
 
     return (
         <Grid item xs={12} sm={6} md={4} lg={3}>

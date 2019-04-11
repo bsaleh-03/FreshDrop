@@ -30,7 +30,6 @@ class Browse extends React.Component {
             width,
             collections,
             products,
-            selectedCollection
         } = this.props;
 
         const allProducts = (
@@ -88,7 +87,7 @@ class Browse extends React.Component {
                 }
 
                 {collections.loading === false && collections.items != null &&
-                collections.items.filter(collection => collection.id === selectedCollection).map((collection, index) => (
+                collections.items.filter(collection => collection.id === collections.selected).map((collection, index) => (
                     <Grid container spacing={24} className={classes.collectionWrapper} key={index}>
                         <Grid item xs={12}>
                             <Grid container justify="space-between" alignItems="center">
@@ -134,7 +133,7 @@ class Browse extends React.Component {
             </React.Fragment>
         );
 
-        if (selectedCollection == null) {
+        if (collections.selected == null) {
             return allProducts;
         } else {
             return collection;
@@ -155,9 +154,9 @@ const mapStateToProps = state => {
         collections: {
             items: state.collections.items,
             loading: state.collections.loading,
-            error: state.collections.error
+            error: state.collections.error,
+            selected: state.collections.selected
         },
-        selectedCollection: state.collections.selectedCollection,
         products: {
             items: state.products.items,
             loading: state.products.loading,

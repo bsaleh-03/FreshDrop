@@ -69,7 +69,7 @@ export const fetchCollectionsFailure = (error) => ({
 
 export const selectCollection = (collectionId) => ({
    type: COLLECTION_SELECTED,
-   payload: collectionId
+   payload: { collectionId }
 });
 
 export const fetchCollections = () => {
@@ -96,7 +96,7 @@ export const fetchCollections = () => {
 // Shopping Cart Actions
 export const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
 
-export const addProductToCart = (product) => ({
+export const addProductToCart = (productId) => ({
     type: ADD_PRODUCT_TO_CART,
-    payload: { product }
+    payload: { productId }
 });

@@ -17,7 +17,7 @@ const initialCollectionsState = {
     loading: false,
     items: [],
     error: null,
-    selectedCollection: null
+    selected: null
 };
 
 const collectionsReducer = function (state = initialCollectionsState, action) {
@@ -47,7 +47,7 @@ const collectionsReducer = function (state = initialCollectionsState, action) {
         case COLLECTION_SELECTED: {
             return {
                 ...state,
-                selectedCollection: action.payload
+                selected: action.payload.collectionId
             }
         }
         default: {
@@ -103,7 +103,7 @@ const shoppingCartReducer = function (state = initialShoppingCartState, action) 
         case ADD_PRODUCT_TO_CART: {
             return {
                 ...state,
-                items: [...state.items, action.payload.product]
+                items: [...state.items, action.payload.productId]
             }
         }
         default: {

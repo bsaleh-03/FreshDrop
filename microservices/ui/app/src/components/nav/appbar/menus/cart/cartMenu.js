@@ -39,16 +39,22 @@ class CartMenu extends Component {
     };
 
     render() {
-        const { classes, cart } = this.props;
+        const { classes, cart, products } = this.props;
         const { shoppingCartAnchor } = this.state;
 
         let total = 0.00;
 
-        cart.items.forEach(product => {
-            let price = product.variants[0].price;
+        if (products !== [] && cart !== []) {
+            cart.items.forEach(productId => {
+                let item = products.filter(product => product.id === productId)[0];
 
-            total += price;
-        });
+                let price = item.variants[0].price;
+
+                total += parseInt(price);
+            });
+
+            console.log(cart.items);
+        }
 
         return (
             <React.Fragment>
@@ -62,7 +68,7 @@ class CartMenu extends Component {
 
                     <div className={classes.cartCounter}>
                         <Typography variant="caption" align="center" style={{fontWeight: "bold", color: Theme.palette.primary.dark}}>
-                            { cart.count }
+                            { cart.items.length }
                         </Typography>
                     </div>
                 </IconButton>
@@ -83,16 +89,18 @@ class CartMenu extends Component {
                         <Divider className={classes.cartItemDivider} />
 
                         {cart.items.map((cartItem, index) => {
+                            const product = products.filter(product => product.id === cartItem)[0];
+
                             return (
                                 <React.Fragment key={index}>
                                     <div className={classes.cartItemContainer}>
-                                        <div className={classes.itemImage} style={{backgroundImage: `url(${cartItem.images[0].src})`}} />
+                                        <div className={classes.itemImage} style={{backgroundImage: `url(${product.images[0].src})`}} />
 
                                         <div className={classes.cartItemInfo}>
-                                            <Typography variant="h6" gutterBottom>{cartItem.title}</Typography>
-                                            <Typography variant="subtitle1" gutterBottom>{cartItem.description}</Typography>
+                                            <Typography variant="h6" gutterBottom>{product.title}</Typography>
+                                            <Typography variant="subtitle1" gutterBottom>{product.description}</Typography>
                                             <div className={classes.cartItemFooter}>
-                                                <Typography variant="subtitle1" style={{fontWeight: "bold", alignSelf: "center", flexGrow: 1}}>{cartItem.variants[0].price}</Typography>
+                                                <Typography variant="subtitle1" style={{fontWeight: "bold", alignSelf: "center", flexGrow: 1, flexDirection: "row"}}>{product.variants[0].price}</Typography>
                                                 <Button variant="text" color="secondary">Remove</Button>
                                             </div>
                                         </div>
@@ -103,7 +111,7 @@ class CartMenu extends Component {
                             )
                         })}
 
-                        {cart.count !== 0 &&
+                        {cart.items.length !== 0 &&
                             <React.Fragment>
                                 <div className={classes.cartPricing}>
                                     <Typography variant="subtitle1" gutterBottom style={{flexGrow: 1}}>Subtotal:</Typography>
@@ -137,9 +145,9 @@ class CartMenu extends Component {
 
 const mapStateToProps = state => {
     return {
+        products: state.products.items,
         cart: {
-            items: state.shoppingCart.items,
-            count: state.shoppingCart.items.length
+            items: state.shoppingCart.items
         }
     }
 };

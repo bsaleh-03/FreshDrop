@@ -51,10 +51,6 @@ class AppNavigator extends Component {
 
                     { children }
                 </Grid>
-
-                <Grid container className={classes.gridContainer} style={contentStyle}>
-                    <Footer />
-                </Grid>
             </div>
         );
     }

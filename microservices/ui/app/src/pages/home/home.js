@@ -5,6 +5,7 @@ import Browse from "./sections/browse/browse";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {fetchCollections, fetchProducts} from "../../redux/actions";
+import Footer from "../../components/footer/footer";
 
 class Home extends React.Component {
     componentDidMount() {
@@ -19,6 +20,8 @@ class Home extends React.Component {
                 <PrimaryHero />
 
                 <Browse />
+
+                <Footer />
             </AppNavigator>
         );
     }

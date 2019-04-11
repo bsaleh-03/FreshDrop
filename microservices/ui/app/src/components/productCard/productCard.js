@@ -31,7 +31,7 @@ const ProductCard = props => {
                 />
                 <Divider />
                 <div className={classes.productInfo}>
-                    <Typography variant="h6" noWrap gutterBottom className={classes.productTitle}>{productTitle}</Typography>
+                    <Typography variant="subtitle1" noWrap gutterBottom className={classes.productTitle}>{productTitle}</Typography>
                     <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>${productPrice}</Typography>
 
                     <ResponsiveFab

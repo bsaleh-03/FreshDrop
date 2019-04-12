@@ -3,7 +3,7 @@ export const Styles = theme => ({
         backgroundColor: '#1a2327'
     },
     footerWrapper: {
-        padding: theme.spacing.unit * 4
+        padding: theme.spacing.unit * 2
     },
     centeredMobile: {
         [theme.breakpoints.down("xs")]: {

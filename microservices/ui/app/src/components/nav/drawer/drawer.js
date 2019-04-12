@@ -120,11 +120,6 @@ class PrimaryDrawer extends Component {
                         <ListItemIcon><History /></ListItemIcon>
                         <ListItemText primary="Order History" />
                     </ListItem>
-
-                    <ListItem button>
-                        <ListItemIcon><CreditCard /></ListItemIcon>
-                        <ListItemText primary="Billing" />
-                    </ListItem>
                 </List>
 
                 <Divider />

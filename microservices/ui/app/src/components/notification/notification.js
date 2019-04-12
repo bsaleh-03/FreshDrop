@@ -9,15 +9,15 @@ import {
 import Styles from "./styles";
 
 const Notification = (props) => {
-    const { classes } = props;
+    const { classes, message } = props;
 
     return (
-        <div className={classes.notification}>
+        <div className={classes.notification} onClick={props.onClick}>
             <div className={classes.notificationCloseIcon}>
                 <Close />
             </div>
             <div className={classes.notificationContent}>
-                <Typography variant="subtitle1" style={{color: "#15CD72"}}>This is a notification</Typography>
+                <Typography variant="subtitle1" style={{color: "#15CD72"}}>{message}</Typography>
             </div>
         </div>
     );

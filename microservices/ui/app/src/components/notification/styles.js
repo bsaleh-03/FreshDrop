@@ -6,14 +6,14 @@ export const Styles = theme => ({
         minWidth: "300px",
         height: "auto",
         backgroundColor: "white",
-        border: "2px solid" + theme.palette.secondary.main,
+        border: "2px solid #15CD72",
         padding: theme.spacing.unit * 2,
         marginTop: theme.spacing.unit * 2,
         borderRadius: 4,
         color: "#15CD72",
         cursor: "pointer",
         "&:hover": {
-            backgroundColor: "#fafafa"
+            backgroundColor: "#f1f1f1"
         }
     },
     notificationContent: {

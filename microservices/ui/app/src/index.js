@@ -8,7 +8,8 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { AuthProvider } from 'react-check-auth';
 import HasuraAPI from './hasuraAPI';
 import Theme from "./theme/theme";
-import Store from "./redux/store";
+import {store, persistor} from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 // Routes
 import Login from "./pages/auth/login/login";
@@ -26,25 +27,24 @@ function reqOptions() {
     };
 }
 
-let store = Store;
-window.store = store;
-
 ReactDOM.render(
     <BrowserRouter>
         <MuiThemeProvider theme={Theme}>
             <AuthProvider authUrl={HasuraAPI.Client.SESSION_INFO_URL} reqOptions={reqOptions}>
                 <Provider store={store}>
-                    <CssBaseline />
+                    <PersistGate loading={null} persistor={persistor}>
+                        <CssBaseline />
 
-                    <Switch>
-                        <Route exact path="/" component={Login} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/reset" component={Reset} />
-                        <Route exact path="/reset-password" component={VerifyReset} />
-                        <Route exact path="/verify-email" component={Verify} />
+                        <Switch>
+                            <Route exact path="/" component={Login} />
+                            <Route exact path="/register" component={Register} />
+                            <Route exact path="/reset" component={Reset} />
+                            <Route exact path="/reset-password" component={VerifyReset} />
+                            <Route exact path="/verify-email" component={Verify} />
 
-                        <Route exact path="/home" component={Home} />
-                    </Switch>
+                            <Route exact path="/home" component={Home} />
+                        </Switch>
+                    </PersistGate>
                 </Provider>
             </AuthProvider>
         </MuiThemeProvider>

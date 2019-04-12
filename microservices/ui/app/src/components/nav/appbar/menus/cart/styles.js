@@ -34,7 +34,8 @@ export const Styles = theme => ({
     },
     cartItemInfo: {
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        flexGrow: 1
     },
     cartItemDivider: {
         marginTop: theme.spacing.unit * 2,
@@ -43,12 +44,13 @@ export const Styles = theme => ({
     cartActions: {
         display: "flex",
         marginTop: 16,
-        '& > button': {
-            flexGrow: 1
-        },
         '& :not(:last-child)': {
             marginRight: theme.spacing.unit * 2
         }
+    },
+    cartAction: {
+        display: "flex",
+        flexGrow: 1
     },
     cartItemFooter: {
         display: 'flex'

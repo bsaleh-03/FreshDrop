@@ -95,8 +95,7 @@ class CartMenu extends Component {
                                         </div>
 
                                         <div className={classes.cartItemInfo}>
-                                            <Typography variant="h6" gutterBottom>{cartItem.title}</Typography>
-                                            <Typography variant="subtitle1" gutterBottom>{cartItem.description}</Typography>
+                                            <Typography variant="subtitle1">{cartItem.title}</Typography>
                                             <div className={classes.cartItemFooter}>
                                                 <Typography variant="subtitle1" style={{fontWeight: "bold", alignSelf: "center", flexGrow: 1, flexDirection: "row"}}>{cartItem.variants[0].price}</Typography>
                                                 <Button variant="text" color="secondary">Remove</Button>
@@ -122,8 +121,13 @@ class CartMenu extends Component {
                                 </div>
 
                                 <div className={classes.cartActions}>
-                                    <Button variant="contained" color="secondary" size="medium"><ShoppingCart className={classes.buttonIcon} /> View Cart</Button>
-                                    <Button variant="contained" color="primary" size="medium"><Payment className={classes.buttonIcon} /> Checkout</Button>
+                                    <div className={classes.cartAction}>
+                                        <Button variant="contained" color="secondary" size="medium" fullWidth><ShoppingCart className={classes.buttonIcon} /> View Cart</Button>
+                                    </div>
+
+                                    <div className={classes.cartAction}>
+                                        <Button variant="contained" color="primary" size="medium" fullWidth><Payment className={classes.buttonIcon} /> Checkout</Button>
+                                    </div>
                                 </div>
                             </React.Fragment>
                         }

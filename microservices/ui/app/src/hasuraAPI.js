@@ -20,7 +20,7 @@ const QUERY_URL = DATA_URL + "/v1/query";
 const GRAPHQL_URL = DATA_URL + "/v1alpha1/graphql";
 
 // Bearer Token
-const BEARER_TOKEN = "0e09ec617d8cf75ecb20236c8e0fd3e75f79f97acca0eb2f";
+const BEARER_TOKEN = "952b3499c7f186243140821769f643f678e62f7c88da1e74";
 
 // Request Header Builder
 const buildHeaders = function () {

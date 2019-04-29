@@ -19,6 +19,7 @@ import Verify from "./pages/auth/verify/verify";
 import VerifyReset from "./pages/auth/verifyReset/verifyReset";
 
 import Home from "./pages/home/home";
+import Recipes from "pages/recipes/recipes";
 
 function reqOptions() {
     return {
@@ -43,6 +44,7 @@ ReactDOM.render(
                             <Route exact path="/verify-email" component={Verify} />
 
                             <Route exact path="/home" component={Home} />
+                            <Route exact path="/recipes" component={Recipes} />
                         </Switch>
                     </PersistGate>
                 </Provider>

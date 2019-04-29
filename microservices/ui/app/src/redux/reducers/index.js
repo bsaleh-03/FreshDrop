@@ -9,7 +9,7 @@ import {
     FETCH_COLLECTIONS_FAILURE,
     SELECT_COLLECTION,
 
-    ADD_PRODUCT_TO_CART
+    ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART
 } from "../actions";
 
 // Products Reducer
@@ -104,6 +104,12 @@ const shoppingCartReducer = function (state = initialShoppingCartState, action) 
             return {
                 ...state,
                 items: [...state.items, action.payload.product]
+            }
+        }
+        case REMOVE_PRODUCT_FROM_CART: {
+            return {
+                ...state,
+                items: state.items.filter(item => item.id !== action.payload.product.id)
             }
         }
         default: {

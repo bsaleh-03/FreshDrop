@@ -19,7 +19,7 @@ export const Styles = theme => ({
         }
     },
     shoppingCartMenu: {
-        maxWidth: 500
+        width: 400
     },
     shoppingCartMenuContent: {
         outline: "none",

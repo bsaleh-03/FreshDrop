@@ -9,7 +9,7 @@ const Section = props => {
     const { classes, children } = props;
 
     return (
-        <Grid container alignItems="center" justify="center" className={classes.sectionRoot}>
+        <Grid container justify="center" className={classes.sectionRoot}>
             <Grid item xs={12} md={8}>
                 { children }
             </Grid>

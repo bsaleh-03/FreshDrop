@@ -11,6 +11,8 @@ import {Payment, ShoppingCart} from "@material-ui/icons";
 import Theme from "../../../../../theme/theme";
 import Styles from "./styles";
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {removeProductFromCart} from "redux/actions";
 
 class CartMenu extends Component {
     constructor(props) {
@@ -98,7 +100,7 @@ class CartMenu extends Component {
                                             <Typography variant="subtitle1">{cartItem.title}</Typography>
                                             <div className={classes.cartItemFooter}>
                                                 <Typography variant="subtitle1" style={{fontWeight: "bold", alignSelf: "center", flexGrow: 1, flexDirection: "row"}}>{cartItem.variants[0].price}</Typography>
-                                                <Button variant="text" color="secondary">Remove</Button>
+                                                <Button variant="text" color="secondary" onClick={() => this.props.dispatch(removeProductFromCart(cartItem))}>Remove</Button>
                                             </div>
                                         </div>
                                     </div>
@@ -148,6 +150,12 @@ class CartMenu extends Component {
 const mapStateToProps = state => ({
     shoppingCart: state.shoppingCart
 });
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({
+        removeProductFromCart: removeProductFromCart
+    }, dispatch);
+};
 
 CartMenu.propTypes = {};
 

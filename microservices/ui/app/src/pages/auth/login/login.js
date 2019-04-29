@@ -18,7 +18,7 @@ import Logo from "../../../logo.svg";
 async function authenticate(url, data) {
     let requestOptions = {
         "method": "POST",
-        "headers": HasuraAPI.Util.buildHeaders()
+        "headers": HasuraAPI.Util.buildDefaultHeaders()
     };
 
     let body = {

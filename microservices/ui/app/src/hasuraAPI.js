@@ -23,6 +23,11 @@ const GRAPHQL_URL = DATA_URL + "/v1alpha1/graphql";
 const BEARER_TOKEN = localStorage.getItem("auth_token");
 
 // Request Header Builder
+const buildDefaultHeaders = function () {
+    return {
+        "Content-Type": "application/json",
+    };
+};
 
 const buildHeaders = function () {
     const headers = {
@@ -54,6 +59,7 @@ export default {
     Query: QUERY_URL,
     Token: BEARER_TOKEN,
     Util: {
+        buildDefaultHeaders,
         buildHeaders
     }
 };

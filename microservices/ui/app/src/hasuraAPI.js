@@ -20,15 +20,21 @@ const QUERY_URL = DATA_URL + "/v1/query";
 const GRAPHQL_URL = DATA_URL + "/v1alpha1/graphql";
 
 // Bearer Token
-const BEARER_TOKEN = "952b3499c7f186243140821769f643f678e62f7c88da1e74";
+const BEARER_TOKEN = localStorage.getItem("auth_token");
 
 // Request Header Builder
+
 const buildHeaders = function () {
-    return {
+    const headers = {
         "Content-Type": "application/json",
-        "X-Hasura-Role": "admin",
-        "Authorization": `Bearer ${BEARER_TOKEN}`
     };
+
+    if (BEARER_TOKEN) {
+        headers["X-Hasura-Role"] = "user";
+        headers["Authorization"] = `Bearer ${BEARER_TOKEN}`;
+    }
+
+    return headers;
 };
 
 export default {

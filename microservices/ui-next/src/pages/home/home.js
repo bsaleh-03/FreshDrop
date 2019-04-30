@@ -1,10 +1,12 @@
 import React from 'react';
+import MainNavigator from "layout/MainNavigator/MainNavigator";
+import {Typography} from "@material-ui/core";
 
 const Home = () => {
     return (
-        <div>
-            Home
-        </div>
+        <MainNavigator>
+            <Typography variant="h1">Home</Typography>
+        </MainNavigator>
     );
 };
 

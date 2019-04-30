@@ -2,15 +2,15 @@ export const Styles = theme => ({
     root: {
         display: "flex",
         flexDirection: "column",
-        flex: "0 0 100%"
+        flex: "0 0 100%",
+        height: "auto"
     },
     body: {
         display: "flex",
         flexGrow: 1
     },
     fullheight: {
-        height: "100vh",
-        padding: `${theme.spacing.unit * 2}px 0`
+        minHeight: "100vh"
     },
     small: {
         padding: `${theme.spacing.unit}px 0`

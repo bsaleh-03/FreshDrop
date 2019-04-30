@@ -10,6 +10,7 @@ import Theme from "theme/theme";
 import Home from "pages/home/home";
 import Login from "pages/auth/login/login";
 import Register from "pages/auth/register/register";
+import Verify from "pages/auth/verify/verify";
 
 const App = props => {
     return (
@@ -22,6 +23,7 @@ const App = props => {
                         {/* Auth Routes */}
                         <Route exact path="/" component={Login} />
                         <Route exact path="/register" component={Register} />
+                        <Route exact path="/verify-email" component={Verify} />
 
                         <Route exact path="/home" component={Home} />
                     </Switch>

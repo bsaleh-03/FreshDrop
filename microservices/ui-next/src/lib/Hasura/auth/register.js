@@ -3,7 +3,7 @@ import HasuraAPI from "lib/Hasura";
 const registerUser = async (data) => {
     let requestOptions = {
         "method": "POST",
-        "headers": HasuraAPI.Util.buildHeaders()
+        "headers": HasuraAPI.Util.buildDefaultHeaders()
     };
 
     let body = {

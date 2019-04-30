@@ -1,9 +1,9 @@
 import HasuraAPI from "lib/Hasura";
 
-const setUserInfo = async (registerResponsePayload) => {
+export const setHasuraUserInfo = async (data) => {
     let requestOptions = {
         "method": "POST",
-        "headers": HasuraAPI.Util.buildHeaders()
+        "headers": HasuraAPI.Util.buildDefaultHeaders()
     };
 
     let body = {
@@ -28,4 +28,4 @@ const setUserInfo = async (registerResponsePayload) => {
     }
 };
 
-export default setUserInfo;
+export default setHasuraUserInfo;

@@ -1,5 +1,7 @@
 import authenticateLogin from "lib/Hasura/auth/login";
 import registerUser from "lib/Hasura/auth/register";
+import setHasuraUserInfo from "lib/Hasura/auth/userInfo";
+import activateUser from "lib/Hasura/auth/activate";
 
 const PROTOCOL = "https://";
 const DOMAIN = "xmartdelivery.com";
@@ -75,12 +77,23 @@ const register = async (data) => {
     }
 };
 
-const setUserInfo = async (registerResponsePayload) => {
+const setUserInfo = async (userInfo) => {
     try {
         // Try to set the info of the registered user
-        let response = await setUserInfo(registerResponsePayload);
+        let response = await setHasuraUserInfo(userInfo);
 
         // Get json
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+const activateUserByEmail = async (token) => {
+    try {
+        // Try to activate the user
+        let response = await activateUser(token);
+
         return await response.json();
     } catch (e) {
         console.error(e);
@@ -91,7 +104,7 @@ export default {
     Client: {
         // Client Authentication Endpoints
         LOGIN_URL: AUTH_URL + "/login",
-        REGISTER_URL: AUTH_URL + "/register",
+        REGISTER_URL: AUTH_URL + "/signup",
         VERIFY_EMAIL_URL: AUTH_URL + "/providers/email/verify-email",
         FORGOT_PASSWORD_URL: AUTH_URL + "/providers/email/forgot-password",
         RESET_PASSWORD_URL: AUTH_URL + "/providers/email/reset-password",
@@ -111,6 +124,7 @@ export default {
     Auth: {
         login,
         register,
-        setUserInfo
+        setUserInfo,
+        activateUserByEmail
     }
 };

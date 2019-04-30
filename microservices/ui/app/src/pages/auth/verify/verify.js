@@ -43,7 +43,7 @@ class Verify extends Component {
             // Build params for GET request
             let requestOptions = {
                 "method": "GET",
-                "headers": HasuraAPI.Util.buildHeaders()
+                "headers": HasuraAPI.Util.buildDefaultHeaders()
             };
 
             // Build verification url with token

@@ -9,6 +9,7 @@ import Theme from "theme/theme";
 // Pages
 import Home from "pages/home/home";
 import Login from "pages/auth/login/login";
+import Register from "pages/auth/register/register";
 
 const App = props => {
     return (
@@ -18,7 +19,10 @@ const App = props => {
                     <CssBaseline/>
 
                     <Switch>
+                        {/* Auth Routes */}
                         <Route exact path="/" component={Login} />
+                        <Route exact path="/register" component={Register} />
+
                         <Route exact path="/home" component={Home} />
                     </Switch>
                 </MuiThemeProvider>

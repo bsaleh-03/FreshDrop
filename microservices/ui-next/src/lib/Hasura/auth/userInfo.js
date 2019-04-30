@@ -1,6 +1,6 @@
 import HasuraAPI from "lib/Hasura";
 
-async function setUserInfo(url, data) {
+const setUserInfo = async (registerResponsePayload) => {
     let requestOptions = {
         "method": "POST",
         "headers": HasuraAPI.Util.buildHeaders()
@@ -22,8 +22,10 @@ async function setUserInfo(url, data) {
     requestOptions.body = JSON.stringify(body);
 
     try {
-        return await fetch(url, requestOptions);
+        return await fetch(HasuraAPI.Query, requestOptions);
     } catch (e) {
         console.log('Request Failed:' + e);
     }
-}
+};
+
+export default setUserInfo;

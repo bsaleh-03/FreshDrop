@@ -6,10 +6,25 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import AuthLayout from "layout/AuthLayout/AuthLayout";
 import AuthLayoutButtons from "layout/AuthLayout/AuthLayoutButtons";
+import HasuraAPI from "lib/Hasura";
+import MessageBox from "components/MessageBox/MessageBox";
 
 const Login = () => {
-    const onSubmit = () => {
-        console.log("Submitted");
+    const onSubmit = async () => {
+        try {
+            // Try to login
+            let response = await HasuraAPI.Auth.login(state);
+
+            // Check if the user has logged in
+            if (response["auth_token"]) {
+                window.location = "/home";
+            } else {
+                // Set error
+                setError(response.message);
+            }
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     const handleChange = e => {
@@ -24,12 +39,16 @@ const Login = () => {
        password: ""
     });
 
+    const [error, setError] = useState(null);
+
     const form = useRef(null);
 
     return (
         <HeroLayout variant="fullheight" color="primary">
             <CenteredLayout>
                 <AuthLayout>
+                    { error !== null && <MessageBox message={error} color="danger" /> }
+
                     <ValidatorForm ref={form} onSubmit={onSubmit} onError={errors => console.log(errors)}>
                         <FormControl margin="normal" required fullWidth>
                             <TextValidator

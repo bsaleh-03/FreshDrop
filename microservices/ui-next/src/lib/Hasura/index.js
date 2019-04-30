@@ -1,3 +1,6 @@
+import authenticateLogin from "lib/Hasura/auth/login";
+import registerUser from "lib/Hasura/auth/register";
+
 const PROTOCOL = "https://";
 const DOMAIN = "xmartdelivery.com";
 
@@ -47,6 +50,43 @@ const buildAuthProviderHeaders = () => ({
     headers: buildHeaders
 });
 
+// Auth Request Builder
+const login = async (data) => {
+    try {
+        // Try to authenticate the user
+        let response = await authenticateLogin(data);
+
+        // Get json
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+const register = async (data) => {
+    try {
+        // Try to register the user
+        let response = await registerUser(data);
+
+        // Get json
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+const setUserInfo = async (registerResponsePayload) => {
+    try {
+        // Try to set the info of the registered user
+        let response = await setUserInfo(registerResponsePayload);
+
+        // Get json
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+};
+
 export default {
     Client: {
         // Client Authentication Endpoints
@@ -67,5 +107,10 @@ export default {
         buildDefaultHeaders,
         buildAuthProviderHeaders,
         buildHeaders
+    },
+    Auth: {
+        login,
+        register,
+        setUserInfo
     }
 };

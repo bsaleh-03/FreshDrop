@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Styles from "./Styles";
-import { Card, CardMedia, Divider, Typography, withStyles } from "@material-ui/core";
-
+import {Card, CardMedia, Divider, Fab, Typography, withStyles, withWidth} from "@material-ui/core";
+import { AddShoppingCart } from "@material-ui/icons";
+import {isWidthDown} from "@material-ui/core/withWidth";
 import Steak from "assets/image/steak.png";
 
-const ProductCard = ({ classes }) => {
+const ProductCard = ({ classes, width }) => {
+    console.log(width);
+
+    const isSmallScreen = isWidthDown('lg', width);
+    const buttonProps = {
+        size: isSmallScreen ? "medium" : "large"
+    };
+
     return (
         <Card>
             <CardMedia
@@ -20,6 +28,15 @@ const ProductCard = ({ classes }) => {
             <div className={classes.productInfo}>
                 <Typography variant="subtitle1" noWrap gutterBottom className={classes.productTitle}>Steak</Typography>
                 <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>$5.99</Typography>
+
+                <Fab
+                    href="#"
+                    variant="round"
+                    color="primary"
+                    className={classes.productFab}
+                    {...buttonProps}>
+                    <AddShoppingCart fontSize={isSmallScreen ? 'small' : 'default'} />
+                </Fab>
             </div>
         </Card>
     );
@@ -30,4 +47,4 @@ ProductCard.propTypes = {
     product: PropTypes.object.isRequired
 };
 
-export default withStyles(Styles)(ProductCard);
+export default withWidth()(withStyles(Styles)(ProductCard));

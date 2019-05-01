@@ -20,7 +20,7 @@ const MainHero = () => {
         >
             <Typography variant="h2" align="center">Shop Now</Typography>
 
-            <Box my={2} flexGrow={1}>
+            <Box m={2} flexGrow={1}>
                 <Grid container justify="center">
                     <SearchComponent/>
                 </Grid>

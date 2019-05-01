@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Styles from "./Styles";
 import { AppBar, Toolbar, IconButton, withStyles } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
+import Logo from "logo.svg";
+import Box from "@material-ui/core/Box";
+import {Link} from "react-router-dom";
 
 const Navbar = ({ classes, children, toggleDrawer }) => {
     return (
@@ -16,6 +19,10 @@ const Navbar = ({ classes, children, toggleDrawer }) => {
                     >
                         <Menu />
                     </IconButton>
+
+                    <Box mx={2} display="flex" alignItems="center">
+                        <Link to="/home"><img src={Logo} height="40" alt="Logo" /></Link>
+                    </Box>
                 </nav>
 
                 <nav>

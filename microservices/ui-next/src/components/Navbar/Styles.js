@@ -3,6 +3,7 @@ export const Styles = theme => ({
         zIndex: theme.zIndex.drawer + 1
     },
     left: {
+        display: "inline-flex",
         flexGrow: 1
     }
 });

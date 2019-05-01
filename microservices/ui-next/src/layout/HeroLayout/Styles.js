@@ -9,18 +9,19 @@ export const Styles = theme => ({
     body: {
         display: "flex",
         flexGrow: 1,
+        flexDirection: "column"
     },
     fullheight: {
         minHeight: "100vh"
     },
     small: {
-        padding: `${theme.spacing.unit}px 0`
+        padding: `${theme.spacing.unit}px`
     },
     medium: {
-        padding: `${theme.spacing.unit * 2}px 0`
+        padding: `${theme.spacing.unit * 2}px`
     },
     large: {
-        padding: `${theme.spacing.unit * 4}px 0`
+        padding: `${theme.spacing.unit * 4}px`
     },
     default: {
         backgroundColor: "white"

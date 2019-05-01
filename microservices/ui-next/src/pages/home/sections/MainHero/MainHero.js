@@ -18,9 +18,9 @@ const MainHero = () => {
             webmSource={shakshukaWEBM}
             image={shakshukaImage}
         >
-            <Typography variant="h2" align="center">Search</Typography>
+            <Typography variant="h2" align="center">Shop Now</Typography>
 
-            <Box m={2} flexGrow={1}>
+            <Box my={2} flexGrow={1}>
                 <Grid container justify="center">
                     <SearchComponent/>
                 </Grid>

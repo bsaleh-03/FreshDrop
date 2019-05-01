@@ -1,11 +1,14 @@
 import React from 'react';
 import MainNavigator from "layout/MainNavigator/MainNavigator";
-import {Typography} from "@material-ui/core";
+import MainHero from "pages/home/sections/MainHero/MainHero";
+import BrowseProducts from "pages/home/sections/BrowseProducts/BrowseProducts";
 
 const Home = () => {
     return (
         <MainNavigator>
-            <Typography variant="h1">Home</Typography>
+            <MainHero />
+
+            <BrowseProducts />
         </MainNavigator>
     );
 };

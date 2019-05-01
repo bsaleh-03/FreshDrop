@@ -92,7 +92,7 @@ const Login = () => {
 
                             <div>
                                 <Button
-                                    color="secondary"
+                                    color="primary"
                                     fullWidth
                                 >
                                     Reset Password

@@ -5,6 +5,8 @@ import {Grid, withStyles} from "@material-ui/core";
 import HeroLayout from "layout/HeroLayout/HeroLayout";
 import Navbar from "components/Navbar/Navbar";
 import Drawer from "components/Drawer/Drawer";
+import UserMenu from "menus/MainNavbarMenu/UserMenu/UserMenu";
+import ShoppingCartMenu from "menus/MainNavbarMenu/ShoppingCartMenu/ShoppingCartMenu";
 
 const MainNavigator = ({ classes, children }) => {
     const [drawerOpen, setDrawerOpen] = useState(true);
@@ -14,19 +16,27 @@ const MainNavigator = ({ classes, children }) => {
     };
 
     if (drawerOpen) {
-        contentStyle.marginLeft = 120;
+        contentStyle.marginLeft = 240;
     }
 
     return (
         <HeroLayout variant="fullheight">
-            <Navbar toggleDrawer={() => setDrawerOpen(!drawerOpen)} />
+            <Navbar toggleDrawer={() => setDrawerOpen(!drawerOpen)}>
+                <ShoppingCartMenu />
 
-            <Drawer open={drawerOpen} />
+                <UserMenu />
+            </Navbar>
 
-            <Grid container direction="column" style={contentStyle}>
-                <div className={classes.toolbar} />
+            <div style={{position: "absolute", "left": 0}}>
+                <Drawer open={drawerOpen} />
+            </div>
 
-                { children }
+            <Grid container style={contentStyle}>
+                <Grid item xs={12}>
+                    <div className={classes.toolbar} />
+
+                    { children }
+                </Grid>
             </Grid>
         </HeroLayout>
     );

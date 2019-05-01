@@ -2,7 +2,6 @@ export const Styles = theme => ({
     root: {
         display: "flex",
         flexDirection: "column",
-        flex: "0 0 100%",
         height: "auto"
     },
     body: {

@@ -44,6 +44,15 @@ const Drawer = ({ classes, open }) => {
                             <Image />
                         </Avatar>
                     </ListItemAvatar>
+                    <ListItemText primary="All Products" />
+                </ListItem>
+
+                <ListItem button>
+                    <ListItemAvatar>
+                        <Avatar>
+                            <Image />
+                        </Avatar>
+                    </ListItemAvatar>
                     <ListItemText primary="Deli" />
                 </ListItem>
 

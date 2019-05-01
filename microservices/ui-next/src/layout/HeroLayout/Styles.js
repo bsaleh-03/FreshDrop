@@ -1,12 +1,14 @@
 export const Styles = theme => ({
     root: {
+        position: "relative",
         display: "flex",
         flexDirection: "column",
-        height: "auto"
+        height: "auto",
+        overflowX: "hidden"
     },
     body: {
         display: "flex",
-        flexGrow: 1
+        flexGrow: 1,
     },
     fullheight: {
         minHeight: "100vh"
@@ -32,6 +34,13 @@ export const Styles = theme => ({
     },
     danger: {
         backgroundColor: theme.palette.primary.danger
+    },
+    image: {
+        background: "no-repeat center center",
+        backgroundSize: "cover",
+        color: theme.palette.primary.contrastText,
+        backgroundColor: "rgba(0, 0, 0, 0.4)",
+        "background-blend-mode": "multiply"
     }
 });
 

@@ -3,10 +3,21 @@ import PropTypes from 'prop-types';
 import Styles from "./Styles";
 import { withStyles } from "@material-ui/core";
 
-const HeroLayout = ({ classes, children, variant = 'medium', color = 'default' }) => {
+const HeroLayout = ({ classes, children, variant = 'medium', color = 'default', image }) => {
+
+    const imageBackgroundStyle = image ? {backgroundImage: `url(${image})`} : {backgroundImage: "inherit"};
+
     return (
         <div className={classes.root}>
-            <div className={`${classes[variant]} ${classes[color]} ${classes.body}`}>
+            <div
+                className={`
+                    ${classes[variant]} 
+                    ${classes[color]} 
+                    ${classes.body}
+                    ${image ? classes.image : ""}
+                `}
+                style={imageBackgroundStyle}
+            >
                 { children }
             </div>
         </div>
@@ -30,7 +41,8 @@ HeroLayout.propTypes = {
         'primary',
         'success',
         'danger'
-    ])
+    ]),
+    image: PropTypes.object
 };
 
 export default withStyles(Styles)(HeroLayout);

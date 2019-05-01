@@ -44,15 +44,6 @@ const Drawer = ({ classes, open }) => {
                             <Image />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="All Products" />
-                </ListItem>
-
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <Image />
-                        </Avatar>
-                    </ListItemAvatar>
                     <ListItemText primary="Deli" />
                 </ListItem>
 
@@ -99,21 +90,21 @@ const Drawer = ({ classes, open }) => {
                 component="nav"
                 subheader={<ListSubheader component="div">Account</ListSubheader>}
             >
-                <ListItem button>
+                <ListItem button component="a" href="/account">
                     <ListItemIcon>
                         <AccountCircle />
                     </ListItemIcon>
                     <ListItemText primary="My Account" />
                 </ListItem>
 
-                <ListItem button>
+                <ListItem button component="a" href="/orders">
                     <ListItemIcon>
                         <History />
                     </ListItemIcon>
                     <ListItemText primary="Order History" />
                 </ListItem>
 
-                <ListItem button>
+                <ListItem button component="a" href="/cart">
                     <ListItemIcon>
                         <ShoppingCart />
                     </ListItemIcon>
@@ -127,28 +118,28 @@ const Drawer = ({ classes, open }) => {
                 component="nav"
                 subheader={<ListSubheader component="div">More</ListSubheader>}
             >
-                <ListItem button>
+                <ListItem button component="a" href="/account/settings">
                     <ListItemIcon>
                         <Settings />
                     </ListItemIcon>
                     <ListItemText primary="Settings" />
                 </ListItem>
 
-                <ListItem button>
+                <ListItem button component="a" href="/story">
                     <ListItemIcon>
                         <Info />
                     </ListItemIcon>
                     <ListItemText primary="Our Story" />
                 </ListItem>
 
-                <ListItem button>
+                <ListItem button component="a" href="/contact">
                     <ListItemIcon>
                         <Phone />
                     </ListItemIcon>
                     <ListItemText primary="Contact Us" />
                 </ListItem>
 
-                <ListItem button>
+                <ListItem button component="a" href="/help">
                     <ListItemIcon>
                         <Help />
                     </ListItemIcon>

@@ -11,6 +11,13 @@ import Home from "pages/home/home";
 import Login from "pages/auth/login/login";
 import Register from "pages/auth/register/register";
 import Verify from "pages/auth/verify/verify";
+import Account from "pages/account/account";
+import Settings from "pages/settings/settings";
+import ShoppingCart from "pages/shoppingcart/shoppingcart";
+import Contact from "pages/contact/contact";
+import Story from "pages/story/story";
+import Help from "pages/help/help";
+import Orders from "pages/orders/orders";
 
 const App = props => {
     return (
@@ -25,7 +32,19 @@ const App = props => {
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/verify-email" component={Verify} />
 
+                        {/* Main Routes */}
                         <Route exact path="/home" component={Home} />
+                        <Route exact path="/orders" component={Orders} />
+                        <Route exact path="/cart" component={ShoppingCart} />
+
+                        {/* Account Routes*/}
+                        <Route exact path="/account" component={Account} />
+                        <Route exact path="/account/settings" component={Settings} />
+
+                        {/* Misc Routes */}
+                        <Route exact path="/contact" component={Contact} />
+                        <Route exact path="/story" component={Story} />
+                        <Route exact path="/help" component={Help} />
                     </Switch>
                 </MuiThemeProvider>
             </AuthProvider>

@@ -49,41 +49,41 @@ const UserMenu = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
             >
-                <MenuItem button onClick={handleMenuClose}>
+                <MenuItem button={true} component="a" href="/account" onClick={handleMenuClose}>
                     <ListItemIcon>
                         <Person />
                     </ListItemIcon>
                     <ListItemText primary="Account" />
                 </MenuItem>
 
-                <MenuItem button onClick={handleMenuClose}>
+                <MenuItem button={true} component="a" href="/orders" onClick={handleMenuClose}>
                     <ListItemIcon>
                         <History />
                     </ListItemIcon>
                     <ListItemText primary="My Orders" />
                 </MenuItem>
 
-                <MenuItem button onClick={handleMenuClose}>
+                <MenuItem button={true} component="a" href="/account/settings" onClick={handleMenuClose}>
                     <ListItemIcon>
                         <Settings />
                     </ListItemIcon>
                     <ListItemText primary="Settings" />
                 </MenuItem>
 
-                <Divider />
+                <Divider component="hr" />
 
-                <MenuItem button onClick={handleMenuClose}>
+                <MenuItem button={true} component="a" href="/help" onClick={handleMenuClose}>
                     <ListItemIcon>
                         <Help />
                     </ListItemIcon>
                     <ListItemText primary="Help" />
                 </MenuItem>
 
-                <MenuItem button onClick={handleMenuClose}>
+                <MenuItem button={true} component="a" href="/story" onClick={handleMenuClose}>
                     <ListItemIcon>
                         <Info />
                     </ListItemIcon>
-                    <ListItemText primary="About" />
+                    <ListItemText primary="Our Story" />
                 </MenuItem>
             </Menu>
         </React.Fragment>

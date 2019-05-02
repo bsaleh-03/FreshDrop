@@ -14,7 +14,7 @@ const client = Client.buildClient ({
 const getCollections = async () => {
     const collections = await client.collection.fetchAllWithProducts();
 
-    console.log(collections);
+    console.log(JSON.stringify(collections));
 };
 
 getCollections();
@@ -22,23 +22,23 @@ getCollections();
 const CollectionBrowser = props => {
     return (
         <Grid container spacing={2}>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Grid item xs={12} sm={6} md={3} lg={2}>
                 <ProductCard product="all" />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
                 <ProductCard product="all" />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
                 <ProductCard product="all" />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
                 <ProductCard product="all" />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
                 <ProductCard product="all" />
             </Grid>
         </Grid>

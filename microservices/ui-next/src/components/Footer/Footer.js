@@ -1,13 +1,13 @@
 import React from 'react';
-import { Grid, Typography, IconButton } from "@material-ui/core";
+import {Grid, Typography, IconButton, Tooltip} from "@material-ui/core";
 import { Phone, Info, Help } from "@material-ui/icons";
 import HeroLayout from "layout/HeroLayout/HeroLayout";
 import Box from "@material-ui/core/Box";
 
 const Footer = () => {
     return (
-        <HeroLayout color="primary">
-            <Grid container justify="center">
+        <HeroLayout color="primary" variant="small">
+            <Grid container justify="center" alignItems="center" style={{flexGrow: 1}}>
                 <Grid item xs={12} md={8}>
                     <Box mx={2} width="100%" display="flex">
                         <Box display="flex" flexGrow={1} alignItems="center">
@@ -15,17 +15,23 @@ const Footer = () => {
                         </Box>
 
                         <Box display="flex">
-                            <IconButton color="secondary">
-                                <Phone />
-                            </IconButton>
+                            <Tooltip title="Contact Us">
+                                <IconButton color="secondary">
+                                    <Phone />
+                                </IconButton>
+                            </Tooltip>
 
-                            <IconButton color="secondary">
-                                <Info />
-                            </IconButton>
+                            <Tooltip title="Our Story">
+                                <IconButton color="secondary">
+                                    <Info />
+                                </IconButton>
+                            </Tooltip>
 
-                            <IconButton color="secondary">
-                                <Help />
-                            </IconButton>
+                            <Tooltip title="Help & FAQ">
+                                <IconButton color="secondary">
+                                    <Help />
+                                </IconButton>
+                            </Tooltip>
                         </Box>
                     </Box>
                 </Grid>

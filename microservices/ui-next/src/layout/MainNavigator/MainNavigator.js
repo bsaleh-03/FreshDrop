@@ -7,8 +7,8 @@ import Navbar from "components/Navbar/Navbar";
 import Drawer from "components/Drawer/Drawer";
 import UserMenu from "menus/MainNavbarMenu/UserMenu/UserMenu";
 import ShoppingCartMenu from "menus/MainNavbarMenu/ShoppingCartMenu/ShoppingCartMenu";
-import MainNavigatorSection from "layout/MainNavigator/MainNavigatorSection";
 import Footer from "components/Footer/Footer";
+import Box from "@material-ui/core/Box";
 
 const MainNavigator = ({ classes, children }) => {
     const [drawerOpen, setDrawerOpen] = useState(true);
@@ -34,15 +34,17 @@ const MainNavigator = ({ classes, children }) => {
                 <Drawer open={drawerOpen} />
             </div>
 
-            <Grid container direction="column">
+            <Grid container direction="column" style={{flexGrow: 1}}>
                 <div className={classes.toolbar} />
 
-                <Grid container direction="row" style={contentStyle}>
-                    { children }
+                <Grid container direction="column" style={contentStyle}>
+                    <Box display="flex" flex={1} flexDirection="column">
+                        { children }
+                    </Box>
 
-                    <MainNavigatorSection>
+                    <Box display="block" width="100%">
                         <Footer />
-                    </MainNavigatorSection>
+                    </Box>
                 </Grid>
             </Grid>
         </HeroLayout>

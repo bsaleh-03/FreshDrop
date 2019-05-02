@@ -14,7 +14,7 @@ const Home = () => {
 
             <MainNavigatorSection>
                 <Grid container justify="center">
-                    <Grid item xs={12} md={8}>
+                    <Grid item xs={12} md={10}>
                         <BrowseProducts />
                     </Grid>
                 </Grid>

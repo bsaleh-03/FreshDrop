@@ -9,6 +9,8 @@ import AuthLayoutButtons from "layout/AuthLayout/AuthLayoutButtons";
 import HasuraAPI from "lib/Hasura";
 import MessageBox from "components/MessageBox/MessageBox";
 
+import Steak from "assets/image/steak.png";
+
 const Login = () => {
     const onSubmit = async () => {
         try {
@@ -44,7 +46,7 @@ const Login = () => {
     const form = useRef(null);
 
     return (
-        <HeroLayout variant="fullheight" color="primary">
+        <HeroLayout variant="fullheight" image={Steak}>
             <CenteredLayout>
                 <AuthLayout>
                     { error !== null && <MessageBox message={error} color="danger" /> }

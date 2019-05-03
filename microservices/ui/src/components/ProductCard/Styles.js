@@ -1,7 +1,7 @@
 export const Styles = theme => ({
     media: {
         height: 0,
-        paddingTop: '56.25%',
+        paddingTop: "56.25%",
     },
     productInfo: {
         position: "relative",
@@ -15,7 +15,11 @@ export const Styles = theme => ({
     },
     productFab: {
         position: "absolute",
-        top: "-28px",
+        top: 0,
+        marginTop: "calc(56.25% - 24px)",
+        [theme.breakpoints.down('md')]: {
+            marginTop: "calc(56.25% - 18px)"
+        },
         right: theme.spacing(2)
     }
 });

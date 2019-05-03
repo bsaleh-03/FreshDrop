@@ -21,6 +21,7 @@ import Contact from "pages/contact/contact";
 import Story from "pages/story/story";
 import Help from "pages/help/help";
 import Orders from "pages/orders/orders";
+import ViewProduct from "pages/product/viewProduct/viewProduct";
 
 const App = props => {
     return (
@@ -41,6 +42,9 @@ const App = props => {
                                 <Route exact path="/home" component={Home} />
                                 <Route exact path="/orders" component={Orders} />
                                 <Route exact path="/cart" component={ShoppingCart} />
+
+                                {/* Product Routes */}
+                                <Route exact path="/product/view/:productId" component={ViewProduct} />
 
                                 {/* Account Routes*/}
                                 <Route exact path="/account" component={Account} />

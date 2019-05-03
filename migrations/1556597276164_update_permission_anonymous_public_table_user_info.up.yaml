@@ -1,0 +1,15 @@
+- args:
+    permission:
+      allow_upsert: true
+      check: {}
+      columns:
+      - config
+      - hasura_id
+      - id
+      - name
+      set: {}
+    role: anonymous
+    table:
+      name: user_info
+      schema: public
+  type: create_insert_permission

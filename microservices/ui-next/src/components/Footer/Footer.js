@@ -8,13 +8,13 @@ const Footer = () => {
     return (
         <HeroLayout color="primary" variant="small">
             <Grid container justify="center" alignItems="center" style={{flexGrow: 1}}>
-                <Grid item xs={12} md={8}>
-                    <Box mx={2} width="100%" display="flex">
-                        <Box display="flex" flexGrow={1} alignItems="center">
+                <Grid item xs={12} md={10}>
+                    <Box width="100%" display="flex">
+                        <Box mx={4} display="flex" flexGrow={1} alignItems="center">
                             <Typography variant="h6">&copy; 2019 XMart Delivery</Typography>
                         </Box>
 
-                        <Box display="flex">
+                        <Box mx={4} display="flex">
                             <Tooltip title="Contact Us">
                                 <IconButton color="secondary">
                                     <Phone />

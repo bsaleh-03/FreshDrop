@@ -23,6 +23,7 @@ import {
     Phone,
     Help
 } from "@material-ui/icons";
+import CollectionsList from "components/Drawer/Lists/CollectionsList";
 
 const Drawer = ({ classes, open }) => {
     return (
@@ -34,55 +35,7 @@ const Drawer = ({ classes, open }) => {
         >
             <div className={classes.toolbar} />
 
-            <List
-                component="nav"
-                subheader={<ListSubheader component="div">Collections</ListSubheader>}
-            >
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <Image />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Deli" />
-                </ListItem>
-
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <Image />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Poultry" />
-                </ListItem>
-
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <Image />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Beef" />
-                </ListItem>
-
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <Image />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Lamb" />
-                </ListItem>
-
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <Image />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Seafood" />
-                </ListItem>
-            </List>
+            <CollectionsList />
 
             <Divider />
 

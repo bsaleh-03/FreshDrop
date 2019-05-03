@@ -4,34 +4,46 @@ import Styles from "./Styles";
 import {Card, CardMedia, Divider, Fab, Tooltip, Typography, withStyles, withWidth} from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import {isWidthDown} from "@material-ui/core/withWidth";
-import Steak from "assets/image/steak.png";
 
-const ProductCard = ({ classes, width }) => {
-    console.log(width);
+const getProduct = (product) => ({
+    id: product.id,
+    title: product.title,
+    description: product.description,
+    price: product.variants[0].price,
+    image: product.images[0].src
+});
 
+const ProductCard = ({ classes, width, product }) => {
     const isSmallScreen = isWidthDown('lg', width);
     const buttonProps = {
         size: isSmallScreen ? "medium" : "large"
     };
 
+    const productDetails = getProduct(product);
+
     return (
-        <Card>
+        <Card style={{display: "flex", flexDirection: "column", flex: 1}}>
             <CardMedia
                 component="div"
                 className={classes.media}
-                image={Steak}
-                title="Steak"
+                image={productDetails.image}
+                title={productDetails.title}
             />
 
             <Divider component="hr" />
 
             <div className={classes.productInfo}>
-                <Typography variant="subtitle1" noWrap gutterBottom className={classes.productTitle}>Steak</Typography>
-                <Typography variant="subtitle1" style={{fontWeight: "bold"}} gutterBottom>$5.99</Typography>
+                <span>
+                    <Typography variant="subtitle1" display="inline" style={{fontWeight: "bold"}}>${productDetails.price}</Typography>
+                    <Typography variant="subtitle1" color="textSecondary" display="inline" gutterBottom>/per lb</Typography>
+                </span>
+
+                <Typography variant="subtitle2" gutterBottom>4 left in stock</Typography>
+
+                <Typography variant="subtitle1" className={classes.productTitle}>{productDetails.title}</Typography>
 
                 <Tooltip title="Add To Cart">
                     <Fab
-                        href="#"
                         variant="round"
                         color="primary"
                         className={classes.productFab}

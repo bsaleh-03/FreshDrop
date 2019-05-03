@@ -5,6 +5,9 @@ export const Styles = theme => ({
     },
     productInfo: {
         position: "relative",
+        display: "flex",
+        flex: 1,
+        flexDirection: "column",
         padding: theme.spacing(2)
     },
     productTitle: {

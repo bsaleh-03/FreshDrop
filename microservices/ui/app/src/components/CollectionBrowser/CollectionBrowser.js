@@ -9,14 +9,15 @@ import {connect} from "react-redux";
 import Box from "@material-ui/core/Box";
 
 const CollectionBrowser = ({ classes, collection, collections, loading, fetchCollections }) => {
-
     // Fetch collections from shopify
     useEffect(() => {
         fetchCollections();
     }, []);
 
+    let filteredCollections = collections;
+
     if (collection !== "all") {
-        collections.filter(collection => collection.id !== collection);
+        filteredCollections = collections.filter(collectionItem => collectionItem.id === collection);
     }
 
     return (
@@ -26,7 +27,7 @@ const CollectionBrowser = ({ classes, collection, collections, loading, fetchCol
             </Box>
         ) : (
             <React.Fragment>
-                { collections.map((collection, idx) => (
+                { filteredCollections.map((collection, idx) => (
                     <Box mb={2} flexGrow={1}>
                         <Box mb={2}>
                             <Typography variant="h5" gutterBottom>{collection.title}</Typography>

@@ -10,6 +10,7 @@ import {bindActionCreators} from "redux";
 import {fetchProduct} from "redux/actions/products";
 import {connect} from "react-redux";
 import useReactRouter from "use-react-router";
+import {getCollectionFromProduct} from "lib/Shopify";
 
 const getProduct = (product) => ({
     id: product.id,
@@ -19,14 +20,14 @@ const getProduct = (product) => ({
     image: product.images[0].src
 });
 
-const ViewProduct = ({ product, fetchProduct }) => {
+const ViewProduct = ({ collections, product, fetchProduct }) => {
     // Get token from url
     const { match } = useReactRouter();
 
-    useEffect(() => {
-        // Get product from shopify
-        const { productId } = match.params;
+    // Get product from shopify
+    const { productId } = match.params;
 
+    useEffect(() => {
         fetchProduct(productId);
     }, []);
 
@@ -37,6 +38,8 @@ const ViewProduct = ({ product, fetchProduct }) => {
 
         if (nextQuantity >= minQuantity) { setQuantity(nextQuantity) }
     };
+
+    const collection = getCollectionFromProduct(collections, productId)[0];
 
     return (
         <MainNavigator>
@@ -59,8 +62,8 @@ const ViewProduct = ({ product, fetchProduct }) => {
                                             <Link color="inherit" href="/home">
                                                 Collections
                                             </Link>
-                                            <Link color="inherit" href="/home">
-                                                XMart
+                                            <Link color="inherit" href={`/collection/view/${collection.id}`}>
+                                                { collection.title }
                                             </Link>
                                             <Typography color="textPrimary">{getProduct(product.product).title}</Typography>
                                         </Breadcrumbs>
@@ -143,7 +146,8 @@ const ViewProduct = ({ product, fetchProduct }) => {
 };
 
 const mapStateToProps = (state) => ({
-    product: state.product
+    product: state.product,
+    collections: state.collections.items
 });
 
 const mapDispatchToProps = (dispatch) => {

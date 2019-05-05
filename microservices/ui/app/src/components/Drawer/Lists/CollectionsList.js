@@ -10,7 +10,7 @@ const CollectionsList = ({ collections }) => {
             subheader={<ListSubheader component="div">Collections</ListSubheader>}
         >
             { collections.map((collection, idx) => (
-                <ListItem button key={idx} component="button">
+                <ListItem button key={idx} component="button" href={`/collection/view/${collection.id}`}>
                     <ListItemAvatar>
                         <Avatar>
                             <Image />

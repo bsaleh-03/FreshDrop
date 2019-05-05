@@ -8,7 +8,7 @@ import {fetchCollections} from "redux/actions";
 import {connect} from "react-redux";
 import Box from "@material-ui/core/Box";
 
-const CollectionBrowser = ({ classes, collection, collections, loading, fetchCollections }) => {
+const CollectionBrowser = ({ classes, showTitle = true, collection, collections, loading, fetchCollections }) => {
     // Fetch collections from shopify
     useEffect(() => {
         fetchCollections();
@@ -29,10 +29,12 @@ const CollectionBrowser = ({ classes, collection, collections, loading, fetchCol
             <React.Fragment>
                 { filteredCollections.map((collection, idx) => (
                     <Box mb={2} flexGrow={1}>
-                        <Box mb={2}>
-                            <Typography variant="h5" gutterBottom>{collection.title}</Typography>
-                            <Divider component="hr" />
-                        </Box>
+                        { showTitle && (
+                            <Box mb={2}>
+                                <Typography variant="h5" gutterBottom>{collection.title}</Typography>
+                                <Divider component="hr" />
+                            </Box>
+                        )}
 
                         <Grid container spacing={2} key={idx}>
                             { collection.products.map((product, idx) => (
@@ -61,7 +63,8 @@ const mapStateToProps = state => ({
 
 CollectionBrowser.propTypes = {
     classes: PropTypes.object.isRequired,
-    collection: PropTypes.string.isRequired
+    collection: PropTypes.string.isRequired,
+    showTitle: PropTypes.bool
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(Styles)(CollectionBrowser));

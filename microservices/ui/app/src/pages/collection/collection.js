@@ -18,6 +18,18 @@ const Collection = ({ collections }) => {
     return (
         <MainNavigator>
             <MainNavigatorSection>
+                <HeroLayout variant="large" color="primary" image={currentCollection.image ? currentCollection.image.src : null}>
+                    <Grid container justify="center">
+                        <Grid item xs={12} md={10}>
+                            <Box flexGrow={1}>
+                                <Typography variant="h2" align="center">{currentCollection.title}</Typography>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </HeroLayout>
+            </MainNavigatorSection>
+
+            <MainNavigatorSection>
                 <Grid container justify="center">
                     <Grid item xs={12} md={10}>
                         <HeroLayout variant="large">
@@ -36,7 +48,7 @@ const Collection = ({ collections }) => {
                                 </Box>
                             </Box>
 
-                            <CollectionBrowser collection={collectionId} />
+                            <CollectionBrowser collection={collectionId} showTitle={false} />
                         </HeroLayout>
                     </Grid>
                 </Grid>

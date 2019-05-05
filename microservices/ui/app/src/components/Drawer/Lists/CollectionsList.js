@@ -12,9 +12,13 @@ const CollectionsList = ({ collections }) => {
             { collections.map((collection, idx) => (
                 <ListItem button key={idx} component="button" href={`/collection/view/${collection.id}`}>
                     <ListItemAvatar>
-                        <Avatar>
-                            <Image />
-                        </Avatar>
+                        { collection.image ? (
+                            <Avatar component="div" src={collection.image.src} />
+                        ) : (
+                            <Avatar>
+                                <Image />
+                            </Avatar>
+                        )}
                     </ListItemAvatar>
                     <ListItemText primary={collection.title} />
                 </ListItem>

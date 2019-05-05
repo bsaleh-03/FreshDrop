@@ -4,6 +4,7 @@ import {
     FETCH_COLLECTIONS_SUCCESS
 } from "redux/actions/types";
 import {combineReducers} from "redux";
+import productReducer from "redux/reducers/product";
 
 // Collections Reducer
 const initialCollectionsState = {
@@ -43,5 +44,6 @@ const collectionsReducer = function (state = initialCollectionsState, action) {
 };
 
 export default combineReducers({
-    collections: collectionsReducer
+    collections: collectionsReducer,
+    product: productReducer
 })

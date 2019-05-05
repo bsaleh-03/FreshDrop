@@ -1,15 +1,9 @@
-import Client from "shopify-buy";
+import Client from "lib/Shopify";
 import {
     FETCH_COLLECTIONS_BEGIN,
     FETCH_COLLECTIONS_FAILURE,
-    FETCH_COLLECTIONS_SUCCESS
+    FETCH_COLLECTIONS_SUCCESS,
 } from "redux/actions/types";
-
-// Shopify Client
-const client = Client.buildClient ({
-    domain: 'xmartdelivery.myshopify.com',
-    storefrontAccessToken: '46c755b162eb3627af1027e177da6e07'
-});
 
 export const fetchCollectionsBegin = () => ({
     type: FETCH_COLLECTIONS_BEGIN
@@ -27,10 +21,10 @@ export const fetchCollectionsFailure = (error) => ({
 
 export const fetchCollections = () => {
     return dispatch => {
-        // Dispatch began fetching products
+        // Dispatch began fetching collections
         dispatch(fetchCollectionsBegin());
 
-        client.collection.fetchAllWithProducts()
+        Client.collection.fetchAllWithProducts()
             .then(collections => {
                 // Dispatch collections
                 dispatch(fetchCollectionsSuccess(collections));

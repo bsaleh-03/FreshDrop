@@ -3,40 +3,45 @@ import {Grid, Typography, IconButton, Tooltip} from "@material-ui/core";
 import { Phone, Info, Help } from "@material-ui/icons";
 import HeroLayout from "layout/HeroLayout/HeroLayout";
 import Box from "@material-ui/core/Box";
+import MainNavigatorSection from "../../layout/MainNavigator/MainNavigatorSection";
 
 const Footer = () => {
     return (
-        <HeroLayout color="primary" variant="small">
-            <Grid container justify="center" alignItems="center" style={{flexGrow: 1}}>
-                <Grid item xs={12} md={10}>
-                    <Box width="100%" display="flex">
-                        <Box mx={4} display="flex" flexGrow={1} alignItems="center">
-                            <Typography variant="h6">&copy; 2019 XMart Delivery</Typography>
-                        </Box>
+        <MainNavigatorSection>
+            <HeroLayout color="primary" variant="small">
+                <Grid container justify="center">
+                    <Grid item xs={12} md={10}>
+                        <Grid container justify="center" alignItems="center">
+                            <Grid item xs={12} sm={6}>
+                                <Typography variant="h6">&copy; 2019 XMart Delivery</Typography>
+                            </Grid>
 
-                        <Box mx={4} display="flex">
-                            <Tooltip title="Contact Us">
-                                <IconButton color="secondary">
-                                    <Phone />
-                                </IconButton>
-                            </Tooltip>
+                            <Grid item xs={12} sm={6}>
+                                <Box display="flex" flex={1} justifyContent="flex-end">
+                                    <Tooltip title="Contact Us">
+                                        <IconButton color="secondary">
+                                            <Phone />
+                                        </IconButton>
+                                    </Tooltip>
 
-                            <Tooltip title="Our Story">
-                                <IconButton color="secondary">
-                                    <Info />
-                                </IconButton>
-                            </Tooltip>
+                                    <Tooltip title="Our Story">
+                                        <IconButton color="secondary">
+                                            <Info />
+                                        </IconButton>
+                                    </Tooltip>
 
-                            <Tooltip title="Help & FAQ">
-                                <IconButton color="secondary">
-                                    <Help />
-                                </IconButton>
-                            </Tooltip>
-                        </Box>
-                    </Box>
+                                    <Tooltip title="Help & FAQ">
+                                        <IconButton color="secondary">
+                                            <Help />
+                                        </IconButton>
+                                    </Tooltip>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </HeroLayout>
+            </HeroLayout>
+        </MainNavigatorSection>
     );
 };
 

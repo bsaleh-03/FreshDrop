@@ -40,7 +40,7 @@ const ViewProduct = ({ collections, product, fetchProduct }) => {
 
     useEffect(() => {
         fetchProduct(productId);
-    }, []);
+    }, [fetchProduct, productId]);
 
     const [quantity, setQuantity] = useState(1);
 
@@ -127,10 +127,6 @@ const ViewProduct = ({ collections, product, fetchProduct }) => {
                                                                 <IconButton href={null} onClick={() => validateNextQuantity(quantity + 1)}>
                                                                     <Add />
                                                                 </IconButton>
-                                                            </Box>
-
-                                                            <Box display="flex" flexDirection="row">
-
                                                             </Box>
                                                         </Grid>
                                                     </Grid>

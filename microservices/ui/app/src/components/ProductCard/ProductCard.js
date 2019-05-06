@@ -26,7 +26,7 @@ const getProduct = (product) => ({
 const ProductCard = ({ classes, width, product }) => {
     const isSmallScreen = isWidthDown('lg', width);
     const buttonProps = {
-        size: isSmallScreen ? "medium" : "large"
+        size: isSmallScreen ? "small" : "default"
     };
 
     const productDetails = getProduct(product);
@@ -61,7 +61,7 @@ const ProductCard = ({ classes, width, product }) => {
                     color="primary"
                     className={classes.productFab}
                     {...buttonProps}>
-                    <AddShoppingCart fontSize={isSmallScreen ? 'small' : 'default'} />
+                    <AddShoppingCart fontSize={buttonProps.size} />
                 </Fab>
             </Tooltip>
         </Card>

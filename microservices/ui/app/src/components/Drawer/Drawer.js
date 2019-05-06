@@ -71,13 +71,6 @@ const Drawer = ({ classes, open }) => {
                 component="nav"
                 subheader={<ListSubheader component="div">More</ListSubheader>}
             >
-                <ListItem button component="a" href="/account/settings">
-                    <ListItemIcon>
-                        <Settings />
-                    </ListItemIcon>
-                    <ListItemText primary="Settings" />
-                </ListItem>
-
                 <ListItem button component="a" href="/story">
                     <ListItemIcon>
                         <Info />

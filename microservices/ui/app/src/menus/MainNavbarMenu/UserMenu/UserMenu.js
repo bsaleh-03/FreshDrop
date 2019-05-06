@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { IconButton, Menu, MenuItem, Divider, ListItemText, ListItemIcon, Tooltip } from "@material-ui/core";
-import { Person, History, Settings, Help, Info, ExitToApp } from "@material-ui/icons";
+import { Person, History, Help, Info, ExitToApp } from "@material-ui/icons";
 
 const UserMenu = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -61,13 +61,6 @@ const UserMenu = () => {
                         <History />
                     </ListItemIcon>
                     <ListItemText primary="My Orders" />
-                </MenuItem>
-
-                <MenuItem button={true} component="a" href="/account/settings" onClick={handleMenuClose}>
-                    <ListItemIcon>
-                        <Settings />
-                    </ListItemIcon>
-                    <ListItemText primary="Settings" />
                 </MenuItem>
 
                 <Divider component="hr" />

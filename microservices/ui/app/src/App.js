@@ -21,7 +21,7 @@ import Contact from "pages/contact/contact";
 import Story from "pages/story/story";
 import Help from "pages/help/help";
 import Orders from "pages/orders/orders";
-import ViewProduct from "pages/product/viewProduct/viewProduct";
+import ViewProduct from "pages/product/product";
 import ViewCollection from "pages/collection/collection";
 
 const App = props => {
@@ -45,10 +45,10 @@ const App = props => {
                                 <Route exact path="/cart" component={ShoppingCart} />
 
                                 {/* Collection Routes */}
-                                <Route exact path="/collection/view/:collectionId" component={ViewCollection} />
+                                <Route exact path="/collection/:collectionId" component={ViewCollection} />
 
                                 {/* Product Routes */}
-                                <Route exact path="/product/view/:productId" component={ViewProduct} />
+                                <Route exact path="/product/:productId" component={ViewProduct} />
 
                                 {/* Account Routes*/}
                                 <Route exact path="/account" component={Account} />

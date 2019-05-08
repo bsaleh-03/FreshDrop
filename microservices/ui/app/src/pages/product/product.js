@@ -31,7 +31,7 @@ const getProduct = (product) => ({
     image: product.images[0].src
 });
 
-const ViewProduct = ({ collections, product, fetchProduct }) => {
+const Product = ({ collections, product, fetchProduct }) => {
     // Get token from url
     const { match } = useReactRouter();
 
@@ -74,7 +74,7 @@ const ViewProduct = ({ collections, product, fetchProduct }) => {
                                                 <Link color="inherit" href="/home">
                                                     Collections
                                                 </Link>
-                                                <Link color="inherit" href={`/collection/view/${collection.id}`}>
+                                                <Link color="inherit" href={`/collection/${collection.id}`}>
                                                     { collection.title }
                                                 </Link>
                                                 <Typography color="textPrimary">{getProduct(product.product).title}</Typography>
@@ -178,8 +178,8 @@ const mapDispatchToProps = (dispatch) => {
     }, dispatch);
 };
 
-ViewProduct.propTypes = {
+Product.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import MainNavigator from "layout/MainNavigator/MainNavigator";
 import {Breadcrumbs, Button, Grid, Link, Typography} from "@material-ui/core";
 import MainNavigatorSection from "layout/MainNavigator/MainNavigatorSection";
@@ -40,7 +40,7 @@ const Collection = ({ collections }) => {
 
                                 <Box ml={2} display="flex" flex={1} alignItems="center">
                                     <Breadcrumbs aria-label="Breadcrumb">
-                                        <Link color="inherit" href="/home">
+                                        <Link color="inherit" href="/home" component="a">
                                             Collections
                                         </Link>
                                         <Typography color="textPrimary">{currentCollection.title}</Typography>

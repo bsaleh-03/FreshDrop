@@ -33,7 +33,7 @@ const ProductCard = ({ classes, width, product }) => {
 
     return (
         <Card style={{display: "flex", flexDirection: "column", flex: 1, position: "relative"}}>
-            <CardActionArea href={`/product/view/${productDetails.id}`} style={{flexGrow: 1}}>
+            <CardActionArea href={`/product/${productDetails.id}`} style={{flexGrow: 1}}>
                 <CardMedia
                     component="div"
                     className={classes.media}

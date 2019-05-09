@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import HeroLayout from "layout/HeroLayout/HeroLayout";
 import MainNavigator from "layout/MainNavigator/MainNavigator";
@@ -9,12 +9,9 @@ import {
     Grid,
     Button,
     Typography,
-    InputBase,
-    IconButton,
     CircularProgress,
     Divider
 } from "@material-ui/core";
-import { Add, Remove } from "@material-ui/icons";
 import Box from "@material-ui/core/Box";
 import {bindActionCreators} from "redux";
 import {fetchProduct} from "redux/actions/products";
@@ -22,6 +19,7 @@ import {connect} from "react-redux";
 import useReactRouter from "use-react-router";
 import {getCollectionFromProduct} from "lib/Shopify";
 import CollectionBrowser from "components/CollectionBrowser/CollectionBrowser";
+import ProductView from "components/ProductView/ProductView";
 
 const getProduct = (product) => ({
     id: product.id,
@@ -41,14 +39,6 @@ const Product = ({ collections, product, fetchProduct }) => {
     useEffect(() => {
         fetchProduct(productId);
     }, [fetchProduct, productId]);
-
-    const [quantity, setQuantity] = useState(1);
-
-    const validateNextQuantity = (nextQuantity) => {
-        const minQuantity = 1;
-
-        if (nextQuantity >= minQuantity) { setQuantity(nextQuantity) }
-    };
 
     const collection = getCollectionFromProduct(collections, productId)[0];
 
@@ -82,68 +72,13 @@ const Product = ({ collections, product, fetchProduct }) => {
                                         </Box>
                                     </Box>
 
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={12} sm={6}>
-                                            <Box display="flex" flexGrow={1} justifyContent="center" alignItems="center">
-                                                <img src={getProduct(product.product).image} alt="Steak" style={{maxWidth: "100%"}} />
-                                            </Box>
-                                        </Grid>
-
-                                        <Grid item xs={12} sm={6}>
-                                            <Box ml={2}>
-                                                <Typography variant="h2" gutterBottom>{getProduct(product.product).title}</Typography>
-                                                <Typography variant="body1" paragraph>{getProduct(product.product).description}</Typography>
-
-                                                <span>
-                                                <Typography variant="h5" display="inline">${getProduct(product.product).price}</Typography>
-                                                <Typography variant="h5" display="inline" color="textSecondary">/per lb</Typography>
-                                            </span>
-
-                                                <Box mb={2} display="flex" flexDirection="row" flex={1}>
-
-                                                    <Grid container>
-                                                        <Grid item xs={12} sm={6} style={{display: "flex"}}>
-                                                            <Box flex={1} flexDirection="column" alignSelf="center">
-                                                                <Typography variant="subtitle1">4 left in stock</Typography>
-                                                            </Box>
-                                                        </Grid>
-
-                                                        <Grid item xs={12} sm={6}>
-                                                            <Box mx={1} display="flex" flexDirection="row">
-                                                                <IconButton href={null} onClick={() => validateNextQuantity(quantity - 1)}>
-                                                                    <Remove />
-                                                                </IconButton>
-
-                                                                <Box display="flex" alignItems="center" flexGrow={1}>
-                                                                    <InputBase
-                                                                        type="number"
-                                                                        value={quantity}
-                                                                        onChange={e => validateNextQuantity(parseInt(e.target.value))}
-                                                                        inputProps={{style: {textAlign: "center"}}}
-                                                                        fullWidth
-                                                                    />
-                                                                </Box>
-
-                                                                <IconButton href={null} onClick={() => validateNextQuantity(quantity + 1)}>
-                                                                    <Add />
-                                                                </IconButton>
-                                                            </Box>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Box>
-
-                                                <Grid container spacing={2}>
-                                                    <Grid item xs={12} sm={6}>
-                                                        <Button href={null} variant="text" size="large" color="primary" fullWidth>Add To Wish List</Button>
-                                                    </Grid>
-
-                                                    <Grid item xs={12} sm={6}>
-                                                        <Button href={null} variant="contained" size="large" color="primary" fullWidth>Add To Cart</Button>
-                                                    </Grid>
-                                                </Grid>
-                                            </Box>
-                                        </Grid>
-                                    </Grid>
+                                    <ProductView
+                                        image={getProduct(product.product).image}
+                                        description={getProduct(product.product).description}
+                                        price={getProduct(product.product).price}
+                                        title={getProduct(product.product).title}
+                                        stock={4}
+                                    />
                                 </HeroLayout>
 
                                 <HeroLayout variant="large">

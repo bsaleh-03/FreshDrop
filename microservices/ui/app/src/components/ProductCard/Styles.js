@@ -16,9 +16,9 @@ export const Styles = theme => ({
     productFab: {
         position: "absolute",
         top: 0,
-        marginTop: "calc(56.25% - 28px)",
+        marginTop: "calc(56.25% - 20px)",
         [theme.breakpoints.down('md')]: {
-            marginTop: "calc(56.25% - 18px)"
+            marginTop: "calc(56.25% - 20px)"
         },
         right: theme.spacing(2)
     }

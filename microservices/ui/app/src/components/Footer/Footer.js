@@ -9,37 +9,39 @@ const Footer = () => {
     return (
         <MainNavigatorSection>
             <HeroLayout color="primary" variant="small">
-                <Grid container justify="center">
-                    <Grid item xs={12} md={10}>
-                        <Grid container justify="center" alignItems="center">
-                            <Grid item xs={12} sm={6}>
-                                <Typography variant="h6">&copy; 2019 XMart Delivery</Typography>
-                            </Grid>
+                <Box mx={4}>
+                    <Grid container justify="center">
+                        <Grid item xs={12} md={10}>
+                            <Grid container justify="center" alignItems="center">
+                                <Grid item xs={12} sm={6}>
+                                    <Typography variant="h6">&copy; 2019 XMart Delivery</Typography>
+                                </Grid>
 
-                            <Grid item xs={12} sm={6}>
-                                <Box display="flex" flex={1} justifyContent="flex-end">
-                                    <Tooltip title="Contact Us">
-                                        <IconButton color="secondary">
-                                            <Phone />
-                                        </IconButton>
-                                    </Tooltip>
+                                <Grid item xs={12} sm={6}>
+                                    <Box display="flex" flex={1} justifyContent="flex-end">
+                                        <Tooltip title="Contact Us">
+                                            <IconButton color="secondary" href={null}>
+                                                <Phone />
+                                            </IconButton>
+                                        </Tooltip>
 
-                                    <Tooltip title="Our Story">
-                                        <IconButton color="secondary">
-                                            <Info />
-                                        </IconButton>
-                                    </Tooltip>
+                                        <Tooltip title="Our Story">
+                                            <IconButton color="secondary" href={null}>
+                                                <Info />
+                                            </IconButton>
+                                        </Tooltip>
 
-                                    <Tooltip title="Help & FAQ">
-                                        <IconButton color="secondary">
-                                            <Help />
-                                        </IconButton>
-                                    </Tooltip>
-                                </Box>
+                                        <Tooltip title="Help & FAQ">
+                                            <IconButton color="secondary" href={null}>
+                                                <Help />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Box>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
+                </Box>
             </HeroLayout>
         </MainNavigatorSection>
     );

@@ -2,21 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Styles from "./Styles";
 import {
-    Avatar,
     Drawer as MuiDrawer,
     Divider,
     List,
     ListSubheader,
     ListItem,
-    ListItemAvatar,
     ListItemIcon,
     ListItemText,
     withStyles
 } from "@material-ui/core";
 import {
-    Image,
     ShoppingCart,
-    Settings,
     History,
     AccountCircle,
     Info,

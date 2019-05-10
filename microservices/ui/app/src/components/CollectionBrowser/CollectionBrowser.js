@@ -4,7 +4,7 @@ import Styles from "./Styles";
 import {Divider, Grid, Typography, withStyles} from "@material-ui/core";
 import ProductCard from "components/ProductCard/ProductCard";
 import {bindActionCreators} from "redux";
-import {fetchCollections} from "redux/actions";
+import {fetchCollections} from "redux/actions/collections";
 import {connect} from "react-redux";
 import Box from "@material-ui/core/Box";
 import AsyncView from "components/AsyncView/AsyncView";

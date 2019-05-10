@@ -9,7 +9,8 @@ export const Styles = theme => ({
     body: {
         display: "flex",
         flexGrow: 1,
-        flexDirection: "column"
+        flexDirection: "column",
+        zIndex: 20
     },
     fullheight: {
         minHeight: "100vh"
@@ -24,24 +25,36 @@ export const Styles = theme => ({
         padding: `${theme.spacing.unit * 4}px`
     },
     default: {
-        backgroundColor: "white"
+        backgroundColor: "inherit"
     },
     primary: {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText
     },
     success: {
-        backgroundColor: theme.palette.secondary.main
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.primary.contrastText,
     },
     danger: {
-        backgroundColor: theme.palette.primary.danger
+        backgroundColor: theme.palette.primary.danger,
+        color: theme.palette.primary.contrastText,
     },
     image: {
+        position: "absolute",
+        height: "100%",
+        width: "100%",
+        top: 0,
         background: "no-repeat center center",
         backgroundSize: "cover",
-        color: theme.palette.primary.contrastText,
+        zIndex: 0
+    },
+    filter: {
+        position: "absolute",
+        height: "100%",
+        width: "100%",
+        top: 0,
         backgroundColor: "rgba(0, 0, 0, 0.4)",
-        "background-blend-mode": "multiply"
+        zIndex: 10
     }
 });
 

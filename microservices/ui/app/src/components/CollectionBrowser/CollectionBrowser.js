@@ -34,7 +34,7 @@ const CollectionBrowser = ({ classes, showTitle = true, collection, collections,
 
                     <Grid container spacing={2} key={idx}>
                         { collection.products.map((product, idx) => (
-                            <Grid item xs={12} sm={6} md={3} lg={2} key={idx} style={{display: "flex"}}>
+                            <Grid item xs={6} sm={6} md={3} lg={2} key={idx} style={{display: "flex"}}>
                                 <ProductCard product={product} />
                             </Grid>
                         ))}

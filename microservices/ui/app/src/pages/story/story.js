@@ -10,7 +10,7 @@ const Story = () => {
     return (
         <MainNavigator>
             <MainNavigatorSection>
-                <HeroLayout variant="large" image={Steak}>
+                <HeroLayout variant="large" color="primary" image={Steak}>
                     <Box flexGrow={1}>
                         <Typography variant="h2" align="center">Our Story</Typography>
                     </Box>

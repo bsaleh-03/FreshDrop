@@ -10,7 +10,7 @@ const ShoppingCart = () => {
     return (
         <MainNavigator>
             <MainNavigatorSection item xs={12}>
-                <HeroLayout variant="large" image={Steak}>
+                <HeroLayout variant="large" color="primary" image={Steak}>
                     <Box flexGrow={1}>
                         <Typography variant="h2" align="center">Shopping Cart</Typography>
                     </Box>

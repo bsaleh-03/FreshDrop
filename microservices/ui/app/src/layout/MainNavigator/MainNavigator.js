@@ -38,7 +38,7 @@ const MainNavigator = ({ classes, children }) => {
                 <div className={classes.toolbar} />
 
                 <Grid container direction="column" style={contentStyle}>
-                    <Box display="flex" flex={1} flexDirection="column">
+                    <Box display="block" width="100%">
                         { children }
                     </Box>
 

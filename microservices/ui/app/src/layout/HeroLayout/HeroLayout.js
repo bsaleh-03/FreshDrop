@@ -5,18 +5,18 @@ import { withStyles } from "@material-ui/core";
 
 const HeroLayout = ({ classes, children, variant = 'medium', color = 'default', image, style }) => {
 
-    const imageBackgroundStyle = image ? {backgroundImage: `url(${image})`} : {backgroundImage: "inherit"};
+    const imageBackgroundStyle = image && {backgroundImage: `url(${image})`};
 
     return (
-        <div className={classes.root} style={style}>
+        <div className={`${classes.root} ${classes[color]}`} style={style}>
+            { image && <div className={classes.image} style={imageBackgroundStyle} /> }
+            { image && <div className={classes.filter} /> }
+
             <div
                 className={`
                     ${classes[variant]} 
-                    ${classes[color]} 
                     ${classes.body}
-                    ${image ? classes.image : ""}
                 `}
-                style={imageBackgroundStyle}
             >
                 { children }
             </div>

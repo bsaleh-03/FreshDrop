@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import Styles from './Styles';
 import { Paper, withStyles } from "@material-ui/core";
 
-const Card = ({ classes, children, size = 'default' }) => {
+const Card = ({ classes, children, size = 'default', style }) => {
     return (
-        <div>
-            <Paper className={classes[size]}>
-                { children }
-            </Paper>
-        </div>
+        <Paper className={classes[size]} style={style}>
+            { children }
+        </Paper>
     );
 };
 
@@ -24,7 +22,8 @@ Card.propTypes = {
         'small',
         'medium',
         'large'
-    ])
+    ]),
+    style: PropTypes.object
 };
 
 export default withStyles(Styles)(Card);
